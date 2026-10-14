@@ -133,8 +133,13 @@ function siteMarkup() {
     <header class="topbar"><div class="topbar-inner">
       <a class="brand" href="#main" aria-label="Margarita Bermejo Cano, back to top"><span class="monogram" aria-hidden="true">mb.</span><span class="brand-name">Margarita<br>Bermejo Cano</span></a>
       <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#contact">CV &amp; contact</a></nav>
-      <button class="theme" id="theme-toggle" type="button" hidden>Switch theme</button>
-    </div></header>
+      <label class="theme-picker" id="theme-picker" hidden><span>Theme</span>
+        <select class="theme" id="theme-select">
+          <option value="light">Light</option><option value="dark">Dark</option>
+          <option value="premium">Premium Editorial</option><option value="retro95">Retro '95</option>
+        </select>
+      </label>
+    </div><p class="theme-status" id="theme-status" role="status" hidden></p></header>
     <main class="main" id="main">
       <header class="hero">
         <div class="hero-copy">
@@ -229,16 +234,27 @@ function siteMarkup() {
   </div>
   <div class="print-resume">${cvMarkup()}</div>
   <script>
-    const themeButton = document.querySelector("#theme-toggle");
-    function updateThemeLabel() {
-      const dark = document.documentElement.getAttribute("data-theme") === "dark";
-      themeButton.textContent = dark ? "Light theme" : "Dark theme";
-      themeButton.setAttribute("aria-label", dark ? "Switch to light colour theme" : "Switch to dark colour theme");
-    }
-    updateThemeLabel(); themeButton.hidden = false;
-    themeButton.addEventListener("click", () => {
-      document.documentElement.setAttribute("data-theme", document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
-      updateThemeLabel();
+    const themeSelect = document.querySelector("#theme-select");
+    const themeStatus = document.querySelector("#theme-status");
+    themeSelect.value = document.documentElement.getAttribute("data-theme");
+    document.querySelector("#theme-picker").hidden = false;
+    themeSelect.addEventListener("change", () => {
+      const theme = themeSelect.value;
+      document.documentElement.setAttribute("data-theme", theme);
+      themeStatus.hidden = true;
+      try {
+        window.localStorage.setItem("portfolio-theme", theme);
+      } catch (error) {
+        if (!["SecurityError", "QuotaExceededError"].includes(error.name)) throw error;
+        console.warn("The selected theme could not be saved in browser storage.");
+        themeStatus.textContent = "Theme applied for this visit. Your browser could not save the preference.";
+        themeStatus.hidden = false;
+      }
+      const url = new URL(window.location.href);
+      if (url.searchParams.has("scoutTheme")) {
+        url.searchParams.set("scoutTheme", theme);
+        window.history.replaceState(null, "", url);
+      }
     });
     const printButton = document.querySelector("#print-button");
     printButton.hidden = false; printButton.addEventListener("click", () => window.print());

@@ -5,7 +5,8 @@
   "description": "Static career portfolio and accessible CV downloads.",
   "scripts": {
     "build": "node build.cjs",
-    "render": "python render_cv.py"
+    "render": "python render_cv.py",
+    "test:themes": "python test_themes.py"
   },
   "dependencies": {
     "docx": "^9.5.1"

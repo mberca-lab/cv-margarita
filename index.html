@@ -14,13 +14,20 @@
   <title>Margarita Bermejo Cano | People Science &amp; Analytics</title>
   <script>
     (() => {
+      const themes = ["light", "dark", "premium", "retro95"];
       const param = new URLSearchParams(window.location.search).get("scoutTheme");
-      const theme =
-        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-      document.documentElement.setAttribute("data-theme", theme);
-      if (param === "light" || param === "dark") {
-        document.documentElement.setAttribute("data-theme", param);
+      let theme = themes.includes(param) ? param : null;
+      if (!theme) {
+        try {
+          const saved = window.localStorage.getItem("portfolio-theme");
+          if (themes.includes(saved)) theme = saved;
+        } catch (error) {
+          if (error.name !== "SecurityError") throw error;
+          console.warn("Theme storage is unavailable; using the browser's colour preference.");
+        }
       }
+      document.documentElement.setAttribute("data-theme",
+        theme || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
     })();
   </script>
   <style>
@@ -76,12 +83,53 @@
       --cp-sheen: rgba(255, 255, 255, 0.04);
       --cp-highlight: rgba(253, 142, 161, 0.12);
     }
+    html[data-theme="premium"] {
+      color-scheme: light;
+      --cp-bg: #f7f2e8;
+      --cp-bg-elevated: #fffdf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #eee7da;
+      --cp-border: #d5cbb9;
+      --cp-border-strong: #93836b;
+      --cp-text: #18263b;
+      --cp-text-muted: #525967;
+      --cp-text-soft: #666152;
+      --cp-accent: #7a5518;
+      --cp-accent-hover: #62410d;
+      --cp-accent-soft: rgba(122, 85, 24, 0.06);
+      --cp-accent-fg: #ffffff;
+      --cp-link: #274b75;
+      --cp-shadow: 0 20px 50px rgba(24, 38, 59, 0.08);
+      --cp-highlight: rgba(122, 85, 24, 0.12);
+    }
+    html[data-theme="retro95"] {
+      color-scheme: light;
+      --cp-bg: #d4d0c8;
+      --cp-bg-elevated: #efefef;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #c0c0c0;
+      --cp-border: #919191;
+      --cp-border-strong: #555555;
+      --cp-text: #171717;
+      --cp-text-muted: #444444;
+      --cp-text-soft: #555555;
+      --cp-accent: #000080;
+      --cp-accent-hover: #000050;
+      --cp-accent-soft: rgba(0, 0, 128, 0.04);
+      --cp-accent-fg: #ffffff;
+      --cp-link: #000080;
+      --cp-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+      --cp-highlight: rgba(0, 128, 128, 0.16);
+      --cp-desktop: #008080;
+      --cp-bevel-light: #ffffff;
+      --cp-bevel-dark: #555555;
+    }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: 112px; }
     body { margin: 0; background: var(--cp-bg); color: var(--cp-text); font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.65; }
     a { color: inherit; text-underline-offset: 4px; }
-    button { font: inherit; cursor: pointer; }
-    :is(a, button, summary):focus-visible { outline: 3px solid var(--cp-accent); outline-offset: 5px; }
+    button, select { font: inherit; cursor: pointer; }
+    :is(a, button, select, summary):focus-visible { outline: 3px solid var(--cp-accent); outline-offset: 5px; }
     [hidden] { display: none !important; }
     h1, h2, h3, p, figure { margin: 0; }
     .skip { position: fixed; top: -100px; left: 16px; z-index: 30; padding: 12px 20px; background: var(--cp-surface); }
@@ -95,6 +143,8 @@
     .topbar nav a { font-size: 13px; text-decoration: none; padding: 12px 0; }
     .topbar nav a:hover { color: var(--cp-accent); }
     .theme { min-height: 44px; padding: 8px 12px; background: var(--cp-bg-elevated); color: var(--cp-text); border: 1px solid var(--cp-border); border-radius: .625rem; font-size: 12px; }
+    .theme-picker { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+    .theme-status { max-width: 1320px; margin: auto; padding: 0 20px 12px; font-size: 12px; color: var(--cp-text-muted); }
     .main { max-width: 1320px; margin: auto; padding: 0 48px 32px; }
     .eyebrow, .meta, .tag, .date, .folio { font-family: Consolas, "Courier New", Courier, monospace; }
     .eyebrow { color: var(--cp-accent); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
@@ -131,6 +181,7 @@
     .proof p { font-size: 13px; margin-top: 12px; }
     .proof span { display: block; font-size: 11px; margin-top: 8px; }
     .proof:hover strong { text-decoration: underline; text-underline-offset: 5px; }
+    .proof:focus-visible { outline-color: var(--cp-bg); }
     section { padding-top: 72px; }
     .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding-top: 20px; border-top: 1px solid var(--cp-border); margin-bottom: 24px; }
     .section-head .eyebrow { order: 2; white-space: nowrap; }
@@ -218,6 +269,51 @@
     footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 24px; margin-top: 24px; color: var(--cp-text-muted); font-size: 12px; }
     html[data-theme="dark"] :is(.hero-role, .intro, .hero-caption, .map-label, .lens-caption, .map-note, .principles p, .section-intro, .project .meta, .project > p, .status, .project-count, .case dd, .research-notes p, .contributions ul, .date, .job .scope, .job ul, .methods ul, .education p, .certification, footer) { color: var(--cp-text-soft); }
     html[data-theme="dark"] .map-small { fill: var(--cp-text-soft); }
+    @media screen {
+      html[data-theme="premium"] .topbar { border-bottom-color: var(--cp-accent); }
+      html[data-theme="premium"] .topbar nav a { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
+      html[data-theme="premium"] .hero-name { font-family: Georgia, serif; font-size: 26px; font-weight: 400; }
+      html[data-theme="premium"] :is(.project, .proof-strip, .publication, .research-notes article, .methods article, .closing) { border-radius: 2px; }
+      html[data-theme="premium"] .evidence-map { border-color: var(--cp-border-strong); background-image: none; box-shadow: var(--cp-shadow); }
+      html[data-theme="premium"] .project:first-child { border-left: 4px solid var(--cp-accent); background: var(--cp-bg-elevated); }
+      html[data-theme="premium"] .section-head { border-top-color: var(--cp-accent); }
+      html[data-theme="premium"] .proof-strip { border-top: 3px solid var(--cp-accent); }
+      html[data-theme="premium"] .publication { background: var(--cp-text); }
+      html[data-theme="premium"] .publication .button { color: var(--cp-text); }
+      html[data-theme="retro95"] body { background: var(--cp-desktop); font-family: Tahoma, Verdana, sans-serif; }
+      html[data-theme="retro95"] .shell { padding: 12px; }
+      html[data-theme="retro95"] .topbar { top: 12px; max-width: 1320px; margin: auto; }
+      html[data-theme="retro95"] .main { background: var(--cp-bg); }
+      html[data-theme="retro95"] :is(.topbar, .main, .project, .evidence-map, .research-notes article, .methods article) {
+        border: 2px solid;
+        border-color: var(--cp-bevel-light) var(--cp-bevel-dark) var(--cp-bevel-dark) var(--cp-bevel-light);
+        border-radius: 0;
+        box-shadow: var(--cp-shadow);
+      }
+      html[data-theme="retro95"] :is(.button, .theme, .filter, .lens) {
+        border: 2px solid;
+        border-color: var(--cp-bevel-light) var(--cp-bevel-dark) var(--cp-bevel-dark) var(--cp-bevel-light);
+        border-radius: 0;
+        box-shadow: 1px 1px 0 var(--cp-text);
+      }
+      html[data-theme="retro95"] :is(.button, .filter, .lens):active {
+        border-color: var(--cp-bevel-dark) var(--cp-bevel-light) var(--cp-bevel-light) var(--cp-bevel-dark);
+        box-shadow: none;
+      }
+      html[data-theme="retro95"] :is(.monogram, .tag, .proof-strip, .publication, .closing) { border-radius: 0; }
+      html[data-theme="retro95"] :is(.hero h1, .section-head h2, .project h3, .publication h3, .closing h2, .proof strong) { font-family: Tahoma, Verdana, sans-serif; font-weight: 700; }
+      html[data-theme="retro95"] .hero h1 { font-size: clamp(34px, 5.8vw, 72px); letter-spacing: -.045em; }
+      html[data-theme="retro95"] .hero h1 em { font-style: normal; }
+      html[data-theme="retro95"] .project { padding-top: 58px; }
+      html[data-theme="retro95"] .project::before {
+        content: "SELECTED WORK";
+        position: absolute; top: 3px; left: 3px; right: 3px;
+        padding: 4px 12px; background: var(--cp-accent); color: var(--cp-accent-fg);
+        font: 700 12px/1.5 Tahoma, Verdana, sans-serif; letter-spacing: .05em;
+      }
+      html[data-theme="retro95"] .map-label { margin: -20px -20px 16px; padding: 6px 12px; background: var(--cp-accent); color: var(--cp-accent-fg); }
+      html[data-theme="retro95"] .evidence-map { background-image: none; }
+    }
     .print-resume { display: none; }
     @media (prefers-reduced-motion: no-preference) {
       .hero-copy { animation: arrive .65s ease-out both; }
@@ -249,6 +345,7 @@
       .main, .topbar-inner { padding-left: 20px; padding-right: 20px; }
       .topbar nav { gap: 12px; justify-content: space-between; }
       .topbar nav a { font-size: 12px; }
+      .theme-picker { display: grid; gap: 2px; }
       .hero { padding-top: 32px; gap: 28px; }
       h1 { font-size: clamp(44px, 12vw, 68px); margin-top: 24px; }
       .hero-name { font-size: 19px; }
@@ -312,8 +409,13 @@
     <header class="topbar"><div class="topbar-inner">
       <a class="brand" href="#main" aria-label="Margarita Bermejo Cano, back to top"><span class="monogram" aria-hidden="true">mb.</span><span class="brand-name">Margarita<br>Bermejo Cano</span></a>
       <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#contact">CV &amp; contact</a></nav>
-      <button class="theme" id="theme-toggle" type="button" hidden>Switch theme</button>
-    </div></header>
+      <label class="theme-picker" id="theme-picker" hidden><span>Theme</span>
+        <select class="theme" id="theme-select">
+          <option value="light">Light</option><option value="dark">Dark</option>
+          <option value="premium">Premium Editorial</option><option value="retro95">Retro '95</option>
+        </select>
+      </label>
+    </div><p class="theme-status" id="theme-status" role="status" hidden></p></header>
     <main class="main" id="main">
       <header class="hero">
         <div class="hero-copy">
@@ -578,16 +680,27 @@
       <p class="cv-footer">Margarita Bermejo Cano / October 2026 / 2 of 2</p>
     </section></div></div>
   <script>
-    const themeButton = document.querySelector("#theme-toggle");
-    function updateThemeLabel() {
-      const dark = document.documentElement.getAttribute("data-theme") === "dark";
-      themeButton.textContent = dark ? "Light theme" : "Dark theme";
-      themeButton.setAttribute("aria-label", dark ? "Switch to light colour theme" : "Switch to dark colour theme");
-    }
-    updateThemeLabel(); themeButton.hidden = false;
-    themeButton.addEventListener("click", () => {
-      document.documentElement.setAttribute("data-theme", document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
-      updateThemeLabel();
+    const themeSelect = document.querySelector("#theme-select");
+    const themeStatus = document.querySelector("#theme-status");
+    themeSelect.value = document.documentElement.getAttribute("data-theme");
+    document.querySelector("#theme-picker").hidden = false;
+    themeSelect.addEventListener("change", () => {
+      const theme = themeSelect.value;
+      document.documentElement.setAttribute("data-theme", theme);
+      themeStatus.hidden = true;
+      try {
+        window.localStorage.setItem("portfolio-theme", theme);
+      } catch (error) {
+        if (!["SecurityError", "QuotaExceededError"].includes(error.name)) throw error;
+        console.warn("The selected theme could not be saved in browser storage.");
+        themeStatus.textContent = "Theme applied for this visit. Your browser could not save the preference.";
+        themeStatus.hidden = false;
+      }
+      const url = new URL(window.location.href);
+      if (url.searchParams.has("scoutTheme")) {
+        url.searchParams.set("scoutTheme", theme);
+        window.history.replaceState(null, "", url);
+      }
     });
     const printButton = document.querySelector("#print-button");
     printButton.hidden = false; printButton.addEventListener("click", () => window.print());

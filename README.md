@@ -28,6 +28,23 @@ The detailed CV divides the selected cases evenly across its two appendix
 pages. Methods and tools follow Microsoft and LinkedIn achievements in the
 concise CV rather than displacing the experience from the opening page.
 
+## Theme options
+
+The header theme selector offers Light, Dark, Premium Editorial and Retro '95.
+Selections are saved in browser storage when available. A `scoutTheme` query
+parameter (`light`, `dark`, `premium` or `retro95`) overrides the saved preference
+for shareable previews; changing the selector updates that preview parameter.
+Without a saved selection or valid preview, the site follows the browser's
+light/dark preference. If storage is blocked, switching still works for the
+current visit and an explanatory message is shown.
+
+Themes only affect the screen presentation. The printable CV and PDF/Word
+downloads retain their professional formatting.
+
+```powershell
+npm run test:themes
+```
+
 ## Publication boundaries
 
 This repository contains only public-safe career content. Keep original CVs,
