@@ -363,12 +363,16 @@
     {
       "role": "Contributing analyst",
       "title": "Enterprise AI readiness research",
-      "detail": "Led underlying analysis referenced in an eBook on AI readiness and employee experience."
+      "detail": "Led underlying analysis referenced in an eBook on AI readiness and employee experience.",
+      "url": "https://adoption.microsoft.com/files/viva/The-state-of-AI-change-readiness-eBook.pdf",
+      "linkLabel": "Read the eBook"
     },
     {
       "role": "Contributing analyst",
       "title": "LLM productivity research",
-      "detail": "Contributed analysis documented in research on LLM-based tools and enterprise information-worker productivity."
+      "detail": "Contributed analysis documented in research on LLM-based tools and enterprise information-worker productivity.",
+      "url": "https://www.microsoft.com/en-us/research/publication/early-llm-based-tools-for-enterprise-information-workers-likely-provide-meaningful-boosts-to-productivity/",
+      "linkLabel": "Read the research report"
     }
   ],
   "education": [

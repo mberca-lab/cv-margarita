@@ -186,7 +186,8 @@ function siteMarkup() {
           <h3>${escape(publication.title)}</h3><p>${escape(publication.detail)}</p>
           <a class="button" href="${escape(publication.url)}" target="_blank" rel="noopener noreferrer">Read the full report <span aria-hidden="true">↗</span></a>
         </div><div class="publication-proof"><strong>1,800</strong><p>Full-time employees across nine markets in the published study.</p><p>${escape(publication.scope)}</p><p>${escape(publication.credit)}</p></div></article>
-        <div class="research-notes">${data.research.slice(1).map(research => `<article><h3>${escape(research.title)}</h3><p><b>${escape(research.role)}.</b> ${escape(research.detail)}</p></article>`).join("")}</div>
+        <div class="research-notes">${data.research.slice(1).map(research => `<article><h3>${escape(research.title)}</h3><p><b>${escape(research.role)}.</b> ${escape(research.detail)}</p>
+          <a class="button" href="${escape(research.url)}" target="_blank" rel="noopener noreferrer">${escape(research.linkLabel)} <span aria-hidden="true">↗</span></a></article>`).join("")}</div>
       </section>
       <section id="experience" aria-labelledby="experience-title">
         ${heading("experience-title", "03", "Career", "A career built around people and evidence.")}
