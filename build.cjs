@@ -75,9 +75,8 @@ function cvMarkup(extended = false) {
       <h2>Earlier experience</h2>${cvPageTwoJobs.map(cvJob).join("")}
       <p class="cv-skills">${escape(data.cvEarlier)}</p>
       <h2>Public research & analytical contributions</h2>
-      <p><b>Lead analyst, wider agentic AI research programme;</b> co-author of Chapter 4 in the
-        <a href="${escape(data.research[0].url)}">${escape(data.research[0].title)}</a>
-        (Microsoft People Science).</p>
+      <p><b>Co-author:</b> <a href="${escape(data.research[0].url)}">${escape(data.research[0].title)}</a>
+        (Microsoft People Science). ${escape(data.research[0].scope)}</p>
       <p>Contributing analyst on enterprise AI readiness and LLM productivity research.</p>
       <h2>Education & certification</h2><div class="cv-skills">${education}
         <p><b>${escape(data.certifications[0])}</b></p></div>
@@ -192,8 +191,8 @@ function siteMarkup() {
         <article class="publication"><div>
           <p class="eyebrow">${escape(publication.role)} / ${escape(publication.publisher)} / ${escape(publication.year)}</p>
           <h3>${escape(publication.title)}</h3><p>${escape(publication.detail)}</p>
-          <a class="button" href="${escape(publication.url)}" target="_blank" rel="noopener noreferrer">Read the public chapter <span aria-hidden="true">↗</span></a>
-        </div><div class="publication-proof"><strong>1,800</strong><p>Business leaders across nine markets in the published study.</p><p>${escape(publication.scope)}</p><p>${escape(publication.credit)}</p></div></article>
+          <a class="button" href="${escape(publication.url)}" target="_blank" rel="noopener noreferrer">Read the full report <span aria-hidden="true">↗</span></a>
+        </div><div class="publication-proof"><strong>1,800</strong><p>Full-time employees across nine markets in the published study.</p><p>${escape(publication.scope)}</p><p>${escape(publication.credit)}</p></div></article>
         <div class="research-notes">${data.research.slice(1).map(research => `<article><h3>${escape(research.title)}</h3><p><b>${escape(research.role)}.</b> ${escape(research.detail)}</p></article>`).join("")}</div>
       </section>
       <section id="experience" aria-labelledby="experience-title">
@@ -311,10 +310,9 @@ function docxCv(designed) {
   children.push(paragraph(data.cvEarlier, { style: "CVSmall" }));
   children.push(heading("Public research & analytical contributions"));
   children.push(new Paragraph({ children: [
-    text("Lead analyst, wider agentic AI research programme; ", { bold: true }),
-    text("co-author of Chapter 4 in the "),
+    text("Co-author: ", { bold: true }),
     hyperlink(data.research[0].title, data.research[0].url),
-    text(" (Microsoft People Science).")
+    text(` (Microsoft People Science). ${data.research[0].scope}`)
   ] }));
   children.push(paragraph("Contributing analyst on enterprise AI readiness and LLM productivity research."));
   children.push(heading("Education & certification"));

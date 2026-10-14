@@ -28,5 +28,5 @@ source documents outside this repository. Project descriptions distinguish
 personal contribution from research scope and wider outcomes.
 
 Only LinkedIn is used for public contact. Research links point to public
-publications; co-author credit refers to the specified chapter, not sole
-ownership of the report.
+publications. Full-report co-author credit is verified against the report's
+cover-page author list and is distinct from sole authorship or study ownership.
