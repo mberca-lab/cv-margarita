@@ -67,8 +67,8 @@ function cvMarkup(extended = false) {
         <a href="${escape(data.linkedin)}">linkedin.com/in/margaritabermejocano</a><br>
         <a href="${escape(data.website)}">mberca.github.io/cv-margarita</a></p>
       <h2>Profile</h2><p>${escape(data.summary)}</p>
-      <h2>Methods & tools</h2><div class="cv-skills">${data.cvSkills.map(([name, text]) => `<p><b>${escape(name)}:</b> ${escape(text)}</p>`).join("")}</div>
       <h2>Experience</h2>${cvJob(data.experience[0])}${cvJob(data.experience[1])}
+      <h2>Methods & tools</h2><div class="cv-skills">${data.cvSkills.map(([name, text]) => `<p><b>${escape(name)}:</b> ${escape(text)}</p>`).join("")}</div>
       ${footer(1)}
     </section>
     <section class="cv-page">
@@ -84,11 +84,12 @@ function cvMarkup(extended = false) {
       ${footer(2)}
     </section>`;
   if (extended) {
+    const perPage = Math.ceil(data.projects.length / 2);
     for (let page = 0; page < 2; page++) {
-      markup += `<section class="cv-page"><h2>Selected projects / ${page === 0 ? "research & customer insight" : "data, content & reusable workflows"}</h2>`;
-      for (const project of data.projects.slice(page * 6, page * 6 + 6)) {
+      markup += `<section class="cv-page"><h2>Selected research, analytics &amp; measurement / ${page + 1}</h2>`;
+      for (const project of data.projects.slice(page * perPage, (page + 1) * perPage)) {
         markup += `<article class="cv-project"><h3>${escape(project.title)} <span class="cv-date">/ ${escape(project.dates)}</span></h3>
-          <p class="cv-scope">${escape(project.status)} · ${escape(project.tags.join(" / "))}</p>
+          <p class="cv-scope">${escape(project.employer)} · ${escape(project.status)}</p>
           <p><b>Contribution:</b> ${escape(project.contribution)}</p>
           <p><b>Outcome:</b> ${escape(project.outcome)}</p></article>`;
       }
@@ -99,10 +100,13 @@ function cvMarkup(extended = false) {
 }
 
 function projectMarkup(project) {
-  return `<article class="project" data-category="${escape(project.category)}">
+  return `<article class="project" id="case-${escape(project.id)}" data-category="${escape(project.category)}">
     <span class="project-number" aria-hidden="true">${escape(project.number)}</span>
     <div class="meta"><span>${escape(project.number)} / ${escape(project.categoryLabel.toUpperCase())}</span><span>${escape(project.dates)}</span></div>
+    <p class="project-employer">${escape(project.employer)}</p>
     <h3>${escape(project.title)}</h3><p>${escape(project.summary)}</p>
+    <p class="project-result"><b>Delivered:</b> ${escape(project.outcome)}</p>
+    ${project.publication ? `<p class="project-link"><a href="${escape(data.research[0].url)}" target="_blank" rel="noopener noreferrer">Read the full research report <span aria-hidden="true">↗</span></a></p>` : ""}
     <div class="tags">${project.tags.map(tag => `<span class="tag">${escape(tag)}</span>`).join("")}</div>
     <p class="status">${escape(project.status)}</p>
     <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
@@ -128,7 +132,7 @@ function siteMarkup() {
   <div class="shell">
     <header class="topbar"><div class="topbar-inner">
       <a class="brand" href="#main" aria-label="Margarita Bermejo Cano, back to top"><span class="monogram" aria-hidden="true">mb.</span><span class="brand-name">Margarita<br>Bermejo Cano</span></a>
-      <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#methods">Toolkit</a><a href="#background">Background</a><a href="#contact">CV &amp; contact</a></nav>
+      <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#contact">CV &amp; contact</a></nav>
       <button class="theme" id="theme-toggle" type="button" hidden>Switch theme</button>
     </div></header>
     <main class="main" id="main">
@@ -137,9 +141,9 @@ function siteMarkup() {
           <p class="eyebrow">People science / AI adoption / customer insight</p>
           <p class="hero-name">${escape(data.name)}</p><p class="hero-role">People Science Analyst at Microsoft · Dublin</p>
           <h1>The human side<br>of <em>better decisions.</em></h1>
-          <p class="intro">I help teams understand how people experience work, adopt AI and use products—and what to do with that evidence. My work combines survey science, customer insight and hands-on analysis, with clear recommendations and reusable methods.</p>
+          <p class="intro">${escape(data.heroIntro)}</p>
           <div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="./assets/margarita-bermejo-cano-cv.pdf" download>Download CV <span aria-hidden="true">↓</span></a></div>
-          <p class="hero-caption">15+ years across analytics and people science · English &amp; Spanish</p>
+          <p class="hero-caption">A career across HR, workforce and customer analytics · English &amp; Spanish</p>
         </div>
         <figure class="evidence-map" data-lens="people" aria-labelledby="map-title">
           <div class="map-label"><span id="map-title">WHERE MY WORK CONNECTS</span><span>FIG. 01</span></div>
@@ -160,34 +164,23 @@ function siteMarkup() {
           <figcaption><p class="lens-caption" id="lens-caption" aria-live="polite" aria-atomic="true">People / Understand experience through survey science, psychometrics and workforce insight.</p><span class="map-note">A conceptual map, not a data chart.</span></figcaption>
         </figure>
       </header>
-      <div class="proof-strip" aria-label="Selected examples of scope and impact">
-        <div class="proof"><strong>25</strong><p>EMEA countries supported<br>through workforce analytics</p><span>MetLife / 2015–2019</span></div>
-        <div class="proof"><strong>145</strong><p>Learning resources sourced<br>in a completed content refresh</p><span>Microsoft / 2023</span></div>
-        <div class="proof"><strong>2</strong><p>Teams adopted my recurring<br>content insights review</p><span>Microsoft / 2024–2025</span></div>
+      <div class="proof-strip" aria-label="Selected career evidence">
+        ${data.highlights.map(highlight => `<a class="proof" href="${escape(highlight.href)}"><strong>${escape(highlight.title)}</strong><p>${escape(highlight.text)}</p><span>${escape(highlight.context)}</span></a>`).join("")}
       </div>
-      <section id="about" aria-labelledby="about-title">
-        ${heading("about-title", "01", "How I work", "Start with the question. Stay with the evidence.")}
-        <p class="section-intro">My background spans research, customer-facing analytics and practical HR systems. I care about whether a measure is trustworthy, whether an explanation makes sense, and whether the work helps someone decide what to do next.</p>
-        <div class="principles">
-          <article><div class="principle-mark" aria-hidden="true">?</div><h3>Make the question answerable.</h3><p>Clarify the decision, test the measurement and choose an analytical approach that fits the problem.</p></article>
-          <article><div class="principle-mark" aria-hidden="true">↗</div><h3>Make the answer useful.</h3><p>Explain the findings, their limitations and the practical options—not just the statistical result.</p></article>
-          <article><div class="principle-mark" aria-hidden="true">↻</div><h3>Make the work reusable.</h3><p>Build documented methods, reusable code and clear handovers so recurring work can be rerun rather than rebuilt.</p></article>
-        </div>
-      </section>
       <section id="work" aria-labelledby="work-title">
-        ${heading("work-title", "02", "Selected work", "Questions worth working on.")}
-        <p class="section-intro">Twelve projects across research, customer insight, content systems and analytical workflows. Each separates my contribution from the wider outcome; confidential findings and customer details are omitted.</p>
+        ${heading("work-title", "01", "Selected work", "Research, analytics &amp; measurement.")}
+        <p class="section-intro">${data.projects.length} selected studies, analytical workstreams and measurement programmes across Microsoft, LinkedIn Glint, MetLife and Telefónica. Each separates my contribution from the wider outcome; confidential findings and customer details are omitted.</p>
         <div class="filters" id="project-filters" role="group" aria-label="Filter selected work" hidden>
-          ${[["all", "All work"], ["research", "AI research"], ["customer", "Customer & product"], ["content", "Content & governance"], ["workflow", "Workflows & automation"], ["data", "Data & telemetry"]].map(([value, label]) => `<button class="filter" type="button" data-filter="${value}" aria-pressed="${value === "all"}">${escape(label)}</button>`).join("")}
+          ${[["all", "All work"], ["research", "AI research"], ["customer", "Customer analytics"], ["workforce", "Workforce & measurement"]].map(([value, label]) => `<button class="filter" type="button" data-filter="${value}" aria-pressed="${value === "all"}">${escape(label)}</button>`).join("")}
         </div>
-        <p class="project-count" id="project-count" aria-live="polite" aria-atomic="true">Showing ${data.projects.length} projects</p>
+        <p class="project-count" id="project-count" aria-live="polite" aria-atomic="true">Showing ${data.projects.length} selected examples</p>
         <div class="projects">${data.projects.map(projectMarkup).join("")}</div>
         <div class="contributions"><h3>Beyond the case studies</h3>
           ${data.contributions.map(group => `<details><summary>${escape(group.title)}</summary>${list(group.items)}</details>`).join("")}
         </div>
       </section>
       <section id="research" aria-labelledby="research-title">
-        ${heading("research-title", "03", "Public research", "A contribution you can read.")}
+        ${heading("research-title", "02", "Public research", "A contribution you can read.")}
         <article class="publication"><div>
           <p class="eyebrow">${escape(publication.role)} / ${escape(publication.publisher)} / ${escape(publication.year)}</p>
           <h3>${escape(publication.title)}</h3><p>${escape(publication.detail)}</p>
@@ -196,15 +189,23 @@ function siteMarkup() {
         <div class="research-notes">${data.research.slice(1).map(research => `<article><h3>${escape(research.title)}</h3><p><b>${escape(research.role)}.</b> ${escape(research.detail)}</p></article>`).join("")}</div>
       </section>
       <section id="experience" aria-labelledby="experience-title">
-        ${heading("experience-title", "04", "Career", "A career built around people and evidence.")}
+        ${heading("experience-title", "03", "Career", "A career built around people and evidence.")}
         <p class="section-intro">From workforce reporting and HR systems to customer analytics and AI research, the context has changed. The work still begins with understanding the problem and making the evidence useful.</p>
         <nav class="timeline" aria-label="Career timeline">${[5, 4, 3, 2, 1, 0].map(index => `<a href="#${data.experience[index].id}">${["2022", "2019", "2015", "2014", "2012", "2011"][index]} / ${escape(data.experience[index].employer.split(" / ")[0])}</a>`).join("")}</nav>
         ${data.experience.slice(0, 6).map(jobMarkup).join("")}
         <details class="early-career"><summary>Earlier foundations / 2006–2011</summary>${data.experience.slice(6).map(jobMarkup).join("")}</details>
       </section>
       <section id="methods" aria-labelledby="methods-title">
-        ${heading("methods-title", "05", "Toolkit", "The craft behind the insight.")}
+        ${heading("methods-title", "04", "Toolkit", "The craft behind the insight.")}
         <div class="methods">${data.skills.map(group => `<article><h3>${escape(group.title)}</h3>${list(group.items)}</article>`).join("")}</div>
+      </section>
+      <section id="about" aria-labelledby="about-title">
+        ${heading("about-title", "05", "How I work", "Start with the question. Stay with the evidence.")}
+        <div class="principles">
+          <article><div class="principle-mark" aria-hidden="true">?</div><h3>Make the question answerable.</h3><p>Clarify the decision, test the measurement and choose an analytical approach that fits the problem.</p></article>
+          <article><div class="principle-mark" aria-hidden="true">↗</div><h3>Make the answer useful.</h3><p>Explain the findings, their limitations and the practical options—not just the statistical result.</p></article>
+          <article><div class="principle-mark" aria-hidden="true">↻</div><h3>Make the work reusable.</h3><p>Build documented methods, reusable code and clear handovers so recurring work can be rerun rather than rebuilt.</p></article>
+        </div>
       </section>
       <section id="background" aria-labelledby="background-title">
         ${heading("background-title", "06", "Background", "More than one way of thinking.")}
@@ -264,8 +265,10 @@ function siteMarkup() {
         project.hidden = button.dataset.filter !== "all" && project.dataset.category !== button.dataset.filter;
         if (!project.hidden) count++;
       });
-      document.querySelector("#project-count").textContent = \`Showing \${count} \${count === 1 ? "project" : "projects"}\`;
+      document.querySelector("#project-count").textContent = \`Showing \${count} selected \${count === 1 ? "example" : "examples"}\`;
     }));
+    document.querySelectorAll('.proof[href^="#case-"]').forEach(link =>
+      link.addEventListener("click", () => filterGroup.querySelector('[data-filter="all"]').click()));
   </script>`;
 }
 
@@ -291,12 +294,7 @@ function docxCv(designed) {
       text(`${data.location} | ${data.languages} | `),
       hyperlink("LinkedIn", data.linkedin), text(" | "), hyperlink("Portfolio", data.website)
     ] }),
-    heading("Profile"), paragraph(data.summary),
-    heading("Methods & tools"),
-    ...data.cvSkills.map(([name, detail]) => new Paragraph({
-      style: "CVSmall", children: [text(`${name}: `, { bold: true }), text(detail)]
-    })),
-    heading("Experience")
+    heading("Profile"), paragraph(data.summary), heading("Experience")
   ];
   function addJob(job) {
     children.push(paragraph(`${job.title} | ${job.employer}`, { heading: HeadingLevel.HEADING_3 }));
@@ -305,6 +303,10 @@ function docxCv(designed) {
     children.push(...job.bullets.map(value => paragraph(value, { numbering: { reference: "bullets", level: 0 } })));
   }
   addJob(data.experience[0]); addJob(data.experience[1]);
+  children.push(heading("Methods & tools"));
+  children.push(...data.cvSkills.map(([name, detail]) => new Paragraph({
+    style: "CVSmall", children: [text(`${name}: `, { bold: true }), text(detail)]
+  })));
   children.push(paragraph("Earlier experience", { heading: HeadingLevel.HEADING_2, pageBreakBefore: true }));
   cvPageTwoJobs.forEach(addJob);
   children.push(paragraph(data.cvEarlier, { style: "CVSmall" }));
@@ -377,7 +379,11 @@ function docxCv(designed) {
 }
 
 async function main() {
-  if (data.projects.length !== 12 || data.experience.length !== 10) throw new Error("Unexpected portfolio structure");
+  if (!data.projects.length || data.experience.length !== 10 ||
+      data.projects.some(project => !project.id || !project.employer || !project.category) ||
+      new Set(data.projects.map(project => project.id)).size !== data.projects.length) {
+    throw new Error("Unexpected portfolio structure or missing project identity");
+  }
   const site = template.replace("{{CV_STYLES}}", cvStyles).replace("{{BODY}}", siteMarkup()).replace(/[ \t]+$/gm, "");
   if (site.includes("{{")) throw new Error("Unresolved template token");
   fs.writeFileSync(path.join(root, "index.html"), site);

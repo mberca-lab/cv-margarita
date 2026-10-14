@@ -20,6 +20,14 @@ The render step checks that the concise PDF has two pages and the detailed PDF
 has four. Inspect both layouts after changing content. The single-column Word
 CV uses standard headings, selectable text and no layout tables.
 
+The selected-work collection spans Microsoft, LinkedIn Glint, MetLife and
+Telefónica. Keep it curated around delivered research, analytical workstreams
+and measurement programmes, not routine activity counts. The three opening
+evidence links are sourced from `highlights` in `assets/portfolio.json`.
+The detailed CV divides the selected cases evenly across its two appendix
+pages. Methods and tools follow Microsoft and LinkedIn achievements in the
+concise CV rather than displacing the experience from the opening page.
+
 ## Publication boundaries
 
 This repository contains only public-safe career content. Keep original CVs,

@@ -126,9 +126,11 @@
     .lens-caption { font-size: 13px; min-height: 78px; color: var(--cp-text-muted); padding-top: 16px; }
     .map-note { display: block; font-size: 11px; color: var(--cp-text-muted); margin-top: 4px; }
     .proof-strip { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--cp-text); color: var(--cp-bg); border-radius: 16px; padding: 32px 40px; gap: 40px; }
-    .proof strong { display: block; font: 400 62px/1 Georgia, serif; letter-spacing: -.04em; }
+    .proof { text-decoration: none; }
+    .proof strong { display: block; font: 400 27px/1.2 Georgia, serif; letter-spacing: -.025em; }
     .proof p { font-size: 13px; margin-top: 12px; }
     .proof span { display: block; font-size: 11px; margin-top: 8px; }
+    .proof:hover strong { text-decoration: underline; text-underline-offset: 5px; }
     section { padding-top: 72px; }
     .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding-top: 20px; border-top: 1px solid var(--cp-border); margin-bottom: 24px; }
     .section-head .eyebrow { order: 2; white-space: nowrap; }
@@ -152,6 +154,10 @@
     .project h3 { position: relative; font: 400 32px/1.18 Georgia, serif; letter-spacing: -.03em; margin: 28px 0 16px; max-width: 600px; }
     .project:first-child h3 { font-size: 48px; }
     .project > p { position: relative; color: var(--cp-text-muted); font-size: 15px; max-width: 700px; }
+    .project .project-employer { color: var(--cp-accent); font-size: 13px; font-weight: 600; margin-top: 20px; }
+    .project h3 { margin-top: 10px; }
+    .project .project-result { margin-top: 16px; font-size: 14px; }
+    .project .project-link { margin-top: 16px; color: var(--cp-accent); }
     .tags { position: relative; display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
     .tag { font-size: 11px; padding: 4px 8px; border: 1px solid var(--cp-border); border-radius: 6px; color: var(--cp-text); background: var(--cp-bg); }
     .status { position: relative; font-size: 12px; color: var(--cp-text-muted); margin-bottom: 12px; }
@@ -238,18 +244,18 @@
       .job { grid-template-columns: 150px 1fr; gap: 24px; }
     }
     @media (max-width: 600px) {
-      html { scroll-padding-top: 164px; }
+      html { scroll-padding-top: 150px; }
       .main, .topbar-inner { padding-left: 20px; padding-right: 20px; }
-      .topbar nav { flex-wrap: wrap; gap: 0 20px; justify-content: flex-start; }
+      .topbar nav { gap: 12px; justify-content: space-between; }
       .topbar nav a { font-size: 12px; }
       .hero { padding-top: 32px; gap: 28px; }
       h1 { font-size: clamp(44px, 12vw, 68px); margin-top: 24px; }
       .hero-name { font-size: 19px; }
       .intro { font-size: 16px; }
+      .evidence-map { display: none; }
       .proof-strip { grid-template-columns: 1fr; gap: 24px; padding: 28px; }
-      .proof { display: grid; grid-template-columns: 92px 1fr; gap: 0 20px; align-items: center; }
-      .proof strong { grid-row: 1 / 3; font-size: 48px; }
-      .proof p { margin: 0; }
+      .proof strong { font-size: 25px; }
+      .proof p { margin-top: 8px; }
       .proof span { margin-top: 4px; }
       section { padding-top: 48px; }
       .section-head { flex-direction: column; gap: 12px; }
@@ -304,7 +310,7 @@
   <div class="shell">
     <header class="topbar"><div class="topbar-inner">
       <a class="brand" href="#main" aria-label="Margarita Bermejo Cano, back to top"><span class="monogram" aria-hidden="true">mb.</span><span class="brand-name">Margarita<br>Bermejo Cano</span></a>
-      <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#methods">Toolkit</a><a href="#background">Background</a><a href="#contact">CV &amp; contact</a></nav>
+      <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#contact">CV &amp; contact</a></nav>
       <button class="theme" id="theme-toggle" type="button" hidden>Switch theme</button>
     </div></header>
     <main class="main" id="main">
@@ -313,9 +319,9 @@
           <p class="eyebrow">People science / AI adoption / customer insight</p>
           <p class="hero-name">Margarita Bermejo Cano</p><p class="hero-role">People Science Analyst at Microsoft · Dublin</p>
           <h1>The human side<br>of <em>better decisions.</em></h1>
-          <p class="intro">I help teams understand how people experience work, adopt AI and use products—and what to do with that evidence. My work combines survey science, customer insight and hands-on analysis, with clear recommendations and reusable methods.</p>
+          <p class="intro">I turn employee feedback, customer evidence and workforce data into clear recommendations. My work spans AI adoption research at Microsoft, customer-facing people analytics at LinkedIn Glint and international measurement programmes at MetLife.</p>
           <div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="./assets/margarita-bermejo-cano-cv.pdf" download>Download CV <span aria-hidden="true">↓</span></a></div>
-          <p class="hero-caption">15+ years across analytics and people science · English &amp; Spanish</p>
+          <p class="hero-caption">A career across HR, workforce and customer analytics · English &amp; Spanish</p>
         </div>
         <figure class="evidence-map" data-lens="people" aria-labelledby="map-title">
           <div class="map-label"><span id="map-title">WHERE MY WORK CONNECTS</span><span>FIG. 01</span></div>
@@ -336,154 +342,127 @@
           <figcaption><p class="lens-caption" id="lens-caption" aria-live="polite" aria-atomic="true">People / Understand experience through survey science, psychometrics and workforce insight.</p><span class="map-note">A conceptual map, not a data chart.</span></figcaption>
         </figure>
       </header>
-      <div class="proof-strip" aria-label="Selected examples of scope and impact">
-        <div class="proof"><strong>25</strong><p>EMEA countries supported<br>through workforce analytics</p><span>MetLife / 2015–2019</span></div>
-        <div class="proof"><strong>145</strong><p>Learning resources sourced<br>in a completed content refresh</p><span>Microsoft / 2023</span></div>
-        <div class="proof"><strong>2</strong><p>Teams adopted my recurring<br>content insights review</p><span>Microsoft / 2024–2025</span></div>
+      <div class="proof-strip" aria-label="Selected career evidence">
+        <a class="proof" href="#research"><strong>Published AI research</strong><p>Co-author of the full 2025 Agentic Teaming &amp; Trust Research Report; lead analyst on the wider research programme.</p><span>Microsoft / full-report co-author</span></a><a class="proof" href="#case-linkedin-retention"><strong>Customer-facing retention insight</strong><p>Engagement-driver and predictive attrition-risk analysis, translated into recommendations for senior customer stakeholders.</p><span>LinkedIn Glint / 2019–2022</span></a><a class="proof" href="#case-metlife-service-survey"><strong>Regional measurement ownership</strong><p>Led the EMEA HR Shared Services customer-satisfaction survey from design through implementation, analysis and reporting.</p><span>MetLife / broader remit across 25 EMEA countries</span></a>
       </div>
-      <section id="about" aria-labelledby="about-title">
-        <div class="section-head"><span class="eyebrow">01 / How I work</span><h2 id="about-title">Start with the question. Stay with the evidence.</h2></div>
-        <p class="section-intro">My background spans research, customer-facing analytics and practical HR systems. I care about whether a measure is trustworthy, whether an explanation makes sense, and whether the work helps someone decide what to do next.</p>
-        <div class="principles">
-          <article><div class="principle-mark" aria-hidden="true">?</div><h3>Make the question answerable.</h3><p>Clarify the decision, test the measurement and choose an analytical approach that fits the problem.</p></article>
-          <article><div class="principle-mark" aria-hidden="true">↗</div><h3>Make the answer useful.</h3><p>Explain the findings, their limitations and the practical options—not just the statistical result.</p></article>
-          <article><div class="principle-mark" aria-hidden="true">↻</div><h3>Make the work reusable.</h3><p>Build documented methods, reusable code and clear handovers so recurring work can be rerun rather than rebuilt.</p></article>
-        </div>
-      </section>
       <section id="work" aria-labelledby="work-title">
-        <div class="section-head"><span class="eyebrow">02 / Selected work</span><h2 id="work-title">Questions worth working on.</h2></div>
-        <p class="section-intro">Twelve projects across research, customer insight, content systems and analytical workflows. Each separates my contribution from the wider outcome; confidential findings and customer details are omitted.</p>
+        <div class="section-head"><span class="eyebrow">01 / Selected work</span><h2 id="work-title">Research, analytics &amp; measurement.</h2></div>
+        <p class="section-intro">8 selected studies, analytical workstreams and measurement programmes across Microsoft, LinkedIn Glint, MetLife and Telefónica. Each separates my contribution from the wider outcome; confidential findings and customer details are omitted.</p>
         <div class="filters" id="project-filters" role="group" aria-label="Filter selected work" hidden>
-          <button class="filter" type="button" data-filter="all" aria-pressed="true">All work</button><button class="filter" type="button" data-filter="research" aria-pressed="false">AI research</button><button class="filter" type="button" data-filter="customer" aria-pressed="false">Customer &amp; product</button><button class="filter" type="button" data-filter="content" aria-pressed="false">Content &amp; governance</button><button class="filter" type="button" data-filter="workflow" aria-pressed="false">Workflows &amp; automation</button><button class="filter" type="button" data-filter="data" aria-pressed="false">Data &amp; telemetry</button>
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">All work</button><button class="filter" type="button" data-filter="research" aria-pressed="false">AI research</button><button class="filter" type="button" data-filter="customer" aria-pressed="false">Customer analytics</button><button class="filter" type="button" data-filter="workforce" aria-pressed="false">Workforce &amp; measurement</button>
         </div>
-        <p class="project-count" id="project-count" aria-live="polite" aria-atomic="true">Showing 12 projects</p>
-        <div class="projects"><article class="project" data-category="research">
+        <p class="project-count" id="project-count" aria-live="polite" aria-atomic="true">Showing 8 selected examples</p>
+        <div class="projects"><article class="project" id="case-agentic-research" data-category="research">
     <span class="project-number" aria-hidden="true">01</span>
     <div class="meta"><span>01 / AI RESEARCH</span><span>2025</span></div>
-    <h3>Readiness for agentic ways of working.</h3><p>Lead analyst on enterprise research into agentic AI readiness and adoption.</p>
-    <div class="tags"><span class="tag">Analytical leadership</span><span class="tag">Factor analysis</span><span class="tag">Regression</span></div>
-    <p class="status">Research delivered</p>
+    <p class="project-employer">Microsoft</p>
+    <h3>Agentic AI readiness, teaming &amp; trust</h3><p>Lead analyst on an enterprise research programme and co-author of the full four-chapter public report.</p>
+    <p class="project-result"><b>Delivered:</b> Delivered the analytical report series and co-authored the full 2025 Agentic Teaming &amp; Trust Research Report. The published study surveyed 1,800 full-time employees across nine markets.</p>
+    <p class="project-link"><a href="https://techcommunity.microsoft.com/t5/s/gxcuf89792/attachments/gxcuf89792/MicrosoftVivaBlog/1027.2/1/2025%20Agentic%20Teaming%20%26%20Trust%20Research%20Report.pdf" target="_blank" rel="noopener noreferrer">Read the full research report <span aria-hidden="true">↗</span></a></p>
+    <div class="tags"><span class="tag">Analytical leadership</span><span class="tag">Applied research</span><span class="tag">Full-report co-author</span></div>
+    <p class="status">Research and publication delivered</p>
     <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
       <div><dt>Question</dt><dd>What evidence helps organisations understand readiness for and adoption of agentic ways of working?</dd></div>
       <div><dt>My contribution</dt><dd>Led the analytical work across an in-depth report series, using exploratory and confirmatory factor analysis, regression, comparative analysis and descriptive methods.</dd></div>
-      <div><dt>Outcome</dt><dd>Delivered the programme&#39;s analytical evidence base and co-authored the full four-chapter public research report on agentic teaming and trust.</dd></div>
-    </dl></details></article><article class="project" data-category="research">
+      <div><dt>Outcome</dt><dd>Delivered the analytical report series and co-authored the full 2025 Agentic Teaming &amp; Trust Research Report. The published study surveyed 1,800 full-time employees across nine markets.</dd></div>
+    </dl></details></article><article class="project" id="case-linkedin-retention" data-category="customer">
     <span class="project-number" aria-hidden="true">02</span>
-    <div class="meta"><span>02 / AI RESEARCH</span><span>2023–2024</span></div>
-    <h3>Measurement before interpretation.</h3><p>Analytical leadership on AI readiness measurement and the factors associated with it.</p>
+    <div class="meta"><span>02 / CUSTOMER ANALYTICS</span><span>2019–2022</span></div>
+    <p class="project-employer">LinkedIn Glint</p>
+    <h3>Engagement drivers and attrition risk</h3><p>Customer-facing analytical work connecting employee feedback, disengagement and retention.</p>
+    <p class="project-result"><b>Delivered:</b> Delivered customer recommendations on engagement priorities and retention risk, translating statistical findings into practical workforce discussions.</p>
+
+    <div class="tags"><span class="tag">Customer analytics</span><span class="tag">Relative-risk analysis</span><span class="tag">Engagement drivers</span></div>
+    <p class="status">Analytical work delivered</p>
+    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
+      <div><dt>Question</dt><dd>Which engagement signals are associated with disengagement and attrition risk?</dd></div>
+      <div><dt>My contribution</dt><dd>Linked survey and behavioural data, modelled disengagement and attrition risk, and used relative-risk and key-driver analyses to explain findings to customer-facing teams and senior stakeholders.</dd></div>
+      <div><dt>Outcome</dt><dd>Delivered customer recommendations on engagement priorities and retention risk, translating statistical findings into practical workforce discussions.</dd></div>
+    </dl></details></article><article class="project" id="case-ai-readiness-measurement" data-category="research">
+    <span class="project-number" aria-hidden="true">03</span>
+    <div class="meta"><span>03 / AI RESEARCH</span><span>2023–2024</span></div>
+    <p class="project-employer">Microsoft</p>
+    <h3>Organisational AI-readiness measurement</h3><p>Analytical leadership on AI readiness measurement and the factors associated with it.</p>
+    <p class="project-result"><b>Delivered:</b> Delivered measurement-structure, reliability and relationship analyses referenced in The State of AI Change Readiness eBook.</p>
+
     <div class="tags"><span class="tag">Psychometrics</span><span class="tag">Reliability</span><span class="tag">Relative weight analysis</span></div>
     <p class="status">Analysis delivered</p>
     <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
       <div><dt>Question</dt><dd>Are we measuring organisational AI readiness reliably, and what factors are associated with it?</dd></div>
       <div><dt>My contribution</dt><dd>Tested the instrument&#39;s structure and reliability using EFA, CFA and item analysis; examined factors associated with readiness using regression, correlation and relative weight analysis.</dd></div>
-      <div><dt>Outcome</dt><dd>Produced validated measurement and analysis referenced in a published eBook on AI readiness and employee experience.</dd></div>
-    </dl></details></article><article class="project" data-category="research">
-    <span class="project-number" aria-hidden="true">03</span>
-    <div class="meta"><span>03 / AI RESEARCH</span><span>2023–2024</span></div>
-    <h3>Listening to early AI adopters.</h3><p>From the first findings report to a sustained enterprise AI survey-reporting cycle.</p>
+      <div><dt>Outcome</dt><dd>Delivered measurement-structure, reliability and relationship analyses referenced in The State of AI Change Readiness eBook.</dd></div>
+    </dl></details></article><article class="project" id="case-metlife-service-survey" data-category="workforce">
+    <span class="project-number" aria-hidden="true">04</span>
+    <div class="meta"><span>04 / MEASUREMENT PROGRAMMES</span><span>2015–2019</span></div>
+    <p class="project-employer">MetLife</p>
+    <h3>EMEA HR shared-services satisfaction</h3><p>Full-lifecycle ownership of a regional customer-satisfaction survey.</p>
+    <p class="project-result"><b>Delivered:</b> Delivered a consistent regional measurement approach and recommendations to support service-improvement priorities.</p>
+
+    <div class="tags"><span class="tag">Survey design</span><span class="tag">Programme implementation</span><span class="tag">Service insights</span></div>
+    <p class="status">Programme delivered</p>
+    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
+      <div><dt>Question</dt><dd>How can a regional HR service understand the experience it provides?</dd></div>
+      <div><dt>My contribution</dt><dd>Led requirements and survey design, implementation, analysis and reporting for the EMEA HR Shared Services customer-satisfaction programme.</dd></div>
+      <div><dt>Outcome</dt><dd>Delivered a consistent regional measurement approach and recommendations to support service-improvement priorities.</dd></div>
+    </dl></details></article><article class="project" id="case-copilot-early-user-research" data-category="research">
+    <span class="project-number" aria-hidden="true">05</span>
+    <div class="meta"><span>05 / AI RESEARCH</span><span>2023–2024</span></div>
+    <p class="project-employer">Microsoft</p>
+    <h3>Early AI-assistant adoption research</h3><p>From the first findings report to a sustained enterprise AI survey-reporting cycle.</p>
+    <p class="project-result"><b>Delivered:</b> Findings featured in a public workplace-research report and were cited at the company&#39;s annual conference. Maintained recurring and quarterly reporting for the early-access programme.</p>
+
     <div class="tags"><span class="tag">Survey analytics</span><span class="tag">Recurring reporting</span><span class="tag">Research partnership</span></div>
     <p class="status">Reporting delivered</p>
     <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
       <div><dt>Question</dt><dd>What do early users tell us about adopting an enterprise AI assistant?</dd></div>
-      <div><dt>My contribution</dt><dd>Co-produced the first findings report as one of two analysts, then owned recurring reporting. Partnered with digital-experience and future-of-work researchers.</dd></div>
+      <div><dt>My contribution</dt><dd>Co-produced the first findings report as one of two analysts, then sustained recurring survey analysis and reporting with digital-experience and future-of-work researchers.</dd></div>
       <div><dt>Outcome</dt><dd>Findings featured in a public workplace-research report and were cited at the company&#39;s annual conference. Maintained recurring and quarterly reporting for the early-access programme.</dd></div>
-    </dl></details></article><article class="project" data-category="customer">
-    <span class="project-number" aria-hidden="true">04</span>
-    <div class="meta"><span>04 / CUSTOMER INSIGHTS</span><span>2024–2025</span></div>
-    <h3>Listening after a product migration.</h3><p>Sole analyst on a mixed-methods study of the customer experience after migration.</p>
-    <div class="tags"><span class="tag">Mixed methods</span><span class="tag">Customer experience</span><span class="tag">Thematic coding</span></div>
+    </dl></details></article><article class="project" id="case-post-migration-customer-experience" data-category="customer">
+    <span class="project-number" aria-hidden="true">06</span>
+    <div class="meta"><span>06 / CUSTOMER INSIGHTS</span><span>2024–2025</span></div>
+    <p class="project-employer">Microsoft</p>
+    <h3>Post-migration customer-experience study</h3><p>Lead analytical work on a customer-experience survey following a product migration.</p>
+    <p class="project-result"><b>Delivered:</b> Translated customer feedback into prioritised, actionable recommendations for the teams responsible for the experience.</p>
+
+    <div class="tags"><span class="tag">Customer experience</span><span class="tag">Survey analysis</span><span class="tag">Product recommendations</span></div>
     <p class="status">Study delivered</p>
     <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
       <div><dt>Question</dt><dd>How did customers experience the migration, and which themes should product teams prioritise?</dd></div>
-      <div><dt>My contribution</dt><dd>Combined quantitative survey analysis with thematic coding of open-text responses, distinguishing recurring themes from individual observations.</dd></div>
+      <div><dt>My contribution</dt><dd>Analysed customer-segment scores, satisfaction drivers and correlations, translating results into clear priorities for the teams responsible for the experience.</dd></div>
       <div><dt>Outcome</dt><dd>Translated customer feedback into prioritised, actionable recommendations for the teams responsible for the experience.</dd></div>
-    </dl></details></article><article class="project" data-category="content">
-    <span class="project-number" aria-hidden="true">05</span>
-    <div class="meta"><span>05 / CONTENT &amp; GOVERNANCE</span><span>2024–2025</span></div>
-    <h3>Improving a recommended-action library.</h3><p>End-to-end content-library ownership spanning architecture, quality and supplier-content decisions.</p>
-    <div class="tags"><span class="tag">70+ links remediated</span><span class="tag">Information architecture</span><span class="tag">Content evaluation</span></div>
-    <p class="status">Improvements delivered</p>
-    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
-      <div><dt>Question</dt><dd>How can a recommended-action library remain useful, reliable and worth its licensing cost?</dd></div>
-      <div><dt>My contribution</dt><dd>Redesigned its information architecture, remediated 70+ broken or outdated links and evaluated licensed content against performance evidence.</dd></div>
-      <div><dt>Outcome</dt><dd>Retired underperforming content and reduced annual licensing spend while improving the reliability of the library.</dd></div>
-    </dl></details></article><article class="project" data-category="customer">
-    <span class="project-number" aria-hidden="true">06</span>
-    <div class="meta"><span>06 / PRODUCT INSIGHTS</span><span>2024–2025</span></div>
-    <h3>A recurring content insights review.</h3><p>A recurring content insights review adopted by two teams, including product.</p>
-    <div class="tags"><span class="tag">Adopted by 2 teams</span><span class="tag">Data storytelling</span><span class="tag">Recurring insight</span></div>
-    <p class="status">Review adopted</p>
-    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
-      <div><dt>Question</dt><dd>How can fragmented content-performance signals become a useful, shared view?</dd></div>
-      <div><dt>My contribution</dt><dd>Designed and authored a recurring review, consolidating evidence from multiple sources into an accessible narrative for people science and product stakeholders.</dd></div>
-      <div><dt>Outcome</dt><dd>Two teams adopted it as a standing review artefact, giving stakeholders a consistent basis for discussing content performance.</dd></div>
-    </dl></details></article><article class="project" data-category="data">
+    </dl></details></article><article class="project" id="case-metlife-exit-programme" data-category="workforce">
     <span class="project-number" aria-hidden="true">07</span>
-    <div class="meta"><span>07 / DATA STRATEGY</span><span>2025</span></div>
-    <h3>Agreeing the right data foundation.</h3><p>A cross-functional assessment of options for unified licence and usage data.</p>
-    <div class="tags"><span class="tag">Options assessment</span><span class="tag">Data quality</span><span class="tag">Privacy partnership</span></div>
-    <p class="status">Approach agreed</p>
+    <div class="meta"><span>07 / MEASUREMENT PROGRAMMES</span><span>2015–2019</span></div>
+    <p class="project-employer">MetLife</p>
+    <h3>EMEA employee-exit measurement</h3><p>Regional delivery of a standardised exit-survey programme.</p>
+    <p class="project-result"><b>Delivered:</b> Developed a consistent regional evidence base on attrition drivers for workforce reporting and stakeholder discussions.</p>
+
+    <div class="tags"><span class="tag">Employee listening</span><span class="tag">Exit-survey analysis</span><span class="tag">Regional delivery</span></div>
+    <p class="status">Regional programme delivered</p>
     <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
-      <div><dt>Question</dt><dd>Should teams build a new dataset or use an existing source to answer a shared business question?</dd></div>
-      <div><dt>My contribution</dt><dd>Defined the access problem and assessed options against speed, scalability, complexity and compliance. Worked with engineering, product and privacy partners to align on an approach.</dd></div>
-      <div><dt>Outcome</dt><dd>Established an agreed approach and documented the trade-offs for the next phase of work.</dd></div>
-    </dl></details></article><article class="project" data-category="workflow">
+      <div><dt>Question</dt><dd>How can regional teams build comparable evidence about why employees leave?</dd></div>
+      <div><dt>My contribution</dt><dd>Delivered the EMEA component of the Global Exit Survey programme, supporting a standardised approach to collecting and analysing employee-exit feedback.</dd></div>
+      <div><dt>Outcome</dt><dd>Developed a consistent regional evidence base on attrition drivers for workforce reporting and stakeholder discussions.</dd></div>
+    </dl></details></article><article class="project" id="case-telefonica-repeat-callers" data-category="workforce">
     <span class="project-number" aria-hidden="true">08</span>
-    <div class="meta"><span>08 / ANALYTICAL WORKFLOWS</span><span>2025</span></div>
-    <h3>A better starting point for analysis.</h3><p>A documented, AI-assisted framework for moving from a business question to an analytical plan.</p>
-    <div class="tags"><span class="tag">AI-assisted planning</span><span class="tag">Methodology</span><span class="tag">Reusable workflows</span></div>
-    <p class="status">Framework documented</p>
+    <div class="meta"><span>08 / SERVICE ANALYTICS</span><span>2014</span></div>
+    <p class="project-employer">Telefónica Europe / O2</p>
+    <h3>Repeat-caller and first-call-resolution analysis</h3><p>Behavioural profiling to understand repeat calls to an HR shared-services team.</p>
+    <p class="project-result"><b>Delivered:</b> Delivered repeat-caller profiling and bespoke recommendations for the HR service.</p>
+
+    <div class="tags"><span class="tag">Behavioural profiling</span><span class="tag">Service analytics</span><span class="tag">Targeted recommendations</span></div>
+    <p class="status">Analysis delivered</p>
     <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
-      <div><dt>Question</dt><dd>How can analysis planning be more consistent without losing the judgement each question needs?</dd></div>
-      <div><dt>My contribution</dt><dd>Designed and documented a reusable planning framework, applying it in my own workflow and contributing to a wider effort to standardise analytical practice.</dd></div>
-      <div><dt>Outcome</dt><dd>Created a documented, reusable method for structuring analytical planning.</dd></div>
-    </dl></details></article><article class="project" data-category="content">
-    <span class="project-number" aria-hidden="true">09</span>
-    <div class="meta"><span>09 / CONTENT &amp; GOVERNANCE</span><span>2023</span></div>
-    <h3>Refreshing learning resources and action plans.</h3><p>A full refresh cycle for learning resources and recommended action plans.</p>
-    <div class="tags"><span class="tag">145 resources</span><span class="tag">47 plans revised</span><span class="tag">112 plans cleaned</span></div>
-    <p class="status">Refresh completed</p>
-    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
-      <div><dt>Question</dt><dd>How can a large learning library stay current without leaving obsolete references behind?</dd></div>
-      <div><dt>My contribution</dt><dd>Sourced 145 learning video resources, revised 47 action plans and cleared obsolete references from 112 plans.</dd></div>
-      <div><dt>Outcome</dt><dd>Completed a substantial refresh of the recommended-action library, improving the currency and quality of its resources.</dd></div>
-    </dl></details></article><article class="project" data-category="workflow">
-    <span class="project-number" aria-hidden="true">10</span>
-    <div class="meta"><span>10 / AUTOMATION</span><span>2024</span></div>
-    <h3>Taking the manual work out of audits.</h3><p>Automated validation of content links and video references across a large taxonomy.</p>
-    <div class="tags"><span class="tag">Automation</span><span class="tag">Link validation</span><span class="tag">Dependency removal</span></div>
-    <p class="status">Automation delivered</p>
-    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
-      <div><dt>Question</dt><dd>Can content references be audited without manual checking and an external tooling dependency?</dd></div>
-      <div><dt>My contribution</dt><dd>Designed and built automated link and video-reference checks, including embedded-URL generation.</dd></div>
-      <div><dt>Outcome</dt><dd>Replaced a manual audit process, removed a third-party tooling dependency and eliminated the previous URL-generation volume limit.</dd></div>
-    </dl></details></article><article class="project" data-category="customer">
-    <span class="project-number" aria-hidden="true">11</span>
-    <div class="meta"><span>11 / CUSTOMER RESEARCH</span><span>2024</span></div>
-    <h3>The first customer research engagement.</h3><p>Customer-facing AI adoption analysis that established a programme&#39;s initial delivery pattern.</p>
-    <div class="tags"><span class="tag">AI adoption</span><span class="tag">Customer-facing analysis</span><span class="tag">Research communication</span></div>
-    <p class="status">Engagement delivered</p>
-    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
-      <div><dt>Question</dt><dd>How can enterprise AI research become a useful customer-facing deliverable?</dd></div>
-      <div><dt>My contribution</dt><dd>Analysed the first engagement&#39;s customer-specific data and produced the research output, establishing an analytical pattern for subsequent work.</dd></div>
-      <div><dt>Outcome</dt><dd>Produced the analytical deliverable for the programme&#39;s first customer research engagement.</dd></div>
-    </dl></details></article><article class="project" data-category="data">
-    <span class="project-number" aria-hidden="true">12</span>
-    <div class="meta"><span>12 / PRODUCT ANALYTICS</span><span>2024–2025</span></div>
-    <h3>Exploring what people do next.</h3><p>Product-telemetry exploration and prototype views of how customers act on recommended content.</p>
-    <div class="tags"><span class="tag">KQL</span><span class="tag">Azure Data Explorer</span><span class="tag">Prototype views</span></div>
-    <p class="status">Exploration / prototype</p>
-    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
-      <div><dt>Question</dt><dd>What can product event data tell us about how customers use recommended content?</dd></div>
-      <div><dt>My contribution</dt><dd>Developed KQL capability, investigated event schemas and built exploratory views and prototype dashboards.</dd></div>
-      <div><dt>Outcome</dt><dd>Produced exploratory views and prototype dashboards to assess the feasibility of content-usage analysis.</dd></div>
+      <div><dt>Question</dt><dd>What distinguishes repeat callers, and which service actions should be considered?</dd></div>
+      <div><dt>My contribution</dt><dd>Built a model to identify repeat-caller profiles as part of a first-call-resolution analysis and used the findings to recommend targeted actions.</dd></div>
+      <div><dt>Outcome</dt><dd>Delivered repeat-caller profiling and bespoke recommendations for the HR service.</dd></div>
     </dl></details></article></div>
         <div class="contributions"><h3>Beyond the case studies</h3>
-          <details><summary>Measurement &amp; customer analytics</summary><ul><li>Delivered customer analytics requests with customer-facing consultants, from question scoping through analysis and explanation.</li><li>Contributed to customer retention and churn predictive analysis and delivered an unplanned, rapid-turnaround attrition analysis.</li><li>Completed a cross-product analysis feasibility assessment, clarifying data availability and analytical limitations.</li><li>Prototyped a combined employee satisfaction, burnout and favourability view; reviewed a 360-feedback Power BI dashboard for quality and accessibility.</li><li>Contributed analysis to research on the productivity effects of LLM-based tools for enterprise information workers.</li></ul></details><details><summary>Content systems &amp; analytical craft</summary><ul><li>Designed a structured people-success content taxonomy and audited the associated programme templates.</li><li>Refreshed action-plan taxonomies, consolidated overlapping metrics and documented the structure for engineering handover.</li><li>Investigated and remediated data-quality defects in content datasets used for reporting.</li><li>Built a Python notebook-based taxonomy report, replacing manual compilation.</li><li>Partnered with engineering on content deployment and defect resolution, and coordinated upload, testing and release of onboarding content.</li><li>Provided subject-matter input to content-management planning and maintained content ownership through successive platform changes.</li></ul></details><details><summary>Sharing knowledge &amp; working with others</summary><ul><li>Contributed to an organisation-wide AI skilling working group and provided data support to a cross-team hackathon project.</li><li>Won a prize in an internal AI skill-up challenge.</li><li>Authored practical inclusion guidance and delivered internal talks on setting inclusion priorities.</li><li>Served as a team inclusion representative and co-organised a team belonging event.</li><li>Provided analytical support to other functions alongside recurring research work.</li></ul></details>
+          <details><summary>Measurement &amp; customer analytics</summary><ul><li>Delivered customer analytics requests with customer-facing consultants, from question scoping through analysis and explanation.</li><li>Contributed to customer retention and churn predictive analysis and delivered an unplanned, rapid-turnaround attrition analysis.</li><li>Completed a cross-product analysis feasibility assessment, clarifying data availability and analytical limitations.</li><li>Prototyped a combined employee satisfaction, burnout and favourability view; reviewed a 360-feedback Power BI dashboard for quality and accessibility.</li><li>Contributed analysis to research on the productivity effects of LLM-based tools for enterprise information workers.</li></ul></details><details><summary>Content systems &amp; analytical craft</summary><ul><li>Designed a structured people-success content taxonomy and audited the associated programme templates.</li><li>Refreshed action-plan taxonomies, consolidated overlapping metrics and documented the structure for engineering handover.</li><li>Investigated and remediated data-quality defects in content datasets used for reporting.</li><li>Used and adapted existing Python notebooks to produce taxonomy reports and audits.</li><li>Automated URL and video-link checks for action templates and obtained direct access to generate replacement embedded URLs.</li><li>Synthesised content usage and performance evidence into recommendations for people science and product stakeholders.</li><li>Partnered with engineering on content deployment and defect resolution, and coordinated upload, testing and release of onboarding content.</li><li>Provided subject-matter input to content-management planning and maintained content ownership through successive platform changes.</li></ul></details><details><summary>Sharing knowledge &amp; working with others</summary><ul><li>Contributed to an organisation-wide AI skilling working group and provided data support to a cross-team hackathon project.</li><li>Won a prize in an internal AI skill-up challenge.</li><li>Authored practical inclusion guidance and delivered internal talks on setting inclusion priorities.</li><li>Served as a team inclusion representative and co-organised a team belonging event.</li><li>Provided analytical support to other functions alongside recurring research work.</li></ul></details>
         </div>
       </section>
       <section id="research" aria-labelledby="research-title">
-        <div class="section-head"><span class="eyebrow">03 / Public research</span><h2 id="research-title">A contribution you can read.</h2></div>
+        <div class="section-head"><span class="eyebrow">02 / Public research</span><h2 id="research-title">A contribution you can read.</h2></div>
         <article class="publication"><div>
           <p class="eyebrow">Co-author / programme lead analyst / Microsoft People Science / 2025</p>
           <h3>2025 Agentic Teaming &amp; Trust Research Report</h3><p>Co-authored the full four-chapter report on agentic AI readiness, people-centric practices, trust and human–agent teaming. Led the wider programme&#39;s analytical work across an in-depth report series.</p>
@@ -492,20 +471,20 @@
         <div class="research-notes"><article><h3>Enterprise AI readiness research</h3><p><b>Contributing analyst.</b> Led underlying analysis referenced in an eBook on AI readiness and employee experience.</p></article><article><h3>LLM productivity research</h3><p><b>Contributing analyst.</b> Contributed analysis documented in research on LLM-based tools and enterprise information-worker productivity.</p></article></div>
       </section>
       <section id="experience" aria-labelledby="experience-title">
-        <div class="section-head"><span class="eyebrow">04 / Career</span><h2 id="experience-title">A career built around people and evidence.</h2></div>
+        <div class="section-head"><span class="eyebrow">03 / Career</span><h2 id="experience-title">A career built around people and evidence.</h2></div>
         <p class="section-intro">From workforce reporting and HR systems to customer analytics and AI research, the context has changed. The work still begins with understanding the problem and making the evidence useful.</p>
         <nav class="timeline" aria-label="Career timeline"><a href="#accenture">2011 / Accenture</a><a href="#telefonica">2012 / Telefónica Europe</a><a href="#aib">2014 / AIB</a><a href="#metlife">2015 / MetLife</a><a href="#linkedin">2019 / LinkedIn</a><a href="#microsoft">2022 / Microsoft</a></nav>
         <article class="job" id="microsoft"><p class="date">Apr 2022 – present</p><div>
     <h3>People Science Analyst</h3><p class="org">Microsoft / Viva Glint / People Science</p>
-    <p class="scope">Applied research, customer and product analytics, and ownership of an enterprise recommended-action content library.</p><ul><li>Led analysis for enterprise agentic AI readiness and adoption research, applying factor analysis, regression, comparative and descriptive methods across an in-depth report series.</li><li>Led AI readiness measurement validation using EFA, CFA, reliability testing and item analysis; examined associated factors using regression, correlation and relative weight analysis.</li><li>Co-produced the first enterprise AI assistant survey findings report as one of two analysts, then owned recurring reporting. Findings reached a public workplace-research report and the company&#39;s annual conference.</li><li>Served as sole analyst on a post-migration customer experience study, combining quantitative analysis and open-text thematic coding to prioritise recommendations for product teams.</li><li>Modernised a recommended-action content library: redesigned its architecture, fixed 70+ broken or outdated links and used performance evidence to reduce content-licensing spend.</li><li>Created a recurring content insights review adopted by people science and product teams.</li><li>Built reusable R workflows, a Python taxonomy-reporting notebook and automated content-link audits; documented an AI-assisted framework for analytical planning.</li><li>Refreshed recommended actions: sourced 145 learning resources, revised 47 plans and cleared obsolete references from 112 plans.</li><li>Assessed build-versus-leverage options for unified licence and usage data, working with product, engineering and privacy partners to agree an approach.</li><li>Explored product telemetry using KQL and built prototype views; reviewed a 360-feedback Power BI dashboard for quality and accessibility.</li></ul></div></article><article class="job" id="linkedin"><p class="date">Oct 2019 – Apr 2022</p><div>
+    <p class="scope">Applied AI research, survey measurement and customer-facing analytical delivery.</p><ul><li>Led analytical work across an enterprise agentic AI readiness and adoption research programme; co-authored the full 2025 Agentic Teaming &amp; Trust Research Report.</li><li>Led organisational AI-readiness survey validation, testing measurement structure and reliability before examining associated factors. Analysis contributed to The State of AI Change Readiness eBook.</li><li>Co-produced the first early-access AI assistant survey findings report as one of two analysts, then sustained recurring reporting. Findings featured in public workplace research and conference presentations.</li><li>Led analytical work on a post-migration customer-experience study, using segment scoring, satisfaction-driver and correlation analysis to deliver prioritised recommendations for product teams.</li><li>Built reusable R workflows for recurring research and documented an AI-assisted framework for analytical planning.</li><li>Delivered the initial customer-facing analysis for an enterprise AI research programme and partnered with consultants on customer analytics requests.</li><li>Helped modernise a recommended-action library, using performance analysis to inform licensing decisions, improve its architecture and coordinate content-quality fixes.</li><li>Assessed build-versus-leverage options for licence and usage data, aligning product, engineering and privacy partners on requirements and trade-offs.</li><li>Explored product telemetry using KQL and produced draft views; reviewed a 360-feedback Power BI dashboard for quality and accessibility.</li></ul></div></article><article class="job" id="linkedin"><p class="date">Oct 2019 – Apr 2022</p><div>
     <h3>Senior People Science Analyst</h3><p class="org">LinkedIn / Glint</p>
     <p class="scope">Customer-facing people analytics, retention insight and survey measurement.</p><ul><li>Delivered key-driver analyses and recommendations to senior customer stakeholders, identifying engagement factors associated with retention.</li><li>Built predictive and linked-data analyses of disengagement and attrition risk, using relative-risk estimates to support customer-facing teams.</li><li>Validated survey-programme content and engagement-model updates through statistical and psychometric testing.</li></ul></div></article><article class="job" id="metlife"><p class="date">Sep 2015 – Sep 2019</p><div>
     <h3>Senior HR Metrics Consultant</h3><p class="org">MetLife / Workforce Analytics / EMEA</p>
-    <p class="scope">Regional workforce analytics and employee-listening programmes.</p><ul><li>Partnered with senior leaders across 25 EMEA countries, translating workforce and business questions into analysis, reporting and recommendations.</li><li>Led the EMEA HR Shared Services customer-satisfaction survey from design and implementation through analysis, reporting and service-improvement recommendations.</li><li>Delivered the EMEA component of the Global Exit Survey programme, supporting consistent regional insight into attrition drivers.</li></ul></div></article><article class="job" id="aib"><p class="date">Dec 2014 – Aug 2015</p><div>
+    <p class="scope">Regional workforce analytics and employee-listening programmes.</p><ul><li>Led the EMEA HR Shared Services customer-satisfaction survey from requirements and design through implementation, analysis, reporting and service-improvement recommendations.</li><li>Partnered with senior leaders across 25 EMEA countries, translating workforce and business questions into analysis, reporting and recommendations.</li><li>Delivered the EMEA component of the Global Exit Survey programme, supporting consistent regional insight into attrition drivers.</li></ul></div></article><article class="job" id="aib"><p class="date">Dec 2014 – Aug 2015</p><div>
     <h3>HR Reward Analyst</h3><p class="org">AIB / Reward</p>
     <p class="scope">Compensation benchmarking and reward reporting.</p><ul><li>Delivered internal and external salary benchmarking and compensation reporting to inform reward and benefits decisions.</li></ul></div></article><article class="job" id="telefonica"><p class="date">Jan 2012 – Dec 2014</p><div>
     <h3>HR Data &amp; People Analyst / HR Advisor</h3><p class="org">Telefónica Europe / O2 / European shared services</p>
-    <p class="scope">HR Data &amp; People Analyst, May–Dec 2014; HR Advisor, Jan 2012–May 2014.</p><ul><li>Analysed employee surveys, operational volumes and service performance across European markets; presented quarterly findings to advisors and team leaders.</li><li>Built a repeat-caller model for first-call-resolution analysis and recommended targeted actions based on behavioural profiles.</li><li>Identified allowance-eligibility errors in payroll and HR systems, preventing recurring overpayments; corrected a redundancy-calculation error to restore policy-aligned quotations.</li><li>Co-built an Excel tool for TUPE data collection, coordinated organisational-change data and trained colleagues using practical guidance and question-and-answer sessions.</li></ul></div></article><article class="job" id="accenture"><p class="date">May – Sep 2011</p><div>
+    <p class="scope">HR Data &amp; People Analyst, May–Dec 2014; HR Advisor, Jan 2012–May 2014.</p><ul><li>Built a repeat-caller model for first-call-resolution analysis and recommended targeted actions based on behavioural profiles.</li><li>Identified allowance-eligibility errors in payroll and HR systems, preventing recurring overpayments; corrected a redundancy-calculation error to restore policy-aligned quotations.</li><li>Analysed employee surveys and service performance across European markets; presented quarterly findings to advisors and team leaders.</li><li>Co-built an Excel tool for TUPE data collection, coordinated organisational-change data and trained colleagues using practical guidance and question-and-answer sessions.</li></ul></div></article><article class="job" id="accenture"><p class="date">May – Sep 2011</p><div>
     <h3>HR Senior Analyst</h3><p class="org">Accenture / HR infrastructure</p>
     <p class="scope">Workforce reporting and shared-services support / temporary contract.</p><ul><li>Delivered absence and salary-comparison analysis, clarified HR reporting needs and supported the transition of services to an external HR shared-services centre.</li></ul></div></article>
         <details class="early-career"><summary>Earlier foundations / 2006–2011</summary><article class="job" id="dunnes"><p class="date">Aug 2009 – Feb 2011</p><div>
@@ -519,8 +498,16 @@
     <p class="scope">Customer account administration.</p><ul><li>Handled customer account queries, debt collection and repayment arrangements.</li></ul></div></article></details>
       </section>
       <section id="methods" aria-labelledby="methods-title">
-        <div class="section-head"><span class="eyebrow">05 / Toolkit</span><h2 id="methods-title">The craft behind the insight.</h2></div>
-        <div class="methods"><article><h3>Research &amp; measurement</h3><ul><li>Survey design and validation</li><li>Exploratory and confirmatory factor analysis</li><li>Reliability testing and item analysis</li><li>Regression, correlation and relative weight analysis</li><li>Mixed methods and thematic coding</li><li>Key-driver and relative-risk analysis</li></ul></article><article><h3>Analytics &amp; tools</h3><ul><li>R / primary analytical language</li><li>SQL, Python and Excel</li><li>KQL / Azure Data Explorer</li><li>Power BI / working knowledge</li><li>Predictive modelling and segmentation</li><li>Reusable code and analytical automation</li></ul></article><article><h3>Business &amp; delivery</h3><ul><li>AI readiness and adoption research</li><li>Customer and employee experience</li><li>Content taxonomy and data quality</li><li>Cross-functional options assessment</li><li>Stakeholder presentations and guidance</li><li>Research-to-decision translation</li></ul></article></div>
+        <div class="section-head"><span class="eyebrow">04 / Toolkit</span><h2 id="methods-title">The craft behind the insight.</h2></div>
+        <div class="methods"><article><h3>Research &amp; measurement</h3><ul><li>Survey design and validation</li><li>Exploratory and confirmatory factor analysis</li><li>Reliability testing and item analysis</li><li>Regression, correlation and relative weight analysis</li><li>Quantitative and qualitative survey analysis</li><li>Key-driver and relative-risk analysis</li></ul></article><article><h3>Analytics &amp; tools</h3><ul><li>R / primary analytical language</li><li>SQL, Python and Excel</li><li>KQL / Azure Data Explorer</li><li>Power BI / working knowledge</li><li>Predictive modelling and segmentation</li><li>Reusable code and analytical automation</li></ul></article><article><h3>Business &amp; delivery</h3><ul><li>AI readiness and adoption research</li><li>Customer and employee experience</li><li>Content taxonomy and data quality</li><li>Cross-functional options assessment</li><li>Stakeholder presentations and guidance</li><li>Research-to-decision translation</li></ul></article></div>
+      </section>
+      <section id="about" aria-labelledby="about-title">
+        <div class="section-head"><span class="eyebrow">05 / How I work</span><h2 id="about-title">Start with the question. Stay with the evidence.</h2></div>
+        <div class="principles">
+          <article><div class="principle-mark" aria-hidden="true">?</div><h3>Make the question answerable.</h3><p>Clarify the decision, test the measurement and choose an analytical approach that fits the problem.</p></article>
+          <article><div class="principle-mark" aria-hidden="true">↗</div><h3>Make the answer useful.</h3><p>Explain the findings, their limitations and the practical options—not just the statistical result.</p></article>
+          <article><div class="principle-mark" aria-hidden="true">↻</div><h3>Make the work reusable.</h3><p>Build documented methods, reusable code and clear handovers so recurring work can be rerun rather than rebuilt.</p></article>
+        </div>
       </section>
       <section id="background" aria-labelledby="background-title">
         <div class="section-head"><span class="eyebrow">06 / Background</span><h2 id="background-title">More than one way of thinking.</h2></div>
@@ -545,32 +532,32 @@
     <section class="cv-page">
       <h1>Margarita Bermejo Cano</h1>
       <p class="cv-headline">People Science &amp; Analytics</p>
-      <p>AI Adoption · Customer &amp; Product Insights · Workforce Measurement</p>
+      <p>AI Adoption Research · Customer Insights · Workforce Measurement</p>
       <p class="cv-contact">Dublin, Ireland · English &amp; Spanish ·
         <a href="https://www.linkedin.com/in/margaritabermejocano/">linkedin.com/in/margaritabermejocano</a><br>
         <a href="https://mberca.github.io/cv-margarita/">mberca.github.io/cv-margarita</a></p>
-      <h2>Profile</h2><p>People science and analytics professional with 15+ years across HR, workforce and customer analytics, now focused on employee experience and AI adoption. At Microsoft, I lead analytical work on AI readiness and agentic ways of working; previously, I delivered customer-facing people analytics at LinkedIn Glint and regional workforce insights at MetLife. I combine psychometric validation, predictive and mixed-methods analysis with practical recommendations and reusable workflows in R, SQL and Python.</p>
-      <h2>Methods & tools</h2><div class="cv-skills"><p><b>Analysis:</b> R (primary), SQL, Python, Excel; KQL / Azure Data Explorer; Power BI (working knowledge).</p><p><b>Methods:</b> Survey design; psychometric validation (EFA/CFA, reliability and item analysis); regression; relative weight, key-driver and relative-risk analysis; predictive modelling; mixed methods.</p><p><b>Delivery:</b> Customer and workforce insights; AI adoption research; data quality and taxonomy design; analytical automation; stakeholder presentations and cross-functional partnership.</p></div>
+      <h2>Profile</h2><p>People science and analytics professional with a career spanning HR operations, regional workforce insight and customer-facing research. At Microsoft, I lead analytical work on AI readiness and human–agent teaming and co-authored the full 2025 Agentic Teaming &amp; Trust Research Report. Previously, I delivered engagement-driver and attrition-risk analyses at LinkedIn Glint, supported leaders across 25 EMEA countries and led shared-services customer-satisfaction measurement at MetLife. I connect reliable survey measurement and predictive analysis with practical recommendations for customers, product teams and workforce decisions.</p>
       <h2>Experience</h2><article><h3>People Science Analyst | Microsoft
     <span class="cv-date">/ Apr 2022 – present</span></h3>
 
-    <ul><li>Led analysis for enterprise agentic AI readiness and adoption research, applying factor analysis, regression, comparative and descriptive methods across an in-depth report series.</li><li>Led AI readiness measurement validation using EFA, CFA, reliability testing and item analysis; examined associated factors using regression, correlation and relative weight analysis.</li><li>Co-produced the first enterprise AI assistant survey findings report as one of two analysts, then owned recurring reporting. Findings reached a public workplace-research report and the company&#39;s annual conference.</li><li>Served as sole analyst on a post-migration customer experience study, combining quantitative analysis and open-text thematic coding to prioritise recommendations for product teams.</li><li>Modernised a recommended-action content library: redesigned its architecture, fixed 70+ broken or outdated links and used performance evidence to reduce content-licensing spend.</li><li>Created a recurring content insights review adopted by people science and product teams.</li><li>Built reusable R workflows, a Python taxonomy-reporting notebook and automated content-link audits; documented an AI-assisted framework for analytical planning.</li><li>Refreshed recommended actions: sourced 145 learning resources, revised 47 plans and cleared obsolete references from 112 plans.</li></ul></article><article><h3>Senior People Science Analyst | LinkedIn
+    <ul><li>Led analytical work across an enterprise agentic AI readiness and adoption research programme; co-authored the full 2025 Agentic Teaming &amp; Trust Research Report.</li><li>Led organisational AI-readiness survey validation, testing measurement structure and reliability before examining associated factors. Analysis contributed to The State of AI Change Readiness eBook.</li><li>Co-produced the first early-access AI assistant survey findings report as one of two analysts, then sustained recurring reporting. Findings featured in public workplace research and conference presentations.</li><li>Led analytical work on a post-migration customer-experience study, using segment scoring, satisfaction-driver and correlation analysis to deliver prioritised recommendations for product teams.</li><li>Built reusable R workflows for recurring research and documented an AI-assisted framework for analytical planning.</li></ul></article><article><h3>Senior People Science Analyst | LinkedIn
     <span class="cv-date">/ Oct 2019 – Apr 2022</span></h3>
 
     <ul><li>Delivered key-driver analyses and recommendations to senior customer stakeholders, identifying engagement factors associated with retention.</li><li>Built predictive and linked-data analyses of disengagement and attrition risk, using relative-risk estimates to support customer-facing teams.</li><li>Validated survey-programme content and engagement-model updates through statistical and psychometric testing.</li></ul></article>
+      <h2>Methods & tools</h2><div class="cv-skills"><p><b>Analysis:</b> R (primary), SQL, Python, Excel; KQL / Azure Data Explorer; Power BI (working knowledge).</p><p><b>Methods:</b> Survey design; psychometric validation (EFA/CFA, reliability and item analysis); regression; relative weight, key-driver and relative-risk analysis; predictive modelling; mixed methods.</p><p><b>Delivery:</b> Customer and workforce insights; AI adoption research; data quality and taxonomy design; analytical automation; stakeholder presentations and cross-functional partnership.</p></div>
       <p class="cv-footer">Margarita Bermejo Cano / October 2026 / 1 of 2</p>
     </section>
     <section class="cv-page">
       <h2>Earlier experience</h2><article><h3>Senior HR Metrics Consultant | MetLife
     <span class="cv-date">/ Sep 2015 – Sep 2019</span></h3>
 
-    <ul><li>Partnered with senior leaders across 25 EMEA countries, translating workforce and business questions into analysis, reporting and recommendations.</li><li>Led the EMEA HR Shared Services customer-satisfaction survey from design and implementation through analysis, reporting and service-improvement recommendations.</li><li>Delivered the EMEA component of the Global Exit Survey programme, supporting consistent regional insight into attrition drivers.</li></ul></article><article><h3>HR Reward Analyst | AIB
+    <ul><li>Led the EMEA HR Shared Services customer-satisfaction survey from requirements and design through implementation, analysis, reporting and service-improvement recommendations.</li><li>Partnered with senior leaders across 25 EMEA countries, translating workforce and business questions into analysis, reporting and recommendations.</li><li>Delivered the EMEA component of the Global Exit Survey programme, supporting consistent regional insight into attrition drivers.</li></ul></article><article><h3>HR Reward Analyst | AIB
     <span class="cv-date">/ Dec 2014 – Aug 2015</span></h3>
 
     <ul><li>Delivered internal and external salary benchmarking and compensation reporting to inform reward and benefits decisions.</li></ul></article><article><h3>HR Data &amp; People Analyst / HR Advisor | Telefónica Europe / O2
     <span class="cv-date">/ Jan 2012 – Dec 2014</span></h3>
     <p class="cv-scope">HR Data &amp; People Analyst, May–Dec 2014; HR Advisor, Jan 2012–May 2014.</p>
-    <ul><li>Analysed employee surveys, operational volumes and service performance across European markets; presented quarterly findings to advisors and team leaders.</li><li>Built a repeat-caller model for first-call-resolution analysis and recommended targeted actions based on behavioural profiles.</li><li>Identified allowance-eligibility errors in payroll and HR systems, preventing recurring overpayments; corrected a redundancy-calculation error to restore policy-aligned quotations.</li><li>Co-built an Excel tool for TUPE data collection, coordinated organisational-change data and trained colleagues using practical guidance and question-and-answer sessions.</li></ul></article><article><h3>HR Senior Analyst | Accenture
+    <ul><li>Built a repeat-caller model for first-call-resolution analysis and recommended targeted actions based on behavioural profiles.</li><li>Identified allowance-eligibility errors in payroll and HR systems, preventing recurring overpayments; corrected a redundancy-calculation error to restore policy-aligned quotations.</li><li>Analysed employee surveys and service performance across European markets; presented quarterly findings to advisors and team leaders.</li><li>Co-built an Excel tool for TUPE data collection, coordinated organisational-change data and trained colleagues using practical guidance and question-and-answer sessions.</li></ul></article><article><h3>HR Senior Analyst | Accenture
     <span class="cv-date">/ May – Sep 2011</span></h3>
 
     <ul><li>Delivered absence and salary-comparison analysis, clarified HR reporting needs and supported the transition of services to an external HR shared-services centre.</li></ul></article><article><h3>HR Officer / HR administration | ThirdForce
@@ -625,8 +612,10 @@
         project.hidden = button.dataset.filter !== "all" && project.dataset.category !== button.dataset.filter;
         if (!project.hidden) count++;
       });
-      document.querySelector("#project-count").textContent = `Showing ${count} ${count === 1 ? "project" : "projects"}`;
+      document.querySelector("#project-count").textContent = `Showing ${count} selected ${count === 1 ? "example" : "examples"}`;
     }));
+    document.querySelectorAll('.proof[href^="#case-"]').forEach(link =>
+      link.addEventListener("click", () => filterGroup.querySelector('[data-filter="all"]').click()));
   </script>
 </body>
 </html>
