@@ -1,0 +1,394 @@
+{
+  "name": "Margarita Bermejo Cano",
+  "headline": "People Science & Analytics",
+  "specialisms": "AI Adoption · Customer & Product Insights · Workforce Measurement",
+  "location": "Dublin, Ireland",
+  "languages": "English & Spanish",
+  "linkedin": "https://www.linkedin.com/in/margaritabermejocano/",
+  "website": "https://mberca.github.io/cv-margarita/",
+  "edition": "October 2026",
+  "summary": "People science and analytics professional with 15+ years across HR, workforce and customer analytics, now focused on employee experience and AI adoption. At Microsoft, I lead analytical work on AI readiness and agentic ways of working; previously, I delivered customer-facing people analytics at LinkedIn Glint and regional workforce insights at MetLife. I combine psychometric validation, predictive and mixed-methods analysis with practical recommendations and reusable workflows in R, SQL and Python.",
+  "skills": [
+    {
+      "title": "Research & measurement",
+      "items": ["Survey design and validation", "Exploratory and confirmatory factor analysis", "Reliability testing and item analysis", "Regression, correlation and relative weight analysis", "Mixed methods and thematic coding", "Key-driver and relative-risk analysis"]
+    },
+    {
+      "title": "Analytics & tools",
+      "items": ["R / primary analytical language", "SQL, Python and Excel", "KQL / Azure Data Explorer", "Power BI / working knowledge", "Predictive modelling and segmentation", "Reusable code and analytical automation"]
+    },
+    {
+      "title": "Business & delivery",
+      "items": ["AI readiness and adoption research", "Customer and employee experience", "Content taxonomy and data quality", "Cross-functional options assessment", "Stakeholder presentations and guidance", "Research-to-decision translation"]
+    }
+  ],
+  "cvSkills": [
+    ["Analysis", "R (primary), SQL, Python, Excel; KQL / Azure Data Explorer; Power BI (working knowledge)."],
+    ["Methods", "Survey design; psychometric validation (EFA/CFA, reliability and item analysis); regression; relative weight, key-driver and relative-risk analysis; predictive modelling; mixed methods."],
+    ["Delivery", "Customer and workforce insights; AI adoption research; data quality and taxonomy design; analytical automation; stakeholder presentations and cross-functional partnership."]
+  ],
+  "experience": [
+    {
+      "id": "microsoft",
+      "employer": "Microsoft",
+      "team": "Viva Glint / People Science",
+      "title": "People Science Analyst",
+      "dates": "Apr 2022 – present",
+      "location": "Dublin, Ireland",
+      "scope": "Applied research, customer and product analytics, and ownership of an enterprise recommended-action content library.",
+      "bullets": [
+        "Led analysis for enterprise agentic AI readiness and adoption research, applying factor analysis, regression, comparative and descriptive methods across an in-depth report series.",
+        "Led AI readiness measurement validation using EFA, CFA, reliability testing and item analysis; examined associated factors using regression, correlation and relative weight analysis.",
+        "Co-produced the first enterprise AI assistant survey findings report as one of two analysts, then owned recurring reporting. Findings reached a public workplace-research report and the company's annual conference.",
+        "Served as sole analyst on a post-migration customer experience study, combining quantitative analysis and open-text thematic coding to prioritise recommendations for product teams.",
+        "Modernised a recommended-action content library: redesigned its architecture, fixed 70+ broken or outdated links and used performance evidence to reduce content-licensing spend.",
+        "Created a recurring content insights review adopted by people science and product teams.",
+        "Built reusable R workflows, a Python taxonomy-reporting notebook and automated content-link audits; documented an AI-assisted framework for analytical planning.",
+        "Refreshed recommended actions: sourced 145 learning resources, revised 47 plans and cleared obsolete references from 112 plans."
+      ],
+      "additional": [
+        "Assessed build-versus-leverage options for unified licence and usage data, working with product, engineering and privacy partners to agree an approach.",
+        "Explored product telemetry using KQL and built prototype views; reviewed a 360-feedback Power BI dashboard for quality and accessibility."
+      ]
+    },
+    {
+      "id": "linkedin",
+      "employer": "LinkedIn",
+      "team": "Glint",
+      "title": "Senior People Science Analyst",
+      "dates": "Oct 2019 – Apr 2022",
+      "location": "Dublin, Ireland",
+      "scope": "Customer-facing people analytics, retention insight and survey measurement.",
+      "bullets": [
+        "Delivered key-driver analyses and recommendations to senior customer stakeholders, identifying engagement factors associated with retention.",
+        "Built predictive and linked-data analyses of disengagement and attrition risk, using relative-risk estimates to support customer-facing teams.",
+        "Validated survey-programme content and engagement-model updates through statistical and psychometric testing."
+      ]
+    },
+    {
+      "id": "metlife",
+      "employer": "MetLife",
+      "team": "Workforce Analytics / EMEA",
+      "title": "Senior HR Metrics Consultant",
+      "dates": "Sep 2015 – Sep 2019",
+      "location": "Dublin, Ireland",
+      "scope": "Regional workforce analytics and employee-listening programmes.",
+      "bullets": [
+        "Partnered with senior leaders across 25 EMEA countries, translating workforce and business questions into analysis, reporting and recommendations.",
+        "Led the EMEA HR Shared Services customer-satisfaction survey from design and implementation through analysis, reporting and service-improvement recommendations.",
+        "Delivered the EMEA component of the Global Exit Survey programme, supporting consistent regional insight into attrition drivers."
+      ]
+    },
+    {
+      "id": "aib",
+      "employer": "AIB",
+      "team": "Reward",
+      "title": "HR Reward Analyst",
+      "dates": "Dec 2014 – Aug 2015",
+      "location": "Dublin, Ireland",
+      "scope": "Compensation benchmarking and reward reporting.",
+      "bullets": [
+        "Delivered internal and external salary benchmarking and compensation reporting to inform reward and benefits decisions."
+      ]
+    },
+    {
+      "id": "telefonica",
+      "employer": "Telefónica Europe / O2",
+      "team": "European shared services",
+      "title": "HR Data & People Analyst / HR Advisor",
+      "dates": "Jan 2012 – Dec 2014",
+      "location": "Dublin, Ireland",
+      "scope": "HR Data & People Analyst, May–Dec 2014; HR Advisor, Jan 2012–May 2014.",
+      "bullets": [
+        "Analysed employee surveys, operational volumes and service performance across European markets; presented quarterly findings to advisors and team leaders.",
+        "Built a repeat-caller model for first-call-resolution analysis and recommended targeted actions based on behavioural profiles.",
+        "Identified allowance-eligibility errors in payroll and HR systems, preventing recurring overpayments; corrected a redundancy-calculation error to restore policy-aligned quotations.",
+        "Co-built an Excel tool for TUPE data collection, coordinated organisational-change data and trained colleagues using practical guidance and question-and-answer sessions."
+      ]
+    },
+    {
+      "id": "accenture",
+      "employer": "Accenture",
+      "team": "HR infrastructure",
+      "title": "HR Senior Analyst",
+      "dates": "May – Sep 2011",
+      "location": "Dublin, Ireland",
+      "scope": "Workforce reporting and shared-services support / temporary contract.",
+      "bullets": [
+        "Delivered absence and salary-comparison analysis, clarified HR reporting needs and supported the transition of services to an external HR shared-services centre."
+      ]
+    },
+    {
+      "id": "dunnes",
+      "employer": "Dunnes Stores",
+      "team": "Head office",
+      "title": "Accounts Administrator",
+      "dates": "Aug 2009 – Feb 2011",
+      "location": "Dublin, Ireland",
+      "scope": "Accounts administration and reporting / temporary contract.",
+      "bullets": [
+        "Processed invoices, resolved supplier queries and produced accounting reports."
+      ]
+    },
+    {
+      "id": "thirdforce",
+      "employer": "ThirdForce",
+      "team": "E-learning",
+      "title": "HR Officer / HR administration",
+      "dates": "2008 – 2009",
+      "location": "Dublin, Ireland",
+      "scope": "HR reporting and operations / temporary contract.",
+      "bullets": [
+        "Produced HR metrics and maintained reporting dashboards; built a recruitment-partner comparison report and an Excel template for year-on-year performance measures."
+      ],
+      "additional": [
+        "Created a digital employee handbook and supported recruitment administration, employee records and induction."
+      ]
+    },
+    {
+      "id": "wyeth",
+      "employer": "Wyeth Pharmaceuticals",
+      "team": "SAP implementation",
+      "title": "HR & Training Administrator",
+      "dates": "May – Dec 2007",
+      "location": "Madrid, Spain",
+      "scope": "SAP implementation and end-user enablement.",
+      "bullets": [
+        "Coordinated SAP end-user training, developed training plans and delivered training after becoming an APO-PP super-user."
+      ]
+    },
+    {
+      "id": "mapfre",
+      "employer": "Mapfre",
+      "team": "Insurance administration",
+      "title": "Insurance Administrator",
+      "dates": "Jul 2006 – May 2007",
+      "location": "Valladolid, Spain",
+      "scope": "Customer account administration.",
+      "bullets": [
+        "Handled customer account queries, debt collection and repayment arrangements."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "number": "01",
+      "category": "research",
+      "categoryLabel": "AI research",
+      "dates": "2025",
+      "title": "Readiness for agentic ways of working.",
+      "summary": "Lead analyst on enterprise research into agentic AI readiness and adoption.",
+      "question": "What evidence helps organisations understand readiness for and adoption of agentic ways of working?",
+      "contribution": "Led the analytical work across an in-depth report series, using exploratory and confirmatory factor analysis, regression, comparative analysis and descriptive methods.",
+      "outcome": "Delivered an internal research evidence base for decisions about agentic readiness and adoption.",
+      "tags": ["Analytical leadership", "Factor analysis", "Regression"],
+      "status": "Research delivered"
+    },
+    {
+      "number": "02",
+      "category": "research",
+      "categoryLabel": "AI research",
+      "dates": "2023–2024",
+      "title": "Measurement before interpretation.",
+      "summary": "Analytical leadership on AI readiness measurement and the factors associated with it.",
+      "question": "Are we measuring organisational AI readiness reliably, and what factors are associated with it?",
+      "contribution": "Tested the instrument's structure and reliability using EFA, CFA and item analysis; examined factors associated with readiness using regression, correlation and relative weight analysis.",
+      "outcome": "Produced validated measurement and analysis referenced in a published eBook on AI readiness and employee experience.",
+      "tags": ["Psychometrics", "Reliability", "Relative weight analysis"],
+      "status": "Analysis delivered"
+    },
+    {
+      "number": "03",
+      "category": "research",
+      "categoryLabel": "AI research",
+      "dates": "2023–2024",
+      "title": "Listening to early AI adopters.",
+      "summary": "From the first findings report to a sustained enterprise AI survey-reporting cycle.",
+      "question": "What do early users tell us about adopting an enterprise AI assistant?",
+      "contribution": "Co-produced the first findings report as one of two analysts, then owned recurring reporting. Partnered with digital-experience and future-of-work researchers.",
+      "outcome": "Findings featured in a public workplace-research report and were cited at the company's annual conference. Maintained recurring and quarterly reporting for the early-access programme.",
+      "tags": ["Survey analytics", "Recurring reporting", "Research partnership"],
+      "status": "Reporting delivered"
+    },
+    {
+      "number": "04",
+      "category": "customer",
+      "categoryLabel": "Customer insights",
+      "dates": "2024–2025",
+      "title": "Listening after a product migration.",
+      "summary": "Sole analyst on a mixed-methods study of the customer experience after migration.",
+      "question": "How did customers experience the migration, and which themes should product teams prioritise?",
+      "contribution": "Combined quantitative survey analysis with thematic coding of open-text responses, distinguishing recurring themes from individual observations.",
+      "outcome": "Translated customer feedback into prioritised, actionable recommendations for the teams responsible for the experience.",
+      "tags": ["Mixed methods", "Customer experience", "Thematic coding"],
+      "status": "Study delivered"
+    },
+    {
+      "number": "05",
+      "category": "content",
+      "categoryLabel": "Content & governance",
+      "dates": "2024–2025",
+      "title": "Improving a recommended-action library.",
+      "summary": "End-to-end content-library ownership spanning architecture, quality and supplier-content decisions.",
+      "question": "How can a recommended-action library remain useful, reliable and worth its licensing cost?",
+      "contribution": "Redesigned its information architecture, remediated 70+ broken or outdated links and evaluated licensed content against performance evidence.",
+      "outcome": "Retired underperforming content and reduced annual licensing spend while improving the reliability of the library.",
+      "tags": ["70+ links remediated", "Information architecture", "Content evaluation"],
+      "status": "Improvements delivered"
+    },
+    {
+      "number": "06",
+      "category": "customer",
+      "categoryLabel": "Product insights",
+      "dates": "2024–2025",
+      "title": "A recurring content insights review.",
+      "summary": "A recurring content insights review adopted by two teams, including product.",
+      "question": "How can fragmented content-performance signals become a useful, shared view?",
+      "contribution": "Designed and authored a recurring review, consolidating evidence from multiple sources into an accessible narrative for people science and product stakeholders.",
+      "outcome": "Two teams adopted it as a standing review artefact, giving stakeholders a consistent basis for discussing content performance.",
+      "tags": ["Adopted by 2 teams", "Data storytelling", "Recurring insight"],
+      "status": "Review adopted"
+    },
+    {
+      "number": "07",
+      "category": "data",
+      "categoryLabel": "Data strategy",
+      "dates": "2025",
+      "title": "Agreeing the right data foundation.",
+      "summary": "A cross-functional assessment of options for unified licence and usage data.",
+      "question": "Should teams build a new dataset or use an existing source to answer a shared business question?",
+      "contribution": "Defined the access problem and assessed options against speed, scalability, complexity and compliance. Worked with engineering, product and privacy partners to align on an approach.",
+      "outcome": "Established an agreed approach and documented the trade-offs for the next phase of work.",
+      "tags": ["Options assessment", "Data quality", "Privacy partnership"],
+      "status": "Approach agreed"
+    },
+    {
+      "number": "08",
+      "category": "workflow",
+      "categoryLabel": "Analytical workflows",
+      "dates": "2025",
+      "title": "A better starting point for analysis.",
+      "summary": "A documented, AI-assisted framework for moving from a business question to an analytical plan.",
+      "question": "How can analysis planning be more consistent without losing the judgement each question needs?",
+      "contribution": "Designed and documented a reusable planning framework, applying it in my own workflow and contributing to a wider effort to standardise analytical practice.",
+      "outcome": "Created a documented, reusable method for structuring analytical planning.",
+      "tags": ["AI-assisted planning", "Methodology", "Reusable workflows"],
+      "status": "Framework documented"
+    },
+    {
+      "number": "09",
+      "category": "content",
+      "categoryLabel": "Content & governance",
+      "dates": "2023",
+      "title": "Refreshing learning resources and action plans.",
+      "summary": "A full refresh cycle for learning resources and recommended action plans.",
+      "question": "How can a large learning library stay current without leaving obsolete references behind?",
+      "contribution": "Sourced 145 learning video resources, revised 47 action plans and cleared obsolete references from 112 plans.",
+      "outcome": "Completed a substantial refresh of the recommended-action library, improving the currency and quality of its resources.",
+      "tags": ["145 resources", "47 plans revised", "112 plans cleaned"],
+      "status": "Refresh completed"
+    },
+    {
+      "number": "10",
+      "category": "workflow",
+      "categoryLabel": "Automation",
+      "dates": "2024",
+      "title": "Taking the manual work out of audits.",
+      "summary": "Automated validation of content links and video references across a large taxonomy.",
+      "question": "Can content references be audited without manual checking and an external tooling dependency?",
+      "contribution": "Designed and built automated link and video-reference checks, including embedded-URL generation.",
+      "outcome": "Replaced a manual audit process, removed a third-party tooling dependency and eliminated the previous URL-generation volume limit.",
+      "tags": ["Automation", "Link validation", "Dependency removal"],
+      "status": "Automation delivered"
+    },
+    {
+      "number": "11",
+      "category": "customer",
+      "categoryLabel": "Customer research",
+      "dates": "2024",
+      "title": "The first customer research engagement.",
+      "summary": "Customer-facing AI adoption analysis that established a programme's initial delivery pattern.",
+      "question": "How can enterprise AI research become a useful customer-facing deliverable?",
+      "contribution": "Analysed the first engagement's customer-specific data and produced the research output, establishing an analytical pattern for subsequent work.",
+      "outcome": "Produced the analytical deliverable for the programme's first customer research engagement.",
+      "tags": ["AI adoption", "Customer-facing analysis", "Research communication"],
+      "status": "Engagement delivered"
+    },
+    {
+      "number": "12",
+      "category": "data",
+      "categoryLabel": "Product analytics",
+      "dates": "2024–2025",
+      "title": "Exploring what people do next.",
+      "summary": "Product-telemetry exploration and prototype views of how customers act on recommended content.",
+      "question": "What can product event data tell us about how customers use recommended content?",
+      "contribution": "Developed KQL capability, investigated event schemas and built exploratory views and prototype dashboards.",
+      "outcome": "Produced exploratory views and prototype dashboards to assess the feasibility of content-usage analysis.",
+      "tags": ["KQL", "Azure Data Explorer", "Prototype views"],
+      "status": "Exploration / prototype"
+    }
+  ],
+  "contributions": [
+    {
+      "title": "Measurement & customer analytics",
+      "items": [
+        "Delivered customer analytics requests with customer-facing consultants, from question scoping through analysis and explanation.",
+        "Contributed to customer retention and churn predictive analysis and delivered an unplanned, rapid-turnaround attrition analysis.",
+        "Completed a cross-product analysis feasibility assessment, clarifying data availability and analytical limitations.",
+        "Prototyped a combined employee satisfaction, burnout and favourability view; reviewed a 360-feedback Power BI dashboard for quality and accessibility.",
+        "Contributed analysis to research on the productivity effects of LLM-based tools for enterprise information workers."
+      ]
+    },
+    {
+      "title": "Content systems & analytical craft",
+      "items": [
+        "Designed a structured people-success content taxonomy and audited the associated programme templates.",
+        "Refreshed action-plan taxonomies, consolidated overlapping metrics and documented the structure for engineering handover.",
+        "Investigated and remediated data-quality defects in content datasets used for reporting.",
+        "Built a Python notebook-based taxonomy report, replacing manual compilation.",
+        "Partnered with engineering on content deployment and defect resolution, and coordinated upload, testing and release of onboarding content.",
+        "Provided subject-matter input to content-management planning and maintained content ownership through successive platform changes."
+      ]
+    },
+    {
+      "title": "Sharing knowledge & working with others",
+      "items": [
+        "Contributed to an organisation-wide AI skilling working group and provided data support to a cross-team hackathon project.",
+        "Won a prize in an internal AI skill-up challenge.",
+        "Authored practical inclusion guidance and delivered internal talks on setting inclusion priorities.",
+        "Served as a team inclusion representative and co-organised a team belonging event.",
+        "Provided analytical support to other functions alongside recurring research work."
+      ]
+    }
+  ],
+  "research": [
+    {
+      "role": "Chapter 4 co-author",
+      "title": "2025 Agentic Teaming & Trust Research Report",
+      "detail": "Chapter 4: Beyond Tools — Agents as teammates in the next frontier.",
+      "publisher": "Microsoft People Science",
+      "year": "2025",
+      "url": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/attachments/gxcuf89792/MicrosoftVivaBlog/1027.2/2/2025%20Agentic%20Teaming%20%26%20Trust%20Research%20Report%20-%20Chapter%204.pdf",
+      "study": "The published study surveyed 1,800 business leaders across nine markets."
+    },
+    {
+      "role": "Contributing analyst",
+      "title": "Enterprise AI readiness research",
+      "detail": "Led underlying analysis referenced in an eBook on AI readiness and employee experience."
+    },
+    {
+      "role": "Contributing analyst",
+      "title": "LLM productivity research",
+      "detail": "Contributed analysis documented in research on LLM-based tools and enterprise information-worker productivity."
+    }
+  ],
+  "education": [
+    ["Professional Diploma in Data Analytics", "University College Dublin", "2018"],
+    ["Higher Diploma in Science in Data Analytics", "National College of Ireland", "2014 / First Class Honours"],
+    ["Licenciatura, Labour & Human Resources", "Universidad de Valladolid", "2006 / Five-year university degree"],
+    ["Bachelor of Business Administration (Tourism)", "Universidad de Salamanca", ""]
+  ],
+  "certifications": ["Microsoft Certified: Azure AI Fundamentals / 2025"],
+  "community": "Contributed to an organisation-wide AI skilling working group; authored practical inclusion guidance and delivered internal talks on inclusion priorities.",
+  "cvEarlier": "Earlier experience: Dunnes Stores, accounts administration (2009–2011); Wyeth Pharmaceuticals, SAP training coordination and APO-PP super-user enablement (2007); Mapfre, customer account administration (2006–2007)."
+}

@@ -3,16 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Margarita Bermejo Cano. People science, AI readiness and adoption research, and customer and product insights.">
+  <meta name="description" content="Margarita Bermejo Cano: people science, AI adoption research, customer insights and workforce analytics. Explore projects, career experience and downloadable CVs.">
   <meta name="color-scheme" content="light dark">
-  <meta name="portfolio-version" content="2">
-  <title>Margarita Bermejo Cano | People, AI &amp; Insights</title>
+  <meta name="portfolio-version" content="3">
+  <meta property="og:title" content="Margarita Bermejo Cano | People Science & Analytics">
+  <meta property="og:description" content="Research, measurement and practical insight at the intersection of people, products and AI.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mberca.github.io/cv-margarita/">
+  <link rel="canonical" href="https://mberca.github.io/cv-margarita/">
+  <title>Margarita Bermejo Cano | People Science &amp; Analytics</title>
   <script>
     (() => {
       const param = new URLSearchParams(window.location.search).get("scoutTheme");
       const theme =
         param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
       document.documentElement.setAttribute("data-theme", theme);
+      if (param === "light" || param === "dark") {
+        document.documentElement.setAttribute("data-theme", param);
+      }
     })();
   </script>
   <style>
@@ -69,410 +77,557 @@
       --cp-highlight: rgba(253, 142, 161, 0.12);
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 108px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 112px; }
     body { margin: 0; background: var(--cp-bg); color: var(--cp-text); font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.65; }
     a { color: inherit; text-underline-offset: 4px; }
-    button, summary, a { -webkit-tap-highlight-color: var(--cp-highlight); }
     button { font: inherit; cursor: pointer; }
-    button:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid var(--cp-accent); outline-offset: 5px; }
+    :is(a, button, summary):focus-visible { outline: 3px solid var(--cp-accent); outline-offset: 5px; }
     [hidden] { display: none !important; }
-    .skip { position: fixed; left: 16px; top: -100px; z-index: 20; padding: 12px 20px; background: var(--cp-surface); }
-    .skip:focus { top: 16px; }
     h1, h2, h3, p, figure { margin: 0; }
+    .skip { position: fixed; top: -100px; left: 16px; z-index: 30; padding: 12px 20px; background: var(--cp-surface); }
+    .skip:focus { top: 16px; }
     .topbar { position: sticky; top: 0; z-index: 10; background: var(--cp-bg); border-bottom: 1px solid var(--cp-border); }
-    .topbar-inner { max-width: 1320px; margin: auto; padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { display: flex; align-items: center; gap: 16px; text-decoration: none; }
-    .monogram { display: grid; place-items: center; width: 44px; height: 44px; background: var(--cp-accent); color: var(--cp-accent-fg); border-radius: 50%; font: italic 20px Georgia, "Times New Roman", serif; }
-    .brand-name { font-size: 12px; font-weight: 600; line-height: 1.4; }
-    .topbar nav { display: flex; gap: 28px; align-items: center; }
-    .topbar nav a { font-size: 12px; text-decoration: none; padding: 8px 0; }
+    .topbar-inner { max-width: 1320px; margin: auto; padding: 16px 48px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .monogram { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--cp-accent); color: var(--cp-accent-fg); font: italic 22px Georgia, serif; }
+    .brand-name { font-size: 13px; font-weight: 600; line-height: 1.35; }
+    nav { display: flex; align-items: center; gap: 24px; }
+    .topbar nav a { font-size: 13px; text-decoration: none; padding: 12px 0; }
     .topbar nav a:hover { color: var(--cp-accent); }
-    .theme { padding: 8px 12px; color: var(--cp-text); background: var(--cp-bg-elevated); border: 1px solid var(--cp-border); border-radius: .625rem; font-size: 11px; }
-    .eyebrow, .date, .tag, .meta, .hero-caption, .map-label, .lens, .folio { font-family: Consolas, "Courier New", Courier, monospace; }
-    .eyebrow { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--cp-accent); }
-    .main { max-width: 1320px; width: 100%; margin: auto; padding: 0 48px 28px; }
-    .hero { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; padding: 76px 0 48px; }
-    .hero-name { font-size: 18px; font-weight: 600; margin-top: 20px; }
-    .hero-role { font-size: 13px; color: var(--cp-text-muted); margin-top: 4px; }
-    h1 { font: 400 clamp(56px, 6.2vw, 88px)/1.02 Georgia, "Times New Roman", serif; letter-spacing: -.07em; margin: 36px 0 28px; }
-    h1 em { display: block; font-weight: 400; color: var(--cp-accent); }
-    .intro { font-size: 16px; line-height: 1.85; color: var(--cp-text-muted); max-width: 520px; }
+    .theme { min-height: 44px; padding: 8px 12px; background: var(--cp-bg-elevated); color: var(--cp-text); border: 1px solid var(--cp-border); border-radius: .625rem; font-size: 12px; }
+    .main { max-width: 1320px; margin: auto; padding: 0 48px 32px; }
+    .eyebrow, .meta, .tag, .date, .folio { font-family: Consolas, "Courier New", Courier, monospace; }
+    .eyebrow { color: var(--cp-accent); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+    .hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: center; padding: 68px 0 56px; }
+    .hero-name { font-size: 21px; font-weight: 600; margin-top: 20px; }
+    .hero-role { font-size: 14px; color: var(--cp-text-muted); margin-top: 4px; }
+    h1 { font: 400 clamp(58px, 6vw, 86px)/1.04 Georgia, "Times New Roman", serif; letter-spacing: -.06em; margin: 32px 0 28px; }
+    h1 em { color: var(--cp-accent); font-weight: 400; }
+    .intro { font-size: 17px; color: var(--cp-text-muted); line-height: 1.8; max-width: 570px; }
     .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-    .button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 12px 20px; border: 1px solid var(--cp-border-strong); border-radius: .625rem; font-size: 12px; text-decoration: none; color: var(--cp-text); background: var(--cp-bg-elevated); }
-    .button.primary { background: var(--cp-accent); border-color: var(--cp-accent); color: var(--cp-accent-fg); }
+    .button { display: inline-flex; justify-content: center; align-items: center; gap: 12px; min-height: 48px; padding: 12px 20px; border: 1px solid var(--cp-border-strong); border-radius: .625rem; background: var(--cp-bg-elevated); color: var(--cp-text); font-size: 13px; text-decoration: none; }
+    .button.primary { background: var(--cp-accent); color: var(--cp-accent-fg); border-color: var(--cp-accent); }
     .button.primary:hover { background: var(--cp-accent-hover); }
     .button:not(.primary):hover { border-color: var(--cp-accent); }
-    .hero-caption { font-size: 10px; color: var(--cp-text-muted); margin-top: 16px; }
-    .evidence-map { position: relative; padding: 28px 24px 24px; background: var(--cp-bg-elevated); background-image: radial-gradient(var(--cp-border) .7px, var(--cp-bg-elevated) .7px); background-size: 16px 16px; border: 1px solid var(--cp-border); border-radius: 16px; }
-    .map-label { display: flex; justify-content: space-between; gap: 12px; color: var(--cp-text-muted); font-size: 10px; letter-spacing: .05em; }
-    .map-art { display: block; width: 100%; height: auto; margin: 20px 0 12px; overflow: visible; }
-    .orbit { fill: var(--cp-accent-soft); stroke: var(--cp-border-strong); stroke-width: 1.3; transition: stroke .25s, fill .25s; }
+    .hero-caption { font-size: 12px; color: var(--cp-text-muted); margin-top: 16px; }
+    .evidence-map { position: relative; padding: 24px; border: 1px solid var(--cp-border); border-radius: 16px; background: var(--cp-bg-elevated); background-image: radial-gradient(var(--cp-border) .7px, var(--cp-bg-elevated) .7px); background-size: 16px 16px; }
+    .map-label { display: flex; justify-content: space-between; gap: 16px; font: 11px Consolas, monospace; color: var(--cp-text-muted); }
+    .map-art { display: block; width: 100%; height: auto; margin: 16px 0; }
+    .orbit { fill: var(--cp-accent-soft); stroke: var(--cp-border-strong); stroke-width: 1.3; }
     .evidence-map[data-lens="people"] .orbit-people, .evidence-map[data-lens="ai"] .orbit-ai, .evidence-map[data-lens="products"] .orbit-products { stroke: var(--cp-accent); stroke-width: 2.5; fill: var(--cp-highlight); }
     .map-track { fill: none; stroke: var(--cp-border-strong); stroke-dasharray: 3 6; }
     .map-node { fill: var(--cp-accent); }
-    .map-type { font: 11px Consolas, "Courier New", Courier, monospace; letter-spacing: 2px; fill: var(--cp-text); }
-    .map-centre { font: italic 32px Georgia, "Times New Roman", serif; fill: var(--cp-accent); }
-    .map-small { font: 9px Consolas, "Courier New", Courier, monospace; fill: var(--cp-text-muted); }
-    .map-sticker { position: absolute; right: -16px; top: 72px; transform: rotate(9deg); padding: 16px; background: var(--cp-accent); color: var(--cp-accent-fg); border-radius: .625rem; font: italic 20px/1.1 Georgia, "Times New Roman", serif; }
-    .lens-controls { display: flex; gap: 8px; margin-bottom: 12px; }
-    .lens { flex: 1; padding: 8px; font-size: 10px; border: 1px solid var(--cp-border); border-radius: .625rem; background: var(--cp-bg-elevated); color: var(--cp-text); }
-    .lens[aria-pressed="true"] { background: var(--cp-text); border-color: var(--cp-text); color: var(--cp-bg); }
-    .lens-caption { min-height: 66px; font-size: 12px; line-height: 1.6; color: var(--cp-text-muted); padding-top: 12px; border-top: 1px solid var(--cp-border); }
-    .map-note { display: block; font-size: 9px; color: var(--cp-text-muted); margin-top: 12px; }
-    .strengths { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); padding: 24px 0; border-top: 1px solid var(--cp-border); border-bottom: 1px solid var(--cp-border); }
-    .strength { display: flex; align-items: center; gap: 16px; padding-right: 24px; }
-    .strength + .strength { border-left: 1px solid var(--cp-border); padding-left: 24px; }
-    .strength strong { font: 400 25px/1.2 Georgia, "Times New Roman", serif; letter-spacing: -.035em; white-space: nowrap; }
-    .strength p { font-size: 11px; line-height: 1.5; color: var(--cp-text-muted); }
-    section { padding: 72px 0 0; }
-    .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding-top: 20px; border-top: 1px solid var(--cp-border); margin-bottom: 28px; }
+    .map-type { font: 12px Consolas, monospace; fill: var(--cp-text); letter-spacing: 2px; }
+    .map-centre { font: italic 32px Georgia, serif; fill: var(--cp-accent); }
+    .map-small { font: 10px Consolas, monospace; fill: var(--cp-text-muted); }
+    .lens-controls { display: flex; gap: 8px; }
+    .lens { flex: 1; min-height: 44px; font: 11px Consolas, monospace; border: 1px solid var(--cp-border); border-radius: .625rem; background: var(--cp-bg-elevated); color: var(--cp-text); }
+    .lens[aria-pressed="true"] { background: var(--cp-text); color: var(--cp-bg); border-color: var(--cp-text); }
+    .lens-caption { font-size: 13px; min-height: 78px; color: var(--cp-text-muted); padding-top: 16px; }
+    .map-note { display: block; font-size: 11px; color: var(--cp-text-muted); margin-top: 4px; }
+    .proof-strip { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--cp-text); color: var(--cp-bg); border-radius: 16px; padding: 32px 40px; gap: 40px; }
+    .proof strong { display: block; font: 400 62px/1 Georgia, serif; letter-spacing: -.04em; }
+    .proof p { font-size: 13px; margin-top: 12px; }
+    .proof span { display: block; font-size: 11px; margin-top: 8px; }
+    section { padding-top: 72px; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding-top: 20px; border-top: 1px solid var(--cp-border); margin-bottom: 24px; }
     .section-head .eyebrow { order: 2; white-space: nowrap; }
-    h2 { font: 400 clamp(32px, 3.5vw, 48px)/1.15 Georgia, "Times New Roman", serif; letter-spacing: -.055em; }
-    .section-intro { max-width: 700px; font-size: 15px; color: var(--cp-text-muted); margin: -8px 0 28px; }
-    .principles { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
-    .principles article { padding: 28px; border: 1px solid var(--cp-border); border-radius: 16px; background: var(--cp-bg-elevated); }
-    .principle-mark { font: italic 44px/1 Georgia, "Times New Roman", serif; color: var(--cp-accent); margin-bottom: 24px; }
-    .principles h3 { font-size: 16px; font-weight: 600; margin-bottom: 12px; }
-    .principles p { font-size: 13px; color: var(--cp-text-muted); }
-    .timeline { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); margin-bottom: 28px; }
-    .timeline a { position: relative; padding: 28px 8px 16px 0; border-top: 1px solid var(--cp-border-strong); font-size: 12px; text-decoration: none; }
-    .timeline a::before { content: ""; position: absolute; top: -5px; left: 0; width: 9px; height: 9px; border-radius: 50%; background: var(--cp-accent); }
-    .timeline a:hover { color: var(--cp-accent); }
-    .job { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 32px; margin-left: 0; padding: 28px 0; border-bottom: 1px solid var(--cp-border); }
-    .date { font-size: 11px; color: var(--cp-text-muted); padding-top: 4px; }
-    .job h3 { font-size: 18px; font-weight: 600; letter-spacing: -.02em; }
-    .job .org { color: var(--cp-accent); font-size: 13px; margin: 4px 0 12px; }
-    .job p, .job li { font-size: 13px; color: var(--cp-text-muted); }
-    .job ul { padding-left: 18px; margin: 0; }
-    .job li + li { margin-top: 6px; }
+    h2 { font: 400 clamp(34px, 3.5vw, 48px)/1.15 Georgia, serif; letter-spacing: -.045em; }
+    .section-intro { font-size: 16px; color: var(--cp-text-muted); max-width: 760px; margin-bottom: 28px; }
+    .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .principles article { padding: 24px 0; border-top: 1px solid var(--cp-border-strong); }
+    .principle-mark { font: italic 42px Georgia, serif; color: var(--cp-accent); margin-bottom: 20px; }
+    .principles h3 { font-size: 17px; margin-bottom: 12px; }
+    .principles p { font-size: 14px; color: var(--cp-text-muted); }
     .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-    .filter { padding: 8px 16px; border: 1px solid var(--cp-border); border-radius: .625rem; background: var(--cp-bg-elevated); color: var(--cp-text); font-size: 12px; }
+    .filter { min-height: 44px; padding: 8px 16px; border: 1px solid var(--cp-border); border-radius: .625rem; background: var(--cp-bg-elevated); color: var(--cp-text); font-size: 13px; }
     .filter[aria-pressed="true"] { background: var(--cp-accent); border-color: var(--cp-accent); color: var(--cp-accent-fg); }
-    .project-count { font-size: 11px; color: var(--cp-text-muted); margin-bottom: 20px; }
-    .projects { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; align-items: start; }
-    .project { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; padding: 32px; min-height: 332px; background: var(--cp-bg-elevated); border: 1px solid var(--cp-border); border-radius: 16px; }
-    .project > * { position: relative; z-index: 1; }
-    .project::before { content: ""; position: absolute; right: 24px; top: 44px; color: var(--cp-accent); opacity: .1; font: italic 156px/1 Georgia, "Times New Roman", serif; pointer-events: none; z-index: -1; }
-    .project:nth-child(1)::before { content: "01"; }
-    .project:nth-child(2)::before { content: "02"; }
-    .project:nth-child(3)::before { content: "03"; }
-    .project:nth-child(4)::before { content: "04"; }
-    .project:nth-child(5)::before { content: "05"; }
-    .project:nth-child(6)::before { content: "06"; }
-    .project:first-child { grid-column: 1 / -1; padding: 40px; background: var(--cp-accent-soft); }
-    .project:first-child::before { font-size: 260px; top: 60px; right: 64px; }
-    .project:first-child::after { content: ""; position: absolute; width: 280px; height: 280px; right: 40px; top: 28px; border: 1px solid var(--cp-accent); border-radius: 50%; outline: 1px solid var(--cp-border-strong); outline-offset: 32px; opacity: .22; z-index: -1; pointer-events: none; }
-    .project .meta { display: flex; justify-content: space-between; gap: 12px; font-size: 10px; color: var(--cp-text-muted); }
-    .project h3 { font: 400 32px/1.15 Georgia, "Times New Roman", serif; letter-spacing: -.04em; margin: 28px 0 12px; max-width: 480px; }
-    .project:first-child h3 { font-size: 48px; max-width: 620px; }
-    .project:last-child { grid-column: 1 / -1; min-height: 280px; }
-    .project:last-child::before { font-size: 220px; right: 64px; }
-    .project:last-child h3 { max-width: 620px; }
-    .project > p { font-size: 14px; color: var(--cp-text-muted); max-width: 520px; }
-    .tags { display: flex; gap: 6px; flex-wrap: wrap; margin: 20px 0 24px; }
-    .tag { font-size: 10px; padding: 4px 8px; border: 1px solid var(--cp-border); border-radius: 6px; background: var(--cp-bg); color: var(--cp-text); }
-    details { margin-top: auto; border-top: 1px solid var(--cp-border); padding-top: 16px; }
-    summary { font-size: 12px; color: var(--cp-accent); cursor: pointer; }
-    .case { display: grid; gap: 16px; margin-top: 20px; }
-    .project:first-child .case, .project:last-child .case { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 28px; }
-    .case dt { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
-    .case dd { margin: 4px 0 0; color: var(--cp-text-muted); font-size: 13px; }
-    .methods { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
-    .methods article { padding: 28px; border: 1px solid var(--cp-border); border-radius: 16px; background: var(--cp-bg-elevated); }
-    .methods h3 { font-size: 16px; margin-bottom: 20px; font-weight: 600; }
-    .methods ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: 13px; color: var(--cp-text-muted); }
-    .methods li { border-bottom: 1px solid var(--cp-border); padding-bottom: 8px; }
-    .education { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px 40px; }
-    .education article { border-left: 2px solid var(--cp-accent); padding: 8px 0 8px 20px; }
-    .education h3 { font-size: 15px; font-weight: 600; }
-    .education p { color: var(--cp-text-muted); font-size: 12px; margin-top: 4px; }
-    .certification { margin-top: 28px; font-size: 12px; color: var(--cp-text-muted); }
-    .closing { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; padding: 48px; background: var(--cp-text); color: var(--cp-bg); border-radius: 16px; margin-top: 72px; }
-    .closing p { font: 400 clamp(30px, 4vw, 52px)/1.1 Georgia, "Times New Roman", serif; letter-spacing: -.04em; }
-    .closing em { color: var(--cp-bg); }
+    .project-count { font-size: 12px; color: var(--cp-text-muted); margin-bottom: 20px; }
+    .projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+    .project { position: relative; overflow: hidden; padding: 32px; border: 1px solid var(--cp-border); border-radius: 16px; background: var(--cp-bg-elevated); }
+    .project:first-child { grid-column: 1 / -1; background: var(--cp-accent-soft); padding: 40px; }
+    .project-number { position: absolute; right: 24px; top: 24px; font: italic 96px/1 Georgia, serif; color: var(--cp-accent); opacity: .1; pointer-events: none; }
+    .project:first-child .project-number { font-size: 180px; right: 40px; }
+    .project .meta { display: flex; justify-content: space-between; gap: 16px; font-size: 11px; color: var(--cp-text-muted); position: relative; }
+    .project h3 { position: relative; font: 400 32px/1.18 Georgia, serif; letter-spacing: -.03em; margin: 28px 0 16px; max-width: 600px; }
+    .project:first-child h3 { font-size: 48px; }
+    .project > p { position: relative; color: var(--cp-text-muted); font-size: 15px; max-width: 700px; }
+    .tags { position: relative; display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
+    .tag { font-size: 11px; padding: 4px 8px; border: 1px solid var(--cp-border); border-radius: 6px; color: var(--cp-text); background: var(--cp-bg); }
+    .status { position: relative; font-size: 12px; color: var(--cp-text-muted); margin-bottom: 12px; }
+    details { border-top: 1px solid var(--cp-border); }
+    summary { position: relative; color: var(--cp-accent); font-size: 14px; padding: 16px 0; cursor: pointer; }
+    .case { display: grid; gap: 20px; margin: 4px 0 8px; }
+    .project:first-child .case { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .case dt { font-size: 12px; font-weight: 700; }
+    .case dd { margin: 6px 0 0; color: var(--cp-text-muted); font-size: 14px; }
+    .publication { display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; background: var(--cp-accent); color: var(--cp-accent-fg); padding: 44px; border-radius: 16px; }
+    .publication .eyebrow { color: var(--cp-accent-fg); }
+    .publication h3 { font: 400 38px/1.15 Georgia, serif; margin: 20px 0; letter-spacing: -.035em; }
+    .publication p { font-size: 15px; }
+    .publication .button { margin-top: 24px; background: var(--cp-accent-fg); color: var(--cp-accent); border-color: var(--cp-accent-fg); }
+    .publication .button:focus-visible { outline-color: var(--cp-accent-fg); }
+    .publication-proof { border-left: 1px solid var(--cp-accent-fg); padding-left: 36px; align-self: center; }
+    .publication-proof strong { display: block; font: 400 64px/1 Georgia, serif; }
+    .publication-proof p { margin-top: 12px; font-size: 14px; }
+    .research-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+    .research-notes article { padding: 24px; border: 1px solid var(--cp-border); border-radius: 16px; }
+    .research-notes h3 { font-size: 17px; margin-bottom: 12px; }
+    .research-notes p { font-size: 14px; color: var(--cp-text-muted); }
+    .contributions { margin-top: 32px; }
+    .contributions h3 { font-size: 17px; }
+    .contributions details { padding: 0 8px; }
+    .contributions summary { color: var(--cp-text); font-weight: 600; }
+    .contributions ul { margin: 0 0 24px; padding-left: 20px; max-width: 960px; color: var(--cp-text-muted); font-size: 14px; }
+    .contributions li + li { margin-top: 10px; }
+    .timeline { display: grid; grid-template-columns: repeat(6, 1fr); margin-bottom: 28px; }
+    .timeline a { font-size: 12px; padding: 20px 8px 12px 0; border-top: 2px solid var(--cp-accent); text-decoration: none; }
+    .job { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 32px; padding: 28px 0; border-bottom: 1px solid var(--cp-border); }
+    .date { font-size: 12px; color: var(--cp-text-muted); }
+    .job h3 { font-size: 20px; line-height: 1.35; }
+    .job .org { color: var(--cp-accent); font-size: 15px; margin: 4px 0 12px; }
+    .job .scope { font-size: 14px; margin-bottom: 16px; color: var(--cp-text-muted); }
+    .job ul { padding-left: 20px; margin: 0; color: var(--cp-text-muted); font-size: 14px; }
+    .job li + li { margin-top: 8px; }
+    .early-career { margin-top: 28px; }
+    .early-career summary { font-weight: 600; color: var(--cp-text); }
+    .methods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .methods article { padding: 28px; background: var(--cp-bg-elevated); border: 1px solid var(--cp-border); border-radius: 16px; }
+    .methods h3 { font-size: 17px; margin-bottom: 20px; }
+    .methods ul { list-style: none; padding: 0; margin: 0; color: var(--cp-text-muted); font-size: 14px; }
+    .methods li { border-top: 1px solid var(--cp-border); padding: 10px 0; }
+    .education { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 40px; }
+    .education article { border-left: 2px solid var(--cp-accent); padding-left: 20px; }
+    .education h3 { font-size: 17px; }
+    .education p { color: var(--cp-text-muted); font-size: 14px; margin-top: 8px; }
+    .certification { margin-top: 28px; font-size: 14px; color: var(--cp-text-muted); }
+    .closing { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 44px; background: var(--cp-text); color: var(--cp-bg); border-radius: 16px; margin-top: 72px; }
+    .closing h2 { font-size: 42px; }
+    .closing p { margin-top: 16px; font-size: 15px; }
     .closing .button { background: var(--cp-bg); color: var(--cp-text); border-color: var(--cp-bg); }
-    footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 32px; padding-top: 20px; color: var(--cp-text-muted); font-size: 10px; }
-    .folio { letter-spacing: .05em; }
-    html[data-theme="dark"] :is(.hero-role, .intro, .hero-caption, .map-label, .map-note, .lens-caption, .strength p, .section-intro, .principles p, .date, .job p:not(.org), .job li, .project .meta, .project > p, .project-count, .case dd, .methods ul, .education p, .certification, footer) { color: var(--cp-text-soft); }
+    .download-list { display: grid; gap: 12px; align-content: start; }
+    .download-list a { justify-content: space-between; }
+    .download-note { font-size: 12px !important; margin-top: 0 !important; }
+    footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 24px; margin-top: 24px; color: var(--cp-text-muted); font-size: 12px; }
+    html[data-theme="dark"] :is(.hero-role, .intro, .hero-caption, .map-label, .lens-caption, .map-note, .principles p, .section-intro, .project .meta, .project > p, .status, .project-count, .case dd, .research-notes p, .contributions ul, .date, .job .scope, .job ul, .methods ul, .education p, .certification, footer) { color: var(--cp-text-soft); }
     html[data-theme="dark"] .map-small { fill: var(--cp-text-soft); }
     .print-resume { display: none; }
     @media (prefers-reduced-motion: no-preference) {
-      .hero-copy { animation: arrive .7s ease-out both; }
-      .evidence-map { animation: arrive .8s .1s ease-out both; }
+      .hero-copy { animation: arrive .65s ease-out both; }
+      .evidence-map { animation: arrive .75s .1s ease-out both; }
       .project { transition: transform .2s, border-color .2s; }
-      .project:hover { transform: translateY(-4px); border-color: var(--cp-accent); }
-      @keyframes arrive { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+      .project:hover { transform: translateY(-3px); border-color: var(--cp-accent); }
+      @keyframes arrive { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     }
     @media (max-width: 1100px) {
-      .topbar-inner, .main { padding-left: 32px; padding-right: 32px; }
+      .main, .topbar-inner { padding-left: 32px; padding-right: 32px; }
+      nav { gap: 16px; }
       .hero { gap: 32px; }
       h1 { font-size: 66px; }
-      .strength { display: block; }
-      .strength p { margin-top: 8px; }
-      .topbar nav { gap: 16px; }
     }
-    @media (max-width: 820px) {
-      .topbar-inner { flex-wrap: wrap; gap: 12px; padding-top: 12px; padding-bottom: 12px; }
+    @media (max-width: 900px) {
+      .topbar-inner { flex-wrap: wrap; gap: 12px; }
       .topbar nav { order: 3; width: 100%; justify-content: space-between; }
-      .hero { grid-template-columns: 1fr; padding-top: 48px; gap: 36px; }
-      h1 { font-size: clamp(60px, 10vw, 84px); }
-      .evidence-map { max-width: 560px; width: 100%; margin-left: auto; }
-      .map-art { max-height: 380px; }
-      .strength strong { white-space: normal; }
-      .principles, .methods { grid-template-columns: 1fr; }
-      .principles article { display: grid; grid-template-columns: 48px 1fr; gap: 0 20px; }
-      .principle-mark { grid-row: 1 / 3; margin: 0; }
-      .timeline { grid-template-columns: repeat(3,minmax(0,1fr)); row-gap: 20px; }
-      .job { grid-template-columns: 160px minmax(0,1fr); gap: 24px; }
-      .project:first-child h3 { font-size: 40px; }
-      .project:first-child::after { right: -120px; }
+      .hero { grid-template-columns: 1fr; padding-top: 44px; }
+      .evidence-map { max-width: 540px; width: 100%; margin-left: auto; }
+      .map-art { max-height: 340px; }
+      .publication, .closing { grid-template-columns: 1fr; gap: 28px; }
+      .publication-proof { border-left: 0; border-top: 1px solid var(--cp-accent-fg); padding: 24px 0 0; }
+      .publication-proof strong { font-size: 48px; }
+      .methods { grid-template-columns: 1fr; }
+      .job { grid-template-columns: 150px 1fr; gap: 24px; }
     }
-    @media (max-width: 560px) {
+    @media (max-width: 600px) {
+      html { scroll-padding-top: 164px; }
       .main, .topbar-inner { padding-left: 20px; padding-right: 20px; }
-      .brand { gap: 12px; }
-      .brand-name { font-size: 11px; }
-      .monogram { width: 36px; height: 36px; font-size: 18px; }
-      .topbar nav { gap: 12px; }
-      .topbar nav a { font-size: 10px; }
-      .theme { font-size: 10px; padding: 8px; }
-      h1 { font-size: clamp(46px, 12vw, 64px); }
-      .hero-name { font-size: 17px; }
-      .hero { padding-top: 36px; }
-      .map-sticker { right: -8px; top: 64px; font-size: 17px; }
-      .strengths { grid-template-columns: 1fr; padding: 0; }
-      .strength, .strength + .strength { display: flex; padding: 20px 0; border-left: 0; justify-content: space-between; gap: 20px; }
-      .strength + .strength { border-top: 1px solid var(--cp-border); }
-      .strength strong { font-size: 22px; }
-      .strength p { max-width: 130px; margin: 0; }
+      .topbar nav { flex-wrap: wrap; gap: 0 20px; justify-content: flex-start; }
+      .topbar nav a { font-size: 12px; }
+      .hero { padding-top: 32px; gap: 28px; }
+      h1 { font-size: clamp(44px, 12vw, 68px); margin-top: 24px; }
+      .hero-name { font-size: 19px; }
+      .intro { font-size: 16px; }
+      .proof-strip { grid-template-columns: 1fr; gap: 24px; padding: 28px; }
+      .proof { display: grid; grid-template-columns: 92px 1fr; gap: 0 20px; align-items: center; }
+      .proof strong { grid-row: 1 / 3; font-size: 48px; }
+      .proof p { margin: 0; }
+      .proof span { margin-top: 4px; }
       section { padding-top: 48px; }
       .section-head { flex-direction: column; gap: 12px; }
-      .section-head .eyebrow { order: -1; }
-      .projects, .education, .project:first-child .case, .project:last-child .case { grid-template-columns: 1fr; }
-      .project, .project:first-child, .project:last-child { padding: 24px; min-height: 0; }
-      .project h3, .project:first-child h3 { font-size: 32px; }
-      .project:first-child::before { font-size: 180px; right: 20px; }
-      .project:last-child::before { font-size: 180px; right: 20px; }
+      .section-head .eyebrow { order: -1; white-space: normal; }
+      .principles, .projects, .research-notes, .education, .project:first-child .case { grid-template-columns: 1fr; }
+      .principles { gap: 8px; }
+      .project, .project:first-child { padding: 24px; }
+      .project h3, .project:first-child h3 { font-size: 31px; }
+      .project:first-child .project-number { font-size: 120px; right: 24px; }
+      .publication, .closing { padding: 28px; }
+      .publication h3 { font-size: 31px; }
+      .timeline { grid-template-columns: repeat(3, 1fr); gap: 12px; }
       .job { grid-template-columns: 1fr; gap: 8px; }
-      .closing { grid-template-columns: 1fr; padding: 28px; gap: 28px; margin-top: 48px; }
-      .closing .button { justify-self: start; }
+      .closing h2 { font-size: 34px; }
+      .closing { margin-top: 48px; }
+      .button { padding: 12px 16px; }
     }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .orbit { transition: none; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    .cv-document { font-family: Arial, sans-serif; font-size: 10.5pt; line-height: 1.38; color: var(--cp-text); }
+    .cv-document .cv-page { max-width: 210mm; margin: 24px auto; padding: 14mm; background: var(--cp-surface); }
+    .cv-document h1 { font: 400 27pt/1.08 Georgia, serif; letter-spacing: -.035em; margin: 0 0 8px; }
+    .cv-document .cv-headline { color: var(--cp-accent); font-size: 12pt; font-weight: 700; margin: 0 0 4px; }
+    .cv-document .cv-contact { font-size: 9.5pt; margin: 4px 0 12px; overflow-wrap: anywhere; }
+    .cv-document h2 { font: 700 11pt Arial, sans-serif; letter-spacing: .025em; text-transform: uppercase; color: var(--cp-accent); margin: 14px 0 6px; }
+    .cv-document h3 { font: 700 10.5pt/1.3 Arial, sans-serif; margin: 10px 0 2px; }
+    .cv-document p { margin: 4px 0; }
+    .cv-document ul { margin: 4px 0 8px; padding-left: 16px; }
+    .cv-document li { margin: 4px 0; }
+    .cv-document .cv-date { font-size: 9pt; font-weight: 400; color: var(--cp-text-muted); }
+    .cv-document .cv-scope { font-size: 9.5pt; color: var(--cp-text-muted); margin: 2px 0 4px; }
+    .cv-document .cv-skills { font-size: 9.5pt; }
+    .cv-document .cv-footer { font-size: 8.5pt; color: var(--cp-text-muted); margin-top: 14px; border-top: 1px solid var(--cp-border); padding-top: 6px; }
+    .cv-document .cv-project { break-inside: avoid; margin: 0 0 12px; }
+    .cv-document .cv-project h3 { margin-top: 12px; }
+    .cv-document .cv-project p { margin: 4px 0; }
+    .cv-document a { color: inherit; text-underline-offset: 3px; }
     @page { size: A4; margin: 14mm; }
     @media print {
-      html[data-theme], :root { color-scheme: light; --cp-bg: #ffffff; --cp-text: #242424; --cp-text-muted: #5c5c5c; --cp-accent: #b11f4b; --cp-border: #dedede; }
-      .shell, .skip { display: none; }
-      body { background: var(--cp-bg); color: var(--cp-text); font-size: 10pt; line-height: 1.4; }
-      .print-resume { display: block; }
-      .resume-page { padding: 0; }
-      .resume-page + .resume-page { break-before: page; }
-      .print-resume h1 { font-size: 30pt; margin: 0; letter-spacing: -.04em; }
-      .print-resume h2 { font-size: 13pt; margin: 16px 0 8px; border-bottom: 1px solid var(--cp-border); padding-bottom: 4px; }
-      .print-resume h3 { font-size: 10.5pt; margin: 12px 0 4px; }
-      .print-resume p { margin: 4px 0; }
-      .print-resume ul { padding-left: 16px; margin: 4px 0; }
-      .print-resume li { margin: 4px 0; }
-      .resume-role { color: var(--cp-accent); font-size: 11pt; margin: 12px 0 !important; }
-      .resume-date { font-size: 9pt; color: var(--cp-text-muted); font-weight: 400; }
-      .resume-foot { font-size: 8pt; color: var(--cp-text-muted); margin-top: 16px !important; }
+      html[data-theme], :root { color-scheme: light; --cp-bg: #ffffff; --cp-surface: #ffffff; --cp-text: #242424; --cp-text-muted: #5c5c5c; --cp-accent: #b11f4b; --cp-border: #dedede; }
+      body { margin: 0; background: var(--cp-bg); }
+      .cv-document .cv-page { margin: 0; padding: 0; max-width: none; }
+      .cv-document .cv-page + .cv-page { break-before: page; }
+      .cv-document h2, .cv-document h3 { break-after: avoid; }
+      .cv-document li { break-inside: avoid; }
     }
+    @media print { .shell, .skip { display: none; } .print-resume { display: block; } }
   </style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
   <div class="shell">
-    <header class="topbar">
-      <div class="topbar-inner">
-        <a class="brand" href="#main" aria-label="Margarita Bermejo Cano, back to top"><span class="monogram" aria-hidden="true">mb.</span><span class="brand-name">Margarita<br>Bermejo Cano</span></a>
-        <nav aria-label="Main navigation"><a href="#work">Selected work</a><a href="#about">Perspective</a><a href="#experience">Journey</a><a href="#methods">Toolkit</a><a href="#background">Background</a></nav>
-        <button class="theme" id="theme-toggle" type="button" hidden>Switch theme</button>
-      </div>
-    </header>
+    <header class="topbar"><div class="topbar-inner">
+      <a class="brand" href="#main" aria-label="Margarita Bermejo Cano, back to top"><span class="monogram" aria-hidden="true">mb.</span><span class="brand-name">Margarita<br>Bermejo Cano</span></a>
+      <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#methods">Toolkit</a><a href="#background">Background</a><a href="#contact">CV &amp; contact</a></nav>
+      <button class="theme" id="theme-toggle" type="button" hidden>Switch theme</button>
+    </div></header>
     <main class="main" id="main">
       <header class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">A portfolio of questions, evidence &amp; decisions</p>
-          <p class="hero-name">Margarita Bermejo Cano</p>
-          <p class="hero-role">People Science Analyst at Microsoft / Dublin</p>
-          <h1>Making sense.<em>Making a<br>difference.</em></h1>
-          <p class="intro">I turn complex people, survey and product data into clear decisions. My work connects how people adopt AI, what shapes their experience, and what businesses and product teams can do next.</p>
-          <div class="actions"><a class="button primary" href="#work">Discover my work <span aria-hidden="true">&#8599;</span></a><a class="button" href="./assets/margarita-bermejo-cano-cv.pdf" download>Download CV <span aria-hidden="true">&#8595;</span></a><button class="button" id="print-button" type="button" hidden>Print / PDF</button></div>
-          <p class="hero-caption">People science &middot; AI adoption &middot; customer insight</p>
+          <p class="eyebrow">People science / AI adoption / customer insight</p>
+          <p class="hero-name">Margarita Bermejo Cano</p><p class="hero-role">People Science Analyst at Microsoft · Dublin</p>
+          <h1>The human side<br>of <em>better decisions.</em></h1>
+          <p class="intro">I help teams understand how people experience work, adopt AI and use products—and what to do with that evidence. My work combines survey science, customer insight and hands-on analysis, with clear recommendations and reusable methods.</p>
+          <div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="./assets/margarita-bermejo-cano-cv.pdf" download>Download CV <span aria-hidden="true">↓</span></a></div>
+          <p class="hero-caption">15+ years across analytics and people science · English &amp; Spanish</p>
         </div>
         <figure class="evidence-map" data-lens="people" aria-labelledby="map-title">
-          <div class="map-label"><span id="map-title">THE INTERSECTION I WORK IN</span><span>FIG. 01</span></div>
-          <span class="map-sticker" aria-hidden="true">Curiosity,<br>with a method.</span>
+          <div class="map-label"><span id="map-title">WHERE MY WORK CONNECTS</span><span>FIG. 01</span></div>
           <svg class="map-art" viewBox="0 0 440 400" role="img" aria-labelledby="map-svg-title map-svg-desc">
             <title id="map-svg-title">People, AI and products connected through evidence</title>
-            <desc id="map-svg-desc">A conceptual illustration of three overlapping lenses, not a chart of research results.</desc>
+            <desc id="map-svg-desc">Three overlapping lenses illustrate my areas of work. This is a conceptual illustration, not research data.</desc>
             <circle class="map-track" cx="220" cy="204" r="176"/>
             <ellipse class="orbit orbit-people" cx="184" cy="190" rx="116" ry="150" transform="rotate(-30 184 190)"/>
             <ellipse class="orbit orbit-ai" cx="258" cy="190" rx="116" ry="150" transform="rotate(30 258 190)"/>
             <ellipse class="orbit orbit-products" cx="220" cy="248" rx="156" ry="100"/>
             <circle class="map-node" cx="71" cy="111" r="5"/><circle class="map-node" cx="366" cy="106" r="5"/><circle class="map-node" cx="220" cy="380" r="5"/>
             <text class="map-type" x="94" y="120">PEOPLE</text><text class="map-type" x="300" y="120">AI</text><text class="map-type" x="184" y="328">PRODUCTS</text>
-            <text class="map-centre" x="220" y="216" text-anchor="middle">evidence</text>
-            <text class="map-small" x="220" y="238" text-anchor="middle">THE BRIDGE TO DECISIONS</text>
-            <path class="map-track" d="M24 204h32M384 204h32M220 12v24"/>
+            <text class="map-centre" x="220" y="216" text-anchor="middle">evidence</text><text class="map-small" x="220" y="238" text-anchor="middle">A BRIDGE TO DECISIONS</text>
           </svg>
-          <div class="lens-controls" id="lens-controls" role="group" aria-label="Explore my analytical perspectives" hidden><button type="button" class="lens" data-lens="people" aria-pressed="true">01 / People</button><button type="button" class="lens" data-lens="ai" aria-pressed="false">02 / AI</button><button type="button" class="lens" data-lens="products" aria-pressed="false">03 / Products</button></div>
-          <figcaption><p class="lens-caption" id="lens-caption" aria-live="polite" aria-atomic="true">People / Understand experience through survey science, psychometrics and customer insight.</p><span class="map-note">Conceptual map, not a data chart.</span></figcaption>
+          <div class="lens-controls" id="lens-controls" role="group" aria-label="Explore my analytical perspectives" hidden>
+            <button type="button" class="lens" data-lens="people" aria-pressed="true">01 / People</button><button type="button" class="lens" data-lens="ai" aria-pressed="false">02 / AI</button><button type="button" class="lens" data-lens="products" aria-pressed="false">03 / Products</button>
+          </div>
+          <figcaption><p class="lens-caption" id="lens-caption" aria-live="polite" aria-atomic="true">People / Understand experience through survey science, psychometrics and workforce insight.</p><span class="map-note">A conceptual map, not a data chart.</span></figcaption>
         </figure>
       </header>
-      <div class="strengths">
-        <div class="strength"><strong>15+ years</strong><p>Across analytics<br>and people science</p></div>
-        <div class="strength"><strong>People + products</strong><p>Connecting experience<br>with decisions</p></div>
-        <div class="strength"><strong>Research to action</strong><p>Analytical rigour,<br>practical recommendations</p></div>
+      <div class="proof-strip" aria-label="Selected examples of scope and impact">
+        <div class="proof"><strong>25</strong><p>EMEA countries supported<br>through workforce analytics</p><span>MetLife / 2015–2019</span></div>
+        <div class="proof"><strong>145</strong><p>Learning resources sourced<br>in a completed content refresh</p><span>Microsoft / 2023</span></div>
+        <div class="proof"><strong>2</strong><p>Teams adopted my recurring<br>content insights review</p><span>Microsoft / 2024–2025</span></div>
       </div>
       <section id="about" aria-labelledby="about-title">
-        <div class="section-head"><span class="eyebrow">01 / The perspective</span><h2 id="about-title">Curiosity is the starting point.</h2></div>
-        <p class="section-intro">My background bridges people science, customer-facing analytics and applied AI research. The common thread: make complex questions answerable, and the answers useful.</p>
+        <div class="section-head"><span class="eyebrow">01 / How I work</span><h2 id="about-title">Start with the question. Stay with the evidence.</h2></div>
+        <p class="section-intro">My background spans research, customer-facing analytics and practical HR systems. I care about whether a measure is trustworthy, whether an explanation makes sense, and whether the work helps someone decide what to do next.</p>
         <div class="principles">
-          <article><div class="principle-mark" aria-hidden="true">?</div><h3>Ask a better question.</h3><p>Build trustworthy measurement through survey science, psychometrics and carefully defined analytical questions.</p></article>
-          <article><div class="principle-mark" aria-hidden="true">&#8599;</div><h3>Find the useful answer.</h3><p>Translate survey, behavioural and product evidence into clear priorities for business, customer and product stakeholders.</p></article>
-          <article><div class="principle-mark" aria-hidden="true">&#8635;</div><h3>Make the method reusable.</h3><p>Design reusable analytical frameworks and AI-assisted workflows, rather than starting every analysis from scratch.</p></article>
+          <article><div class="principle-mark" aria-hidden="true">?</div><h3>Make the question answerable.</h3><p>Clarify the decision, test the measurement and choose an analytical approach that fits the problem.</p></article>
+          <article><div class="principle-mark" aria-hidden="true">↗</div><h3>Make the answer useful.</h3><p>Explain the findings, their limitations and the practical options—not just the statistical result.</p></article>
+          <article><div class="principle-mark" aria-hidden="true">↻</div><h3>Make the work reusable.</h3><p>Build documented methods, reusable code and clear handovers so recurring work can be rerun rather than rebuilt.</p></article>
         </div>
       </section>
       <section id="work" aria-labelledby="work-title">
-        <div class="section-head"><span class="eyebrow">02 / The fieldnotes</span><h2 id="work-title">Where the questions lead.</h2></div>
-        <p class="section-intro">Six examples of the questions I work on, the contribution I make, and the evidence I help teams use. Descriptions are generalised; confidential findings and customer details are not included.</p>
-        <div class="filters" id="project-filters" role="group" aria-label="Filter selected work" hidden><button class="filter" type="button" data-filter="all" aria-pressed="true">All work</button><button class="filter" type="button" data-filter="research" aria-pressed="false">AI research</button><button class="filter" type="button" data-filter="customer" aria-pressed="false">Customer insights</button><button class="filter" type="button" data-filter="workflow" aria-pressed="false">Workflows &amp; automation</button></div>
-        <p class="project-count" id="project-count" aria-live="polite" aria-atomic="true">Showing 6 projects</p>
-        <div class="projects">
-          <article class="project" data-category="research"><div class="meta"><span>01 / AI RESEARCH</span><span>2025</span></div><h3>Readiness for agentic ways of working.</h3><p>Lead analyst on enterprise research into agentic AI readiness and adoption.</p><div class="tags"><span class="tag">Factor analysis</span><span class="tag">Regression</span><span class="tag">Research synthesis</span></div><details><summary>Read the case study</summary><dl class="case"><div><dt>Question</dt><dd>How can evidence help teams understand readiness for and adoption of agentic ways of working?</dd></div><div><dt>My contribution</dt><dd>Led the analysis across a series of research reports, using exploratory and confirmatory factor analysis, comparative analysis, regression and descriptive methods.</dd></div><div><dt>Outcome</dt><dd>Produced a structured internal evidence base to inform decisions about agentic readiness and adoption.</dd></div></dl></details></article>
-          <article class="project" data-category="research"><div class="meta"><span>02 / AI RESEARCH</span><span>2023-2024</span></div><h3>From survey items to reliable measurement.</h3><p>Analytical leadership on enterprise AI readiness research and measurement validation.</p><div class="tags"><span class="tag">Psychometrics</span><span class="tag">Reliability testing</span><span class="tag">Driver analysis</span></div><details><summary>Read the case study</summary><dl class="case"><div><dt>Question</dt><dd>How do we measure organisational readiness for AI, and understand the factors associated with it?</dd></div><div><dt>My contribution</dt><dd>Validated the instrument with exploratory and confirmatory factor analysis, reliability testing and item analysis. Investigated readiness drivers with regression, correlation and relative weight analysis.</dd></div><div><dt>Outcome</dt><dd>Delivered validated measurement and decision-ready analytical findings for the research programme.</dd></div></dl></details></article>
-          <article class="project" data-category="research"><div class="meta"><span>03 / AI RESEARCH</span><span>2023-2024</span></div><h3>Understanding early AI assistant adoption.</h3><p>Survey research and a recurring reporting cycle for an enterprise early-access programme.</p><div class="tags"><span class="tag">Survey analytics</span><span class="tag">AI adoption</span><span class="tag">Recurring reporting</span></div><details><summary>Read the case study</summary><dl class="case"><div><dt>Question</dt><dd>What can early users tell us about the experience of adopting an enterprise AI assistant?</dd></div><div><dt>My contribution</dt><dd>Co-produced the first findings report as one of two analysts, then owned the recurring reporting cycle. Partnered with digital-experience and future-of-work researchers.</dd></div><div><dt>Outcome</dt><dd>Established a sustained analytical reporting cycle to support an evolving understanding of enterprise AI usage.</dd></div></dl></details></article>
-          <article class="project" data-category="customer"><div class="meta"><span>04 / CUSTOMER INSIGHTS</span><span>2024-2025</span></div><h3>Listening after a product migration.</h3><p>Mixed-methods customer experience analysis, translating feedback into product priorities.</p><div class="tags"><span class="tag">Customer experience</span><span class="tag">Thematic coding</span><span class="tag">Survey analysis</span></div><details><summary>Read the case study</summary><dl class="case"><div><dt>Question</dt><dd>How did customers experience a migrated product, and which themes deserved attention?</dd></div><div><dt>My contribution</dt><dd>Served as the sole analyst on the study, combining quantitative scoring with thematic coding of open-text responses.</dd></div><div><dt>Outcome</dt><dd>Translated the findings into prioritised, actionable themes for the product teams responsible for the experience.</dd></div></dl></details></article>
-          <article class="project" data-category="workflow"><div class="meta"><span>05 / ANALYTICAL WORKFLOWS</span><span>2025</span></div><h3>A better starting point for analysis.</h3><p>A reusable, AI-assisted framework for moving from a business question to an analytical plan.</p><div class="tags"><span class="tag">AI-assisted planning</span><span class="tag">Methodology</span><span class="tag">Reproducibility</span></div><details><summary>Read the case study</summary><dl class="case"><div><dt>Question</dt><dd>How can analytical planning be made repeatable rather than reinvented for each request?</dd></div><div><dt>My contribution</dt><dd>Designed and documented an AI-assisted analysis planning framework, within a wider team effort to standardise analytical practice.</dd></div><div><dt>Outcome</dt><dd>Created a reusable methodology for structuring the move from business question to analysis plan.</dd></div></dl></details></article>
-          <article class="project" data-category="workflow"><div class="meta"><span>06 / AUTOMATION</span><span>2024</span></div><h3>Taking the manual work out of content audits.</h3><p>Automated checking of content links and video references across a large content taxonomy.</p><div class="tags"><span class="tag">Automation</span><span class="tag">Content quality</span><span class="tag">Process design</span></div><details><summary>Read the case study</summary><dl class="case"><div><dt>Question</dt><dd>How can content references be audited without a manual process and an external tooling dependency?</dd></div><div><dt>My contribution</dt><dd>Designed and built an automated link and video-reference audit, including embedded-URL generation.</dd></div><div><dt>Outcome</dt><dd>Replaced the manual audit process and removed the third-party tooling dependency and URL-generation volume limit.</dd></div></dl></details></article>
+        <div class="section-head"><span class="eyebrow">02 / Selected work</span><h2 id="work-title">Questions worth working on.</h2></div>
+        <p class="section-intro">Twelve projects across research, customer insight, content systems and analytical workflows. Each separates my contribution from the wider outcome; confidential findings and customer details are omitted.</p>
+        <div class="filters" id="project-filters" role="group" aria-label="Filter selected work" hidden>
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">All work</button><button class="filter" type="button" data-filter="research" aria-pressed="false">AI research</button><button class="filter" type="button" data-filter="customer" aria-pressed="false">Customer &amp; product</button><button class="filter" type="button" data-filter="content" aria-pressed="false">Content &amp; governance</button><button class="filter" type="button" data-filter="workflow" aria-pressed="false">Workflows &amp; automation</button><button class="filter" type="button" data-filter="data" aria-pressed="false">Data &amp; telemetry</button>
         </div>
+        <p class="project-count" id="project-count" aria-live="polite" aria-atomic="true">Showing 12 projects</p>
+        <div class="projects"><article class="project" data-category="research">
+    <span class="project-number" aria-hidden="true">01</span>
+    <div class="meta"><span>01 / AI RESEARCH</span><span>2025</span></div>
+    <h3>Readiness for agentic ways of working.</h3><p>Lead analyst on enterprise research into agentic AI readiness and adoption.</p>
+    <div class="tags"><span class="tag">Analytical leadership</span><span class="tag">Factor analysis</span><span class="tag">Regression</span></div>
+    <p class="status">Research delivered</p>
+    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
+      <div><dt>Question</dt><dd>What evidence helps organisations understand readiness for and adoption of agentic ways of working?</dd></div>
+      <div><dt>My contribution</dt><dd>Led the analytical work across an in-depth report series, using exploratory and confirmatory factor analysis, regression, comparative analysis and descriptive methods.</dd></div>
+      <div><dt>Outcome</dt><dd>Delivered an internal research evidence base for decisions about agentic readiness and adoption.</dd></div>
+    </dl></details></article><article class="project" data-category="research">
+    <span class="project-number" aria-hidden="true">02</span>
+    <div class="meta"><span>02 / AI RESEARCH</span><span>2023–2024</span></div>
+    <h3>Measurement before interpretation.</h3><p>Analytical leadership on AI readiness measurement and the factors associated with it.</p>
+    <div class="tags"><span class="tag">Psychometrics</span><span class="tag">Reliability</span><span class="tag">Relative weight analysis</span></div>
+    <p class="status">Analysis delivered</p>
+    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
+      <div><dt>Question</dt><dd>Are we measuring organisational AI readiness reliably, and what factors are associated with it?</dd></div>
+      <div><dt>My contribution</dt><dd>Tested the instrument&#39;s structure and reliability using EFA, CFA and item analysis; examined factors associated with readiness using regression, correlation and relative weight analysis.</dd></div>
+      <div><dt>Outcome</dt><dd>Produced validated measurement and analysis referenced in a published eBook on AI readiness and employee experience.</dd></div>
+    </dl></details></article><article class="project" data-category="research">
+    <span class="project-number" aria-hidden="true">03</span>
+    <div class="meta"><span>03 / AI RESEARCH</span><span>2023–2024</span></div>
+    <h3>Listening to early AI adopters.</h3><p>From the first findings report to a sustained enterprise AI survey-reporting cycle.</p>
+    <div class="tags"><span class="tag">Survey analytics</span><span class="tag">Recurring reporting</span><span class="tag">Research partnership</span></div>
+    <p class="status">Reporting delivered</p>
+    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
+      <div><dt>Question</dt><dd>What do early users tell us about adopting an enterprise AI assistant?</dd></div>
+      <div><dt>My contribution</dt><dd>Co-produced the first findings report as one of two analysts, then owned recurring reporting. Partnered with digital-experience and future-of-work researchers.</dd></div>
+      <div><dt>Outcome</dt><dd>Findings featured in a public workplace-research report and were cited at the company&#39;s annual conference. Maintained recurring and quarterly reporting for the early-access programme.</dd></div>
+    </dl></details></article><article class="project" data-category="customer">
+    <span class="project-number" aria-hidden="true">04</span>
+    <div class="meta"><span>04 / CUSTOMER INSIGHTS</span><span>2024–2025</span></div>
+    <h3>Listening after a product migration.</h3><p>Sole analyst on a mixed-methods study of the customer experience after migration.</p>
+    <div class="tags"><span class="tag">Mixed methods</span><span class="tag">Customer experience</span><span class="tag">Thematic coding</span></div>
+    <p class="status">Study delivered</p>
+    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
+      <div><dt>Question</dt><dd>How did customers experience the migration, and which themes should product teams prioritise?</dd></div>
+      <div><dt>My contribution</dt><dd>Combined quantitative survey analysis with thematic coding of open-text responses, distinguishing recurring themes from individual observations.</dd></div>
+      <div><dt>Outcome</dt><dd>Translated customer feedback into prioritised, actionable recommendations for the teams responsible for the experience.</dd></div>
+    </dl></details></article><article class="project" data-category="content">
+    <span class="project-number" aria-hidden="true">05</span>
+    <div class="meta"><span>05 / CONTENT &amp; GOVERNANCE</span><span>2024–2025</span></div>
+    <h3>Improving a recommended-action library.</h3><p>End-to-end content-library ownership spanning architecture, quality and supplier-content decisions.</p>
+    <div class="tags"><span class="tag">70+ links remediated</span><span class="tag">Information architecture</span><span class="tag">Content evaluation</span></div>
+    <p class="status">Improvements delivered</p>
+    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
+      <div><dt>Question</dt><dd>How can a recommended-action library remain useful, reliable and worth its licensing cost?</dd></div>
+      <div><dt>My contribution</dt><dd>Redesigned its information architecture, remediated 70+ broken or outdated links and evaluated licensed content against performance evidence.</dd></div>
+      <div><dt>Outcome</dt><dd>Retired underperforming content and reduced annual licensing spend while improving the reliability of the library.</dd></div>
+    </dl></details></article><article class="project" data-category="customer">
+    <span class="project-number" aria-hidden="true">06</span>
+    <div class="meta"><span>06 / PRODUCT INSIGHTS</span><span>2024–2025</span></div>
+    <h3>A recurring content insights review.</h3><p>A recurring content insights review adopted by two teams, including product.</p>
+    <div class="tags"><span class="tag">Adopted by 2 teams</span><span class="tag">Data storytelling</span><span class="tag">Recurring insight</span></div>
+    <p class="status">Review adopted</p>
+    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
+      <div><dt>Question</dt><dd>How can fragmented content-performance signals become a useful, shared view?</dd></div>
+      <div><dt>My contribution</dt><dd>Designed and authored a recurring review, consolidating evidence from multiple sources into an accessible narrative for people science and product stakeholders.</dd></div>
+      <div><dt>Outcome</dt><dd>Two teams adopted it as a standing review artefact, giving stakeholders a consistent basis for discussing content performance.</dd></div>
+    </dl></details></article><article class="project" data-category="data">
+    <span class="project-number" aria-hidden="true">07</span>
+    <div class="meta"><span>07 / DATA STRATEGY</span><span>2025</span></div>
+    <h3>Agreeing the right data foundation.</h3><p>A cross-functional assessment of options for unified licence and usage data.</p>
+    <div class="tags"><span class="tag">Options assessment</span><span class="tag">Data quality</span><span class="tag">Privacy partnership</span></div>
+    <p class="status">Approach agreed</p>
+    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
+      <div><dt>Question</dt><dd>Should teams build a new dataset or use an existing source to answer a shared business question?</dd></div>
+      <div><dt>My contribution</dt><dd>Defined the access problem and assessed options against speed, scalability, complexity and compliance. Worked with engineering, product and privacy partners to align on an approach.</dd></div>
+      <div><dt>Outcome</dt><dd>Established an agreed approach and documented the trade-offs for the next phase of work.</dd></div>
+    </dl></details></article><article class="project" data-category="workflow">
+    <span class="project-number" aria-hidden="true">08</span>
+    <div class="meta"><span>08 / ANALYTICAL WORKFLOWS</span><span>2025</span></div>
+    <h3>A better starting point for analysis.</h3><p>A documented, AI-assisted framework for moving from a business question to an analytical plan.</p>
+    <div class="tags"><span class="tag">AI-assisted planning</span><span class="tag">Methodology</span><span class="tag">Reusable workflows</span></div>
+    <p class="status">Framework documented</p>
+    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
+      <div><dt>Question</dt><dd>How can analysis planning be more consistent without losing the judgement each question needs?</dd></div>
+      <div><dt>My contribution</dt><dd>Designed and documented a reusable planning framework, applying it in my own workflow and contributing to a wider effort to standardise analytical practice.</dd></div>
+      <div><dt>Outcome</dt><dd>Created a documented, reusable method for structuring analytical planning.</dd></div>
+    </dl></details></article><article class="project" data-category="content">
+    <span class="project-number" aria-hidden="true">09</span>
+    <div class="meta"><span>09 / CONTENT &amp; GOVERNANCE</span><span>2023</span></div>
+    <h3>Refreshing learning resources and action plans.</h3><p>A full refresh cycle for learning resources and recommended action plans.</p>
+    <div class="tags"><span class="tag">145 resources</span><span class="tag">47 plans revised</span><span class="tag">112 plans cleaned</span></div>
+    <p class="status">Refresh completed</p>
+    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
+      <div><dt>Question</dt><dd>How can a large learning library stay current without leaving obsolete references behind?</dd></div>
+      <div><dt>My contribution</dt><dd>Sourced 145 learning video resources, revised 47 action plans and cleared obsolete references from 112 plans.</dd></div>
+      <div><dt>Outcome</dt><dd>Completed a substantial refresh of the recommended-action library, improving the currency and quality of its resources.</dd></div>
+    </dl></details></article><article class="project" data-category="workflow">
+    <span class="project-number" aria-hidden="true">10</span>
+    <div class="meta"><span>10 / AUTOMATION</span><span>2024</span></div>
+    <h3>Taking the manual work out of audits.</h3><p>Automated validation of content links and video references across a large taxonomy.</p>
+    <div class="tags"><span class="tag">Automation</span><span class="tag">Link validation</span><span class="tag">Dependency removal</span></div>
+    <p class="status">Automation delivered</p>
+    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
+      <div><dt>Question</dt><dd>Can content references be audited without manual checking and an external tooling dependency?</dd></div>
+      <div><dt>My contribution</dt><dd>Designed and built automated link and video-reference checks, including embedded-URL generation.</dd></div>
+      <div><dt>Outcome</dt><dd>Replaced a manual audit process, removed a third-party tooling dependency and eliminated the previous URL-generation volume limit.</dd></div>
+    </dl></details></article><article class="project" data-category="customer">
+    <span class="project-number" aria-hidden="true">11</span>
+    <div class="meta"><span>11 / CUSTOMER RESEARCH</span><span>2024</span></div>
+    <h3>The first customer research engagement.</h3><p>Customer-facing AI adoption analysis that established a programme&#39;s initial delivery pattern.</p>
+    <div class="tags"><span class="tag">AI adoption</span><span class="tag">Customer-facing analysis</span><span class="tag">Research communication</span></div>
+    <p class="status">Engagement delivered</p>
+    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
+      <div><dt>Question</dt><dd>How can enterprise AI research become a useful customer-facing deliverable?</dd></div>
+      <div><dt>My contribution</dt><dd>Analysed the first engagement&#39;s customer-specific data and produced the research output, establishing an analytical pattern for subsequent work.</dd></div>
+      <div><dt>Outcome</dt><dd>Produced the analytical deliverable for the programme&#39;s first customer research engagement.</dd></div>
+    </dl></details></article><article class="project" data-category="data">
+    <span class="project-number" aria-hidden="true">12</span>
+    <div class="meta"><span>12 / PRODUCT ANALYTICS</span><span>2024–2025</span></div>
+    <h3>Exploring what people do next.</h3><p>Product-telemetry exploration and prototype views of how customers act on recommended content.</p>
+    <div class="tags"><span class="tag">KQL</span><span class="tag">Azure Data Explorer</span><span class="tag">Prototype views</span></div>
+    <p class="status">Exploration / prototype</p>
+    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
+      <div><dt>Question</dt><dd>What can product event data tell us about how customers use recommended content?</dd></div>
+      <div><dt>My contribution</dt><dd>Developed KQL capability, investigated event schemas and built exploratory views and prototype dashboards.</dd></div>
+      <div><dt>Outcome</dt><dd>Produced exploratory views and prototype dashboards to assess the feasibility of content-usage analysis.</dd></div>
+    </dl></details></article></div>
+        <div class="contributions"><h3>Beyond the case studies</h3>
+          <details><summary>Measurement &amp; customer analytics</summary><ul><li>Delivered customer analytics requests with customer-facing consultants, from question scoping through analysis and explanation.</li><li>Contributed to customer retention and churn predictive analysis and delivered an unplanned, rapid-turnaround attrition analysis.</li><li>Completed a cross-product analysis feasibility assessment, clarifying data availability and analytical limitations.</li><li>Prototyped a combined employee satisfaction, burnout and favourability view; reviewed a 360-feedback Power BI dashboard for quality and accessibility.</li><li>Contributed analysis to research on the productivity effects of LLM-based tools for enterprise information workers.</li></ul></details><details><summary>Content systems &amp; analytical craft</summary><ul><li>Designed a structured people-success content taxonomy and audited the associated programme templates.</li><li>Refreshed action-plan taxonomies, consolidated overlapping metrics and documented the structure for engineering handover.</li><li>Investigated and remediated data-quality defects in content datasets used for reporting.</li><li>Built a Python notebook-based taxonomy report, replacing manual compilation.</li><li>Partnered with engineering on content deployment and defect resolution, and coordinated upload, testing and release of onboarding content.</li><li>Provided subject-matter input to content-management planning and maintained content ownership through successive platform changes.</li></ul></details><details><summary>Sharing knowledge &amp; working with others</summary><ul><li>Contributed to an organisation-wide AI skilling working group and provided data support to a cross-team hackathon project.</li><li>Won a prize in an internal AI skill-up challenge.</li><li>Authored practical inclusion guidance and delivered internal talks on setting inclusion priorities.</li><li>Served as a team inclusion representative and co-organised a team belonging event.</li><li>Provided analytical support to other functions alongside recurring research work.</li></ul></details>
+        </div>
+      </section>
+      <section id="research" aria-labelledby="research-title">
+        <div class="section-head"><span class="eyebrow">03 / Public research</span><h2 id="research-title">A contribution you can read.</h2></div>
+        <article class="publication"><div>
+          <p class="eyebrow">Chapter 4 co-author / Microsoft People Science / 2025</p>
+          <h3>2025 Agentic Teaming &amp; Trust Research Report</h3><p>Chapter 4: Beyond Tools — Agents as teammates in the next frontier.</p>
+          <a class="button" href="https://techcommunity.microsoft.com/t5/s/gxcuf89792/attachments/gxcuf89792/MicrosoftVivaBlog/1027.2/2/2025%20Agentic%20Teaming%20%26%20Trust%20Research%20Report%20-%20Chapter%204.pdf" target="_blank" rel="noopener noreferrer">Read the public chapter <span aria-hidden="true">↗</span></a>
+        </div><div class="publication-proof"><strong>1,800</strong><p>Business leaders across nine markets in the published study.</p><p>My contribution: co-author of Chapter 4.</p></div></article>
+        <div class="research-notes"><article><h3>Enterprise AI readiness research</h3><p><b>Contributing analyst.</b> Led underlying analysis referenced in an eBook on AI readiness and employee experience.</p></article><article><h3>LLM productivity research</h3><p><b>Contributing analyst.</b> Contributed analysis documented in research on LLM-based tools and enterprise information-worker productivity.</p></article></div>
       </section>
       <section id="experience" aria-labelledby="experience-title">
-        <div class="section-head"><span class="eyebrow">03 / The journey</span><h2 id="experience-title">Different contexts. One through-line.</h2></div>
-        <nav class="timeline" aria-label="Career timeline"><a href="#accenture">2011 / Accenture</a><a href="#telefonica">2012 / Telef&oacute;nica</a><a href="#aib">2014 / AIB</a><a href="#metlife">2015 / MetLife</a><a href="#linkedin">2019 / LinkedIn</a><a href="#microsoft">2022 / Microsoft</a></nav>
-        <article class="job" id="microsoft"><p class="date">Apr 2022 - present</p><div><h3>People Science Analyst</h3><p class="org">Microsoft</p><ul><li>Lead analytical work across enterprise AI readiness and adoption research, including measurement validation and agentic ways of working.</li><li>Translate survey and product evidence into recommendations for research, product and business stakeholders.</li><li>Design reusable AI-assisted analytical planning frameworks and contribute to customer experience and content analytics.</li></ul></div></article>
-        <article class="job" id="linkedin"><p class="date">Oct 2019 - Apr 2022</p><div><h3>Senior People Science Analyst</h3><p class="org">LinkedIn / Glint</p><ul><li>Delivered customer-facing key-driver analyses and recommendations on employee engagement and retention.</li><li>Built data-linkage analyses expressing disengagement and attrition risk as relative-risk leading indicators.</li><li>Validated survey content and engagement-model updates through statistical and psychometric testing.</li></ul></div></article>
-        <article class="job" id="metlife"><p class="date">Sep 2015 - Sep 2019</p><div><h3>Senior HR Metrics Consultant</h3><p class="org">MetLife / Workforce Analytics, EMEA</p><ul><li>Turned business and human-capital questions into decision-ready analytics for leaders across 25 EMEA countries.</li><li>Led the EMEA HR Shared Services customer-satisfaction survey and delivered the regional component of the Global Exit Survey programme.</li></ul></div></article>
-        <article class="job" id="aib"><p class="date">Dec 2014 - Aug 2015</p><div><h3>HR Reward Analyst</h3><p class="org">AIB</p><p>Delivered compensation benchmarking and analytical reporting to inform reward, benefits and pay-equity decisions.</p></div></article>
-        <article class="job" id="telefonica"><p class="date">Jan 2012 - Dec 2014</p><div><h3>HR Data &amp; People Analyst / HR Advisor</h3><p class="org">Telef&oacute;nica Europe</p><ul><li>HR Data &amp; People Analyst, May-Dec 2014: analysed behavioural patterns and survey data to recommend targeted interventions.</li><li>HR Advisor, Jan 2012-May 2014: investigated payroll and HR data-integrity issues and supported organisational-change programmes.</li></ul></div></article>
-        <article class="job" id="accenture"><p class="date">May 2011 - Sep 2011</p><div><h3>HR Senior Analyst</h3><p class="org">Accenture</p><p>Delivered ad hoc workforce analysis and concise executive insights for HR decision support.</p></div></article>
+        <div class="section-head"><span class="eyebrow">04 / Career</span><h2 id="experience-title">A career built around people and evidence.</h2></div>
+        <p class="section-intro">From workforce reporting and HR systems to customer analytics and AI research, the context has changed. The work still begins with understanding the problem and making the evidence useful.</p>
+        <nav class="timeline" aria-label="Career timeline"><a href="#accenture">2011 / Accenture</a><a href="#telefonica">2012 / Telefónica Europe</a><a href="#aib">2014 / AIB</a><a href="#metlife">2015 / MetLife</a><a href="#linkedin">2019 / LinkedIn</a><a href="#microsoft">2022 / Microsoft</a></nav>
+        <article class="job" id="microsoft"><p class="date">Apr 2022 – present</p><div>
+    <h3>People Science Analyst</h3><p class="org">Microsoft / Viva Glint / People Science</p>
+    <p class="scope">Applied research, customer and product analytics, and ownership of an enterprise recommended-action content library.</p><ul><li>Led analysis for enterprise agentic AI readiness and adoption research, applying factor analysis, regression, comparative and descriptive methods across an in-depth report series.</li><li>Led AI readiness measurement validation using EFA, CFA, reliability testing and item analysis; examined associated factors using regression, correlation and relative weight analysis.</li><li>Co-produced the first enterprise AI assistant survey findings report as one of two analysts, then owned recurring reporting. Findings reached a public workplace-research report and the company&#39;s annual conference.</li><li>Served as sole analyst on a post-migration customer experience study, combining quantitative analysis and open-text thematic coding to prioritise recommendations for product teams.</li><li>Modernised a recommended-action content library: redesigned its architecture, fixed 70+ broken or outdated links and used performance evidence to reduce content-licensing spend.</li><li>Created a recurring content insights review adopted by people science and product teams.</li><li>Built reusable R workflows, a Python taxonomy-reporting notebook and automated content-link audits; documented an AI-assisted framework for analytical planning.</li><li>Refreshed recommended actions: sourced 145 learning resources, revised 47 plans and cleared obsolete references from 112 plans.</li><li>Assessed build-versus-leverage options for unified licence and usage data, working with product, engineering and privacy partners to agree an approach.</li><li>Explored product telemetry using KQL and built prototype views; reviewed a 360-feedback Power BI dashboard for quality and accessibility.</li></ul></div></article><article class="job" id="linkedin"><p class="date">Oct 2019 – Apr 2022</p><div>
+    <h3>Senior People Science Analyst</h3><p class="org">LinkedIn / Glint</p>
+    <p class="scope">Customer-facing people analytics, retention insight and survey measurement.</p><ul><li>Delivered key-driver analyses and recommendations to senior customer stakeholders, identifying engagement factors associated with retention.</li><li>Built predictive and linked-data analyses of disengagement and attrition risk, using relative-risk estimates to support customer-facing teams.</li><li>Validated survey-programme content and engagement-model updates through statistical and psychometric testing.</li></ul></div></article><article class="job" id="metlife"><p class="date">Sep 2015 – Sep 2019</p><div>
+    <h3>Senior HR Metrics Consultant</h3><p class="org">MetLife / Workforce Analytics / EMEA</p>
+    <p class="scope">Regional workforce analytics and employee-listening programmes.</p><ul><li>Partnered with senior leaders across 25 EMEA countries, translating workforce and business questions into analysis, reporting and recommendations.</li><li>Led the EMEA HR Shared Services customer-satisfaction survey from design and implementation through analysis, reporting and service-improvement recommendations.</li><li>Delivered the EMEA component of the Global Exit Survey programme, supporting consistent regional insight into attrition drivers.</li></ul></div></article><article class="job" id="aib"><p class="date">Dec 2014 – Aug 2015</p><div>
+    <h3>HR Reward Analyst</h3><p class="org">AIB / Reward</p>
+    <p class="scope">Compensation benchmarking and reward reporting.</p><ul><li>Delivered internal and external salary benchmarking and compensation reporting to inform reward and benefits decisions.</li></ul></div></article><article class="job" id="telefonica"><p class="date">Jan 2012 – Dec 2014</p><div>
+    <h3>HR Data &amp; People Analyst / HR Advisor</h3><p class="org">Telefónica Europe / O2 / European shared services</p>
+    <p class="scope">HR Data &amp; People Analyst, May–Dec 2014; HR Advisor, Jan 2012–May 2014.</p><ul><li>Analysed employee surveys, operational volumes and service performance across European markets; presented quarterly findings to advisors and team leaders.</li><li>Built a repeat-caller model for first-call-resolution analysis and recommended targeted actions based on behavioural profiles.</li><li>Identified allowance-eligibility errors in payroll and HR systems, preventing recurring overpayments; corrected a redundancy-calculation error to restore policy-aligned quotations.</li><li>Co-built an Excel tool for TUPE data collection, coordinated organisational-change data and trained colleagues using practical guidance and question-and-answer sessions.</li></ul></div></article><article class="job" id="accenture"><p class="date">May – Sep 2011</p><div>
+    <h3>HR Senior Analyst</h3><p class="org">Accenture / HR infrastructure</p>
+    <p class="scope">Workforce reporting and shared-services support / temporary contract.</p><ul><li>Delivered absence and salary-comparison analysis, clarified HR reporting needs and supported the transition of services to an external HR shared-services centre.</li></ul></div></article>
+        <details class="early-career"><summary>Earlier foundations / 2006–2011</summary><article class="job" id="dunnes"><p class="date">Aug 2009 – Feb 2011</p><div>
+    <h3>Accounts Administrator</h3><p class="org">Dunnes Stores / Head office</p>
+    <p class="scope">Accounts administration and reporting / temporary contract.</p><ul><li>Processed invoices, resolved supplier queries and produced accounting reports.</li></ul></div></article><article class="job" id="thirdforce"><p class="date">2008 – 2009</p><div>
+    <h3>HR Officer / HR administration</h3><p class="org">ThirdForce / E-learning</p>
+    <p class="scope">HR reporting and operations / temporary contract.</p><ul><li>Produced HR metrics and maintained reporting dashboards; built a recruitment-partner comparison report and an Excel template for year-on-year performance measures.</li><li>Created a digital employee handbook and supported recruitment administration, employee records and induction.</li></ul></div></article><article class="job" id="wyeth"><p class="date">May – Dec 2007</p><div>
+    <h3>HR &amp; Training Administrator</h3><p class="org">Wyeth Pharmaceuticals / SAP implementation</p>
+    <p class="scope">SAP implementation and end-user enablement.</p><ul><li>Coordinated SAP end-user training, developed training plans and delivered training after becoming an APO-PP super-user.</li></ul></div></article><article class="job" id="mapfre"><p class="date">Jul 2006 – May 2007</p><div>
+    <h3>Insurance Administrator</h3><p class="org">Mapfre / Insurance administration</p>
+    <p class="scope">Customer account administration.</p><ul><li>Handled customer account queries, debt collection and repayment arrangements.</li></ul></div></article></details>
       </section>
       <section id="methods" aria-labelledby="methods-title">
-        <div class="section-head"><span class="eyebrow">04 / The toolkit</span><h2 id="methods-title">The craft behind the insight.</h2></div>
-        <div class="methods">
-          <article><h3>Research &amp; measurement</h3><ul><li>Survey design and validation</li><li>Exploratory / confirmatory factor analysis</li><li>Reliability and item analysis</li><li>Regression and relative weight analysis</li><li>Mixed-methods research</li><li>Key-driver and relative-risk analysis</li></ul></article>
-          <article><h3>Analytics &amp; tools</h3><ul><li>R / primary analytical language</li><li>SQL and Python</li><li>KQL / Azure Data Explorer</li><li>Power BI / working knowledge</li><li>Product telemetry exploration</li><li>Reusable analytical workflows</li></ul></article>
-          <article><h3>Business &amp; product</h3><ul><li>AI readiness and adoption insights</li><li>Customer and employee experience</li><li>Stakeholder partnership</li><li>Executive data storytelling</li><li>Analytical question framing</li><li>Research-to-decision translation</li></ul></article>
-        </div>
+        <div class="section-head"><span class="eyebrow">05 / Toolkit</span><h2 id="methods-title">The craft behind the insight.</h2></div>
+        <div class="methods"><article><h3>Research &amp; measurement</h3><ul><li>Survey design and validation</li><li>Exploratory and confirmatory factor analysis</li><li>Reliability testing and item analysis</li><li>Regression, correlation and relative weight analysis</li><li>Mixed methods and thematic coding</li><li>Key-driver and relative-risk analysis</li></ul></article><article><h3>Analytics &amp; tools</h3><ul><li>R / primary analytical language</li><li>SQL, Python and Excel</li><li>KQL / Azure Data Explorer</li><li>Power BI / working knowledge</li><li>Predictive modelling and segmentation</li><li>Reusable code and analytical automation</li></ul></article><article><h3>Business &amp; delivery</h3><ul><li>AI readiness and adoption research</li><li>Customer and employee experience</li><li>Content taxonomy and data quality</li><li>Cross-functional options assessment</li><li>Stakeholder presentations and guidance</li><li>Research-to-decision translation</li></ul></article></div>
       </section>
       <section id="background" aria-labelledby="background-title">
-        <div class="section-head"><span class="eyebrow">05 / The foundations</span><h2 id="background-title">More than one way of thinking.</h2></div>
-        <div class="education">
-          <article><h3>Professional Diploma in Data Analytics</h3><p>University College Dublin</p></article>
-          <article><h3>Higher Diploma in Science in Data Analytics</h3><p>National College of Ireland / First Class Honours</p></article>
-          <article><h3>Licenciatura, Labour &amp; Human Resources</h3><p>Universidad de Valladolid / five-year university degree</p></article>
-          <article><h3>Bachelor of Business Administration (Tourism)</h3><p>Universidad de Salamanca</p></article>
-        </div>
-        <p class="certification">Certification / Microsoft Certified: Azure AI Fundamentals, 2025</p>
+        <div class="section-head"><span class="eyebrow">06 / Background</span><h2 id="background-title">More than one way of thinking.</h2></div>
+        <div class="education"><article><h3>Professional Diploma in Data Analytics</h3><p>University College Dublin / 2018</p></article><article><h3>Higher Diploma in Science in Data Analytics</h3><p>National College of Ireland / 2014 / First Class Honours</p></article><article><h3>Licenciatura, Labour &amp; Human Resources</h3><p>Universidad de Valladolid / 2006 / Five-year university degree</p></article><article><h3>Bachelor of Business Administration (Tourism)</h3><p>Universidad de Salamanca</p></article></div>
+        <p class="certification">Microsoft Certified: Azure AI Fundamentals / 2025</p>
       </section>
-      <div class="closing"><p>The point isn't more data.<br><em>It's a clearer next step.</em></p><a class="button" href="./assets/margarita-bermejo-cano-cv.pdf" download>Take the concise CV <span aria-hidden="true">&#8595;</span></a></div>
-      <footer><span>Margarita Bermejo Cano / Dublin / October 2026</span><span class="folio">PORTFOLIO / EDITION 02</span></footer>
+      <section id="contact" aria-labelledby="contact-title" class="closing">
+        <div><h2 id="contact-title">Let's compare notes.</h2><p>I enjoy conversations about people science, measuring AI adoption, customer insight and making analytical work more useful.</p>
+          <div class="actions"><a class="button" href="https://www.linkedin.com/in/margaritabermejocano/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span></a></div>
+        </div><div class="download-list">
+          <a class="button" href="./assets/margarita-bermejo-cano-cv.pdf" download><span>Concise CV / 2-page PDF</span><span aria-hidden="true">↓</span></a>
+          <a class="button" href="./assets/margarita-bermejo-cano-portfolio-cv.pdf" download><span>Detailed CV / 4-page PDF</span><span aria-hidden="true">↓</span></a>
+          <a class="button" href="./assets/margarita-bermejo-cano-cv-ats.docx" download><span>Application CV / Word</span><span aria-hidden="true">↓</span></a>
+          <button class="button" id="print-button" type="button" hidden>Print the concise CV</button>
+          <p class="download-note">Choose the concise CV, detailed portfolio CV or single-column Word version.</p>
+        </div>
+      </section>
+      <footer><span>Margarita Bermejo Cano / Dublin / October 2026</span><span class="folio">PORTFOLIO / EDITION 03</span></footer>
     </main>
   </div>
-  <div class="print-resume">
-    <section class="resume-page">
+  <div class="print-resume"><div class="cv-document">
+    <section class="cv-page">
       <h1>Margarita Bermejo Cano</h1>
-      <p class="resume-role">People Science Analyst | AI Readiness &amp; Adoption | Customer &amp; Product Insights</p>
-      <p>Dublin, Ireland</p>
-      <h2>Profile</h2>
-      <p>People science and analytics professional with 15+ years translating complex survey, behavioural and workforce data into clear recommendations. Experience across enterprise AI readiness and adoption research, customer and employee experience, psychometrics and reusable analytical workflows. Combines rigorous measurement with practical insights for product and business stakeholders.</p>
-      <h2>Experience</h2>
-      <h3>People Science Analyst | Microsoft <span class="resume-date">/ Apr 2022-present</span></h3>
-      <ul><li>Lead analytical work across enterprise AI readiness and adoption research, including measurement validation and agentic ways of working.</li><li>Translate survey and product evidence into recommendations for research, product and business stakeholders.</li><li>Design reusable AI-assisted analytical planning frameworks; contribute to customer experience and content analytics.</li></ul>
-      <h3>Senior People Science Analyst | LinkedIn / Glint <span class="resume-date">/ Oct 2019-Apr 2022</span></h3>
-      <ul><li>Delivered customer-facing key-driver analyses and recommendations on employee engagement and retention.</li><li>Built data-linkage analyses expressing disengagement and attrition risk as relative-risk leading indicators.</li><li>Validated survey content and engagement-model updates through statistical and psychometric testing.</li></ul>
-      <h3>Senior HR Metrics Consultant | MetLife, EMEA <span class="resume-date">/ Sep 2015-Sep 2019</span></h3>
-      <ul><li>Delivered decision-ready analytics for business and human-capital leaders across 25 EMEA countries.</li><li>Led the EMEA HR Shared Services customer-satisfaction survey and delivered the regional Global Exit Survey programme.</li></ul>
-      <h3>HR Reward Analyst | AIB <span class="resume-date">/ Dec 2014-Aug 2015</span></h3>
-      <p>Compensation benchmarking and reporting to inform reward, benefits and pay-equity decisions.</p>
-      <h3>HR Data &amp; People Analyst / HR Advisor | Telef&oacute;nica Europe <span class="resume-date">/ Jan 2012-Dec 2014</span></h3>
-      <p>HR Data &amp; People Analyst, May-Dec 2014: behavioural and survey analytics. HR Advisor, Jan 2012-May 2014: payroll and HR data-integrity analysis and organisational-change support.</p>
-      <h3>HR Senior Analyst | Accenture <span class="resume-date">/ May 2011-Sep 2011</span></h3>
-      <p>Ad hoc workforce analysis and concise executive insights for HR decision support.</p>
-      <p class="resume-foot">CV / October 2026 / 1 of 2</p>
+      <p class="cv-headline">People Science &amp; Analytics</p>
+      <p>AI Adoption · Customer &amp; Product Insights · Workforce Measurement</p>
+      <p class="cv-contact">Dublin, Ireland · English &amp; Spanish ·
+        <a href="https://www.linkedin.com/in/margaritabermejocano/">linkedin.com/in/margaritabermejocano</a><br>
+        <a href="https://mberca.github.io/cv-margarita/">mberca.github.io/cv-margarita</a></p>
+      <h2>Profile</h2><p>People science and analytics professional with 15+ years across HR, workforce and customer analytics, now focused on employee experience and AI adoption. At Microsoft, I lead analytical work on AI readiness and agentic ways of working; previously, I delivered customer-facing people analytics at LinkedIn Glint and regional workforce insights at MetLife. I combine psychometric validation, predictive and mixed-methods analysis with practical recommendations and reusable workflows in R, SQL and Python.</p>
+      <h2>Methods & tools</h2><div class="cv-skills"><p><b>Analysis:</b> R (primary), SQL, Python, Excel; KQL / Azure Data Explorer; Power BI (working knowledge).</p><p><b>Methods:</b> Survey design; psychometric validation (EFA/CFA, reliability and item analysis); regression; relative weight, key-driver and relative-risk analysis; predictive modelling; mixed methods.</p><p><b>Delivery:</b> Customer and workforce insights; AI adoption research; data quality and taxonomy design; analytical automation; stakeholder presentations and cross-functional partnership.</p></div>
+      <h2>Experience</h2><article><h3>People Science Analyst | Microsoft
+    <span class="cv-date">/ Apr 2022 – present</span></h3>
+
+    <ul><li>Led analysis for enterprise agentic AI readiness and adoption research, applying factor analysis, regression, comparative and descriptive methods across an in-depth report series.</li><li>Led AI readiness measurement validation using EFA, CFA, reliability testing and item analysis; examined associated factors using regression, correlation and relative weight analysis.</li><li>Co-produced the first enterprise AI assistant survey findings report as one of two analysts, then owned recurring reporting. Findings reached a public workplace-research report and the company&#39;s annual conference.</li><li>Served as sole analyst on a post-migration customer experience study, combining quantitative analysis and open-text thematic coding to prioritise recommendations for product teams.</li><li>Modernised a recommended-action content library: redesigned its architecture, fixed 70+ broken or outdated links and used performance evidence to reduce content-licensing spend.</li><li>Created a recurring content insights review adopted by people science and product teams.</li><li>Built reusable R workflows, a Python taxonomy-reporting notebook and automated content-link audits; documented an AI-assisted framework for analytical planning.</li><li>Refreshed recommended actions: sourced 145 learning resources, revised 47 plans and cleared obsolete references from 112 plans.</li></ul></article><article><h3>Senior People Science Analyst | LinkedIn
+    <span class="cv-date">/ Oct 2019 – Apr 2022</span></h3>
+
+    <ul><li>Delivered key-driver analyses and recommendations to senior customer stakeholders, identifying engagement factors associated with retention.</li><li>Built predictive and linked-data analyses of disengagement and attrition risk, using relative-risk estimates to support customer-facing teams.</li><li>Validated survey-programme content and engagement-model updates through statistical and psychometric testing.</li></ul></article>
+      <p class="cv-footer">Margarita Bermejo Cano / October 2026 / 1 of 2</p>
     </section>
-    <section class="resume-page">
-      <h2>Selected analytical contributions</h2>
-      <h3>Agentic AI readiness and adoption research <span class="resume-date">/ 2025</span></h3>
-      <p>Lead analyst across a series of research reports. Applied factor analysis, comparative analysis, regression and descriptive methods to build an evidence base for decisions about agentic readiness and adoption.</p>
-      <h3>Enterprise AI readiness research <span class="resume-date">/ 2023-2024</span></h3>
-      <p>Led measurement validation using exploratory and confirmatory factor analysis, reliability testing and item analysis. Investigated readiness drivers using regression, correlation and relative weight analysis.</p>
-      <h3>AI assistant early-access survey research <span class="resume-date">/ 2023-2024</span></h3>
-      <p>Co-produced the first findings report as one of two analysts, then owned recurring reporting on enterprise AI usage.</p>
-      <h3>Post-migration customer experience analysis <span class="resume-date">/ 2024-2025</span></h3>
-      <p>Sole analyst on the study. Combined quantitative scoring and thematic coding to deliver prioritised, actionable themes for product teams.</p>
-      <h3>AI-assisted analysis planning framework <span class="resume-date">/ 2025</span></h3>
-      <p>Designed and documented a reusable framework for moving from a business question to an analytical plan.</p>
-      <h3>Automated content link and video audit <span class="resume-date">/ 2024</span></h3>
-      <p>Built an audit replacing a manual process, removing an external tooling dependency and a URL-generation volume limit.</p>
-      <h2>Methods &amp; tools</h2>
-      <p><b>Research:</b> survey design and validation; psychometrics; factor analysis; reliability and item analysis; regression; relative weight analysis; mixed methods; key-driver and relative-risk analysis.</p>
-      <p><b>Tools:</b> R (primary); SQL; Python; KQL / Azure Data Explorer; Power BI (working knowledge); reusable AI-assisted analytical workflows.</p>
-      <p><b>Business:</b> AI readiness and adoption; customer and employee experience; analytical question framing; stakeholder partnership; executive data storytelling.</p>
-      <h2>Education &amp; certification</h2>
-      <p><b>Professional Diploma in Data Analytics</b> / University College Dublin</p>
-      <p><b>Higher Diploma in Science in Data Analytics, First Class Honours</b> / National College of Ireland</p>
-      <p><b>Licenciatura, Labour &amp; Human Resources</b> / Universidad de Valladolid (five-year university degree)</p>
-      <p><b>Bachelor of Business Administration (Tourism)</b> / Universidad de Salamanca</p>
-      <p><b>Microsoft Certified: Azure AI Fundamentals</b> / 2025</p>
-      <p class="resume-foot">CV / October 2026 / 2 of 2</p>
-    </section>
-  </div>
+    <section class="cv-page">
+      <h2>Earlier experience</h2><article><h3>Senior HR Metrics Consultant | MetLife
+    <span class="cv-date">/ Sep 2015 – Sep 2019</span></h3>
+
+    <ul><li>Partnered with senior leaders across 25 EMEA countries, translating workforce and business questions into analysis, reporting and recommendations.</li><li>Led the EMEA HR Shared Services customer-satisfaction survey from design and implementation through analysis, reporting and service-improvement recommendations.</li><li>Delivered the EMEA component of the Global Exit Survey programme, supporting consistent regional insight into attrition drivers.</li></ul></article><article><h3>HR Reward Analyst | AIB
+    <span class="cv-date">/ Dec 2014 – Aug 2015</span></h3>
+
+    <ul><li>Delivered internal and external salary benchmarking and compensation reporting to inform reward and benefits decisions.</li></ul></article><article><h3>HR Data &amp; People Analyst / HR Advisor | Telefónica Europe / O2
+    <span class="cv-date">/ Jan 2012 – Dec 2014</span></h3>
+    <p class="cv-scope">HR Data &amp; People Analyst, May–Dec 2014; HR Advisor, Jan 2012–May 2014.</p>
+    <ul><li>Analysed employee surveys, operational volumes and service performance across European markets; presented quarterly findings to advisors and team leaders.</li><li>Built a repeat-caller model for first-call-resolution analysis and recommended targeted actions based on behavioural profiles.</li><li>Identified allowance-eligibility errors in payroll and HR systems, preventing recurring overpayments; corrected a redundancy-calculation error to restore policy-aligned quotations.</li><li>Co-built an Excel tool for TUPE data collection, coordinated organisational-change data and trained colleagues using practical guidance and question-and-answer sessions.</li></ul></article><article><h3>HR Senior Analyst | Accenture
+    <span class="cv-date">/ May – Sep 2011</span></h3>
+
+    <ul><li>Delivered absence and salary-comparison analysis, clarified HR reporting needs and supported the transition of services to an external HR shared-services centre.</li></ul></article><article><h3>HR Officer / HR administration | ThirdForce
+    <span class="cv-date">/ 2008 – 2009</span></h3>
+
+    <ul><li>Produced HR metrics and maintained reporting dashboards; built a recruitment-partner comparison report and an Excel template for year-on-year performance measures.</li></ul></article>
+      <p class="cv-skills">Earlier experience: Dunnes Stores, accounts administration (2009–2011); Wyeth Pharmaceuticals, SAP training coordination and APO-PP super-user enablement (2007); Mapfre, customer account administration (2006–2007).</p>
+      <h2>Public research & analytical contributions</h2>
+      <p><b>Chapter 4 co-author:</b> Beyond Tools — Agents as teammates in the next frontier,
+        in the <a href="https://techcommunity.microsoft.com/t5/s/gxcuf89792/attachments/gxcuf89792/MicrosoftVivaBlog/1027.2/2/2025%20Agentic%20Teaming%20%26%20Trust%20Research%20Report%20-%20Chapter%204.pdf">2025 Agentic Teaming &amp; Trust Research Report</a>,
+        Microsoft People Science, 2025.</p>
+      <p>Contributing analyst on enterprise AI readiness and LLM productivity research.</p>
+      <h2>Education & certification</h2><div class="cv-skills"><p><b>Professional Diploma in Data Analytics</b> / University College Dublin / 2018</p><p><b>Higher Diploma in Science in Data Analytics</b> / National College of Ireland / 2014 / First Class Honours</p><p><b>Licenciatura, Labour &amp; Human Resources</b> / Universidad de Valladolid / 2006 / Five-year university degree</p><p><b>Bachelor of Business Administration (Tourism)</b> / Universidad de Salamanca</p>
+        <p><b>Microsoft Certified: Azure AI Fundamentals / 2025</b></p></div>
+      <h2>Knowledge sharing & inclusion</h2><p class="cv-skills">Contributed to an organisation-wide AI skilling working group; authored practical inclusion guidance and delivered internal talks on inclusion priorities.</p>
+      <p class="cv-footer">Margarita Bermejo Cano / October 2026 / 2 of 2</p>
+    </section></div></div>
   <script>
     const themeButton = document.querySelector("#theme-toggle");
     function updateThemeLabel() {
       const dark = document.documentElement.getAttribute("data-theme") === "dark";
-      themeButton.textContent = dark ? "Switch to light" : "Switch to dark";
+      themeButton.textContent = dark ? "Light theme" : "Dark theme";
       themeButton.setAttribute("aria-label", dark ? "Switch to light colour theme" : "Switch to dark colour theme");
     }
-    updateThemeLabel();
-    themeButton.hidden = false;
+    updateThemeLabel(); themeButton.hidden = false;
     themeButton.addEventListener("click", () => {
       document.documentElement.setAttribute("data-theme", document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
       updateThemeLabel();
     });
     const printButton = document.querySelector("#print-button");
-    printButton.hidden = false;
-    printButton.addEventListener("click", () => window.print());
+    printButton.hidden = false; printButton.addEventListener("click", () => window.print());
     const lensGroup = document.querySelector("#lens-controls");
     const lensButtons = [...lensGroup.querySelectorAll("button")];
     const lensCaptions = {
-      people: "People / Understand experience through survey science, psychometrics and customer insight.",
-      ai: "AI / Explore readiness, adoption and how people experience new ways of working.",
-      products: "Products / Translate customer feedback and product evidence into actionable priorities."
+      people: "People / Understand experience through survey science, psychometrics and workforce insight.",
+      ai: "AI / Research readiness, adoption and how people experience new ways of working.",
+      products: "Products / Translate customer feedback and product evidence into practical priorities."
     };
     lensGroup.hidden = false;
-    lensButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        lensButtons.forEach(lens => lens.setAttribute("aria-pressed", String(lens === button)));
-        document.querySelector(".evidence-map").dataset.lens = button.dataset.lens;
-        document.querySelector("#lens-caption").textContent = lensCaptions[button.dataset.lens];
-      });
-    });
+    lensButtons.forEach(button => button.addEventListener("click", () => {
+      lensButtons.forEach(lens => lens.setAttribute("aria-pressed", String(lens === button)));
+      document.querySelector(".evidence-map").dataset.lens = button.dataset.lens;
+      document.querySelector("#lens-caption").textContent = lensCaptions[button.dataset.lens];
+    }));
     const filterGroup = document.querySelector("#project-filters");
     const filters = [...filterGroup.querySelectorAll("button")];
     const projects = [...document.querySelectorAll(".project")];
     filterGroup.hidden = false;
-    filters.forEach(button => {
-      button.addEventListener("click", () => {
-        filters.forEach(filter => filter.setAttribute("aria-pressed", String(filter === button)));
-        let count = 0;
-        projects.forEach(project => {
-          project.hidden = button.dataset.filter !== "all" && project.dataset.category !== button.dataset.filter;
-          if (!project.hidden) count++;
-        });
-        document.querySelector("#project-count").textContent = `Showing ${count} ${count === 1 ? "project" : "projects"}`;
+    filters.forEach(button => button.addEventListener("click", () => {
+      filters.forEach(filter => filter.setAttribute("aria-pressed", String(filter === button)));
+      let count = 0;
+      projects.forEach(project => {
+        project.hidden = button.dataset.filter !== "all" && project.dataset.category !== button.dataset.filter;
+        if (!project.hidden) count++;
       });
-    });
+      document.querySelector("#project-count").textContent = `Showing ${count} ${count === 1 ? "project" : "projects"}`;
+    }));
   </script>
 </body>
 </html>

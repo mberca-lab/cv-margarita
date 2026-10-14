@@ -1,0 +1,13 @@
+{
+  "name": "margarita-career-portfolio",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Static career portfolio and accessible CV downloads.",
+  "scripts": {
+    "build": "node build.cjs",
+    "render": "python render_cv.py"
+  },
+  "dependencies": {
+    "docx": "^9.5.1"
+  }
+}
