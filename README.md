@@ -24,9 +24,26 @@ The selected-work collection spans Microsoft, LinkedIn Glint, MetLife and
 Telefónica. Keep it curated around delivered research, analytical workstreams
 and measurement programmes, not routine activity counts. The three opening
 evidence links are sourced from `highlights` in `assets/portfolio.json`.
-The detailed CV divides the selected cases evenly across its two appendix
-pages. Methods and tools follow Microsoft and LinkedIn achievements in the
-concise CV rather than displacing the experience from the opening page.
+The detailed CV expands six leading cases with their question, contribution,
+output and, where supported, analytical approach and interpretation. The two
+remaining cases form a compact supporting-work section. Public evidence links
+appear beside the relevant cases. Keep delivered recommendations distinct from
+adopted changes or measured effects; do not add methods or decisions without
+source support.
+
+Methods and tools follow Microsoft and LinkedIn achievements in the concise CV.
+MetLife remains in the main experience sequence; the five pre-2012 employers
+form a reverse-chronological earlier-career block. `cvBullets` and `cvSummary`
+allow concise editing without removing the full website history.
+
+PDF export requests document tags and an outline; the Word CV declares its
+language and uses section headings above role headings. These features and
+selectable text do not by themselves establish accessibility conformance or
+compatibility with every ATS.
+
+```powershell
+npm run test:cv
+```
 
 ## Theme options
 
@@ -55,3 +72,9 @@ personal contribution from research scope and wider outcomes.
 Only LinkedIn is used for public contact. Research links point to public
 publications. Full-report co-author credit is verified against the report's
 cover-page author list and is distinct from sole authorship or study ownership.
+The 2023 LLM productivity report also verifies named co-authorship. Keep the
+AI-readiness eBook at contributing-analyst credit unless personal authorship is
+independently established. Research IDs connect cases to their public evidence.
+All three publications have individual links in the research section and in
+the PDF and Word CV downloads. The post-migration customer case is explicitly
+labelled as NPS analysis.

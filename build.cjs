@@ -13,7 +13,8 @@ const escape = value => String(value).replace(/[&<>"']/g, char => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
 }[char]));
 const list = items => `<ul>${items.map(item => `<li>${escape(item)}</li>`).join("")}</ul>`;
-const cvPageTwoJobs = [2, 3, 4, 5, 7].map(index => data.experience[index]);
+const cvPageTwoJobs = data.experience.slice(2, 5);
+const cvEarlierJobs = data.experience.slice(5);
 const themeStyle = template.match(/:root \{[\s\S]*?\n    \* \{/)[0].replace(/\n    \* \{$/, "");
 const themeScript = template.match(/<script>[\s\S]*?<\/script>/)[0];
 
@@ -28,13 +29,14 @@ const cvStyles = `
     .cv-document p { margin: 4px 0; }
     .cv-document ul { margin: 4px 0 8px; padding-left: 16px; }
     .cv-document li { margin: 4px 0; }
-    .cv-document .cv-date { font-size: 9pt; font-weight: 400; color: var(--cp-text-muted); }
-    .cv-document .cv-scope { font-size: 9.5pt; color: var(--cp-text-muted); margin: 2px 0 4px; }
-    .cv-document .cv-skills { font-size: 9.5pt; }
+    .cv-document .cv-date { font-size: 9.5pt; font-weight: 400; color: var(--cp-text-muted); }
+    .cv-document .cv-scope { font-size: 10pt; color: var(--cp-text-muted); margin: 2px 0 4px; }
+    .cv-document .cv-skills { font-size: 10pt; }
     .cv-document .cv-footer { font-size: 8.5pt; color: var(--cp-text-muted); margin-top: 14px; border-top: 1px solid var(--cp-border); padding-top: 6px; }
     .cv-document .cv-project { break-inside: avoid; margin: 0 0 12px; }
     .cv-document .cv-project h3 { margin-top: 12px; }
     .cv-document .cv-project p { margin: 4px 0; }
+    .cv-document .cv-supporting { font-size: 10pt; }
     .cv-document a { color: inherit; text-underline-offset: 3px; }
     @page { size: A4; margin: 14mm; }
     @media print {
@@ -50,7 +52,23 @@ function cvJob(job) {
   return `<article><h3>${escape(job.title)} | ${escape(job.employer)}
     <span class="cv-date">/ ${escape(job.dates)}</span></h3>
     ${job.id === "telefonica" ? `<p class="cv-scope">${escape(job.scope)}</p>` : ""}
-    ${list(job.bullets)}</article>`;
+    ${list(job.cvBullets || job.bullets)}</article>`;
+}
+
+function researchLinks(project) {
+  return (project.researchIds || []).map(id => data.research.find(research => research.id === id));
+}
+
+function cvProject(project) {
+  return `<article class="cv-project"><h3>${escape(project.title)} <span class="cv-date">/ ${escape(project.dates)}</span></h3>
+    <p class="cv-scope">${escape(project.employer)} · ${escape(project.status)}</p>
+    <p><b>Question:</b> ${escape(project.question)}</p>
+    <p><b>My contribution:</b> ${escape(project.contribution)}</p>
+    ${project.approach ? `<p><b>Approach:</b> ${escape(project.approach)}</p>` : ""}
+    <p><b>Output:</b> ${escape(project.outcome)}</p>
+    ${project.interpretation ? `<p><b>Interpretation:</b> ${escape(project.interpretation)}</p>` : ""}
+    ${researchLinks(project).map(research => `<p><a href="${escape(research.url)}">${escape(research.linkLabel || "Read the public report")}</a></p>`).join("")}
+    </article>`;
 }
 
 function cvMarkup(extended = false) {
@@ -72,26 +90,30 @@ function cvMarkup(extended = false) {
       ${footer(1)}
     </section>
     <section class="cv-page">
-      <h2>Earlier experience</h2>${cvPageTwoJobs.map(cvJob).join("")}
-      <p class="cv-skills">${escape(data.cvEarlier)}</p>
+      <h2>Experience / continued</h2>${cvPageTwoJobs.map(cvJob).join("")}
+      <h2>Earlier career</h2><div class="cv-skills">${cvEarlierJobs.map(job =>
+        `<p><b>${escape(job.employer)} / ${escape(job.title)}</b> / ${escape(job.dates)}. ${escape(job.cvSummary)}</p>`).join("")}</div>
       <h2>Public research & analytical contributions</h2>
-      <p><b>Co-author:</b> <a href="${escape(data.research[0].url)}">${escape(data.research[0].title)}</a>
-        (Microsoft People Science). ${escape(data.research[0].scope)}</p>
-      <p>Contributing analyst on enterprise AI readiness and LLM productivity research.</p>
+      ${data.research.map(research => `<p><b>${escape(research.role.split(" / ")[0])}:</b>
+        <a href="${escape(research.url)}">${escape(research.title)}</a> (${escape(research.year)}).</p>`).join("")}
       <h2>Education & certification</h2><div class="cv-skills">${education}
         <p><b>${escape(data.certifications[0])}</b></p></div>
       <h2>Knowledge sharing & inclusion</h2><p class="cv-skills">${escape(data.community)}</p>
       ${footer(2)}
     </section>`;
   if (extended) {
-    const perPage = Math.ceil(data.projects.length / 2);
-    for (let page = 0; page < 2; page++) {
+    const selected = data.projects.filter(project => !project.supporting);
+    const supporting = data.projects.filter(project => project.supporting);
+    for (const [page, projects] of [selected.slice(0, 4), selected.slice(4)].entries()) {
       markup += `<section class="cv-page"><h2>Selected research, analytics &amp; measurement / ${page + 1}</h2>`;
-      for (const project of data.projects.slice(page * perPage, (page + 1) * perPage)) {
-        markup += `<article class="cv-project"><h3>${escape(project.title)} <span class="cv-date">/ ${escape(project.dates)}</span></h3>
-          <p class="cv-scope">${escape(project.employer)} · ${escape(project.status)}</p>
-          <p><b>Contribution:</b> ${escape(project.contribution)}</p>
-          <p><b>Outcome:</b> ${escape(project.outcome)}</p></article>`;
+      markup += projects.map(cvProject).join("");
+      if (page === 1 && supporting.length) {
+        markup += `<h2>Supporting measurement &amp; earlier analysis</h2><div class="cv-supporting">`;
+        for (const project of supporting) {
+          markup += `<article class="cv-project"><h3>${escape(project.title)} <span class="cv-date">/ ${escape(project.employer)} / ${escape(project.dates)}</span></h3>
+            <p>${escape(project.contribution)}</p><p><b>Output:</b> ${escape(project.outcome)}</p></article>`;
+        }
+        markup += "</div>";
       }
       markup += `${footer(page + 3)}</section>`;
     }
@@ -105,14 +127,15 @@ function projectMarkup(project) {
     <div class="meta"><span>${escape(project.number)} / ${escape(project.categoryLabel.toUpperCase())}</span><span>${escape(project.dates)}</span></div>
     <p class="project-employer">${escape(project.employer)}</p>
     <h3>${escape(project.title)}</h3><p>${escape(project.summary)}</p>
-    <p class="project-result"><b>Delivered:</b> ${escape(project.outcome)}</p>
-    ${project.publication ? `<p class="project-link"><a href="${escape(data.research[0].url)}" target="_blank" rel="noopener noreferrer">Read the full research report <span aria-hidden="true">↗</span></a></p>` : ""}
+    <p class="project-result"><b>Output:</b> ${escape(project.outcome)}</p>
+    ${researchLinks(project).map(research => `<p class="project-link"><a href="${escape(research.url)}" target="_blank" rel="noopener noreferrer">${escape(research.linkLabel || "Read the full research report")} <span aria-hidden="true">↗</span></a></p>`).join("")}
     <div class="tags">${project.tags.map(tag => `<span class="tag">${escape(tag)}</span>`).join("")}</div>
     <p class="status">${escape(project.status)}</p>
-    <details><summary>Question, contribution &amp; outcome</summary><dl class="case">
+    <details><summary>${project.interpretation ? "Question, contribution &amp; interpretation" : "Question &amp; contribution"}</summary><dl class="case">
       <div><dt>Question</dt><dd>${escape(project.question)}</dd></div>
       <div><dt>My contribution</dt><dd>${escape(project.contribution)}</dd></div>
-      <div><dt>Outcome</dt><dd>${escape(project.outcome)}</dd></div>
+      ${project.approach ? `<div><dt>Analytical approach</dt><dd>${escape(project.approach)}</dd></div>` : ""}
+      ${project.interpretation ? `<div><dt>Interpretation</dt><dd>${escape(project.interpretation)}</dd></div>` : ""}
     </dl></details></article>`;
 }
 
@@ -174,7 +197,7 @@ function siteMarkup() {
       </div>
       <section id="work" aria-labelledby="work-title">
         ${heading("work-title", "01", "Selected work", "Research, analytics &amp; measurement.")}
-        <p class="section-intro">${data.projects.length} selected studies, analytical workstreams and measurement programmes across Microsoft, LinkedIn Glint, MetLife and Telefónica. Each separates my contribution from the wider outcome; confidential findings and customer details are omitted.</p>
+        <p class="section-intro">${data.projects.length} selected studies, analytical workstreams and measurement programmes across Microsoft, LinkedIn Glint, MetLife and Telefónica. Leading examples are followed by supporting measurement and earlier analysis. Each distinguishes my contribution, delivered output and interpretation; confidential findings and customer details are omitted.</p>
         <div class="filters" id="project-filters" role="group" aria-label="Filter selected work" hidden>
           ${[["all", "All work"], ["research", "AI research"], ["customer", "Customer analytics"], ["workforce", "Workforce & measurement"]].map(([value, label]) => `<button class="filter" type="button" data-filter="${value}" aria-pressed="${value === "all"}">${escape(label)}</button>`).join("")}
         </div>
@@ -185,13 +208,13 @@ function siteMarkup() {
         </div>
       </section>
       <section id="research" aria-labelledby="research-title">
-        ${heading("research-title", "02", "Public research", "A contribution you can read.")}
+        ${heading("research-title", "02", "Public research", "Three publications. Shared contributions.")}
         <article class="publication"><div>
           <p class="eyebrow">${escape(publication.role)} / ${escape(publication.publisher)} / ${escape(publication.year)}</p>
           <h3>${escape(publication.title)}</h3><p>${escape(publication.detail)}</p>
           <a class="button" href="${escape(publication.url)}" target="_blank" rel="noopener noreferrer">Read the full report <span aria-hidden="true">↗</span></a>
         </div><div class="publication-proof"><strong>1,800</strong><p>Full-time employees across nine markets in the published study.</p><p>${escape(publication.scope)}</p><p>${escape(publication.credit)}</p></div></article>
-        <div class="research-notes">${data.research.slice(1).map(research => `<article><h3>${escape(research.title)}</h3><p><b>${escape(research.role)}.</b> ${escape(research.detail)}</p>
+        <div class="research-notes">${data.research.slice(1).map(research => `<article><h3>${escape(research.title)}</h3><p><b>${escape(research.role)} / ${escape(research.year)}.</b> ${escape(research.detail)}</p>
           <a class="button" href="${escape(research.url)}" target="_blank" rel="noopener noreferrer">${escape(research.linkLabel)} <span aria-hidden="true">↗</span></a></article>`).join("")}</div>
       </section>
       <section id="experience" aria-labelledby="experience-title">
@@ -299,7 +322,7 @@ function docxCv(designed) {
   const accent = designed ? "B11F4B" : "242424";
   const text = (value, options = {}) => new TextRun({ text: value, ...options });
   const paragraph = (value, options = {}) => new Paragraph({ children: [text(value)], ...options });
-  const heading = value => paragraph(value, { heading: HeadingLevel.HEADING_2 });
+  const heading = value => paragraph(value, { heading: HeadingLevel.HEADING_1 });
   const hyperlink = (label, link) => new ExternalHyperlink({
     link, children: [new TextRun({ text: label, color: accent, underline: {} })]
   });
@@ -314,26 +337,31 @@ function docxCv(designed) {
     heading("Profile"), paragraph(data.summary), heading("Experience")
   ];
   function addJob(job) {
-    children.push(paragraph(`${job.title} | ${job.employer}`, { heading: HeadingLevel.HEADING_3 }));
+    children.push(paragraph(`${job.title} | ${job.employer}`, { heading: HeadingLevel.HEADING_2 }));
     children.push(paragraph(`${job.dates} | ${job.location}`, { style: "CVContact" }));
     if (job.id === "telefonica") children.push(paragraph(job.scope, { style: "CVSmall" }));
-    children.push(...job.bullets.map(value => paragraph(value, { numbering: { reference: "bullets", level: 0 } })));
+    children.push(...(job.cvBullets || job.bullets).map(value => paragraph(value, { numbering: { reference: "bullets", level: 0 } })));
   }
   addJob(data.experience[0]); addJob(data.experience[1]);
   children.push(heading("Methods & tools"));
   children.push(...data.cvSkills.map(([name, detail]) => new Paragraph({
     style: "CVSmall", children: [text(`${name}: `, { bold: true }), text(detail)]
   })));
-  children.push(paragraph("Earlier experience", { heading: HeadingLevel.HEADING_2, pageBreakBefore: true }));
+  children.push(paragraph("Experience / continued", { heading: HeadingLevel.HEADING_1, pageBreakBefore: true }));
   cvPageTwoJobs.forEach(addJob);
-  children.push(paragraph(data.cvEarlier, { style: "CVSmall" }));
+  children.push(heading("Earlier career"));
+  children.push(...cvEarlierJobs.map(job => new Paragraph({
+    style: "CVSmall", children: [
+      text(`${job.employer} | ${job.title}`, { bold: true }),
+      text(` | ${job.dates}. ${job.cvSummary}`)
+    ]
+  })));
   children.push(heading("Public research & analytical contributions"));
-  children.push(new Paragraph({ children: [
-    text("Co-author: ", { bold: true }),
-    hyperlink(data.research[0].title, data.research[0].url),
-    text(` (Microsoft People Science). ${data.research[0].scope}`)
-  ] }));
-  children.push(paragraph("Contributing analyst on enterprise AI readiness and LLM productivity research."));
+  children.push(...data.research.map(research => new Paragraph({ children: [
+    text(`${research.role.split(" / ")[0]}: `, { bold: true }),
+    hyperlink(research.title, research.url),
+    text(` (${research.year}).`)
+  ] })));
   children.push(heading("Education & certification"));
   children.push(...data.education.map(([degree, institution, detail]) =>
     new Paragraph({ style: "CVSmall", children: [
@@ -348,7 +376,7 @@ function docxCv(designed) {
     styles: {
       default: {
         document: {
-          run: { font: "Arial", size: 21, color: "242424" },
+          run: { font: "Arial", size: 21, color: "242424", language: { value: "en-IE" } },
           paragraph: { spacing: { after: 70, line: 265 } }
         }
       },
@@ -356,18 +384,18 @@ function docxCv(designed) {
         { id: "Title", name: "Title", basedOn: "Normal", next: "Normal",
           run: { font: designed ? "Georgia" : "Arial", size: 48, color: accent },
           paragraph: { spacing: { after: 110 }, keepNext: true } },
-        { id: "Heading2", name: "Heading 2", basedOn: "Normal", next: "Normal", quickFormat: true,
+        { id: "Heading1", name: "Heading 1", basedOn: "Normal", next: "Normal", quickFormat: true,
           run: { bold: true, size: 23, color: accent },
-          paragraph: { spacing: { before: 150, after: 60 }, keepNext: true, outlineLevel: 1 } },
-        { id: "Heading3", name: "Heading 3", basedOn: "Normal", next: "Normal", quickFormat: true,
+          paragraph: { spacing: { before: 150, after: 60 }, keepNext: true, outlineLevel: 0 } },
+        { id: "Heading2", name: "Heading 2", basedOn: "Normal", next: "Normal", quickFormat: true,
           run: { bold: true, size: 21 },
-          paragraph: { spacing: { before: 120, after: 20 }, keepNext: true, outlineLevel: 2 } },
+          paragraph: { spacing: { before: 120, after: 20 }, keepNext: true, outlineLevel: 1 } },
         { id: "CVHeadline", name: "CV Headline", basedOn: "Normal",
           run: { bold: true, size: 24, color: accent }, paragraph: { spacing: { after: 60 }, keepNext: true } },
         { id: "CVContact", name: "CV Contact", basedOn: "Normal",
-          run: { size: 18, color: "5C5C5C" }, paragraph: { spacing: { after: 50 }, keepNext: true } },
+          run: { size: 19, color: "5C5C5C" }, paragraph: { spacing: { after: 50 }, keepNext: true } },
         { id: "CVSmall", name: "CV Small", basedOn: "Normal",
-          run: { size: 19 }, paragraph: { spacing: { after: 55, line: 240 } } }
+          run: { size: 20 }, paragraph: { spacing: { after: 55, line: 240 } } }
       ]
     },
     numbering: {
@@ -397,7 +425,9 @@ function docxCv(designed) {
 
 async function main() {
   if (!data.projects.length || data.experience.length !== 10 ||
-      data.projects.some(project => !project.id || !project.employer || !project.category) ||
+      data.projects.some(project => !project.id || !project.employer || !project.category ||
+        (project.researchIds || []).some(id => !data.research.some(research => research.id === id))) ||
+      cvEarlierJobs.some(job => !job.cvSummary) ||
       new Set(data.projects.map(project => project.id)).size !== data.projects.length) {
     throw new Error("Unexpected portfolio structure or missing project identity");
   }

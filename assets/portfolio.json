@@ -7,18 +7,18 @@
   "linkedin": "https://www.linkedin.com/in/margaritabermejocano/",
   "website": "https://mberca.github.io/cv-margarita/",
   "edition": "October 2026",
-  "summary": "People science and analytics professional with a career spanning HR operations, regional workforce insight and customer-facing research. At Microsoft, I lead analytical work on AI readiness and human–agent teaming and co-authored the full 2025 Agentic Teaming & Trust Research Report. Previously, I delivered engagement-driver and attrition-risk analyses at LinkedIn Glint, supported leaders across 25 EMEA countries and led shared-services customer-satisfaction measurement at MetLife. I connect reliable survey measurement and predictive analysis with practical recommendations for customers, product teams and workforce decisions.",
+  "summary": "People science and analytics practitioner combining survey measurement, customer-facing insight and applied AI-adoption research. At Microsoft, I lead analytical work on AI readiness and human–agent teaming. Earlier work spans engagement and attrition analysis at LinkedIn Glint and end-to-end regional survey programmes at MetLife. I translate workforce and customer evidence into clear recommendations.",
   "heroIntro": "I turn employee feedback, customer evidence and workforce data into clear recommendations. My work spans AI adoption research at Microsoft, customer-facing people analytics at LinkedIn Glint and international measurement programmes at MetLife.",
   "highlights": [
     {
       "title": "Published AI research",
-      "text": "Co-author of the full 2025 Agentic Teaming & Trust Research Report; lead analyst on the wider research programme.",
-      "context": "Microsoft / full-report co-author",
+      "text": "Co-author of public reports on agentic teaming and LLM productivity; lead analyst on the wider agentic research programme.",
+      "context": "Microsoft / verified publication credits",
       "href": "#research"
     },
     {
       "title": "Customer-facing retention insight",
-      "text": "Engagement-driver and predictive attrition-risk analysis, translated into recommendations for senior customer stakeholders.",
+      "text": "Engagement-driver, linked-data and attrition-risk analysis, explained to customer-facing teams and senior customer stakeholders.",
       "context": "LinkedIn Glint / 2019–2022",
       "href": "#case-linkedin-retention"
     },
@@ -32,11 +32,11 @@
   "skills": [
     {
       "title": "Research & measurement",
-      "items": ["Survey design and validation", "Exploratory and confirmatory factor analysis", "Reliability testing and item analysis", "Regression, correlation and relative weight analysis", "Quantitative and qualitative survey analysis", "Key-driver and relative-risk analysis"]
+      "items": ["Survey design and measurement testing", "Exploratory and confirmatory factor analysis", "Reliability testing and item analysis", "Regression, correlation and relative weight analysis", "Quantitative and qualitative survey analysis", "Key-driver and relative-risk analysis"]
     },
     {
       "title": "Analytics & tools",
-      "items": ["R / primary analytical language", "SQL, Python and Excel", "KQL / Azure Data Explorer", "Power BI / working knowledge", "Predictive modelling and segmentation", "Reusable code and analytical automation"]
+      "items": ["R / primary analytical language", "SQL, Python and Excel", "KQL / Azure Data Explorer", "Power BI / working knowledge", "Linked-data and attrition-risk analysis", "Reusable code and analytical automation"]
     },
     {
       "title": "Business & delivery",
@@ -45,7 +45,7 @@
   ],
   "cvSkills": [
     ["Analysis", "R (primary), SQL, Python, Excel; KQL / Azure Data Explorer; Power BI (working knowledge)."],
-    ["Methods", "Survey design; psychometric validation (EFA/CFA, reliability and item analysis); regression; relative weight, key-driver and relative-risk analysis; predictive modelling; mixed methods."],
+    ["Methods", "Survey design; measurement structure, reliability and item testing (EFA/CFA); regression; relative weight, key-driver and relative-risk analysis; quantitative and qualitative survey analysis."],
     ["Delivery", "Customer and workforce insights; AI adoption research; data quality and taxonomy design; analytical automation; stakeholder presentations and cross-functional partnership."]
   ],
   "experience": [
@@ -59,13 +59,12 @@
       "scope": "Applied AI research, survey measurement and customer-facing analytical delivery.",
       "bullets": [
         "Led analytical work across an enterprise agentic AI readiness and adoption research programme; co-authored the full 2025 Agentic Teaming & Trust Research Report.",
-        "Led organisational AI-readiness survey validation, testing measurement structure and reliability before examining associated factors. Analysis contributed to The State of AI Change Readiness eBook.",
+        "Led organisational AI-readiness measurement testing, examining survey structure, reliability and items before analysing associated factors. Analysis contributed to The state of AI change readiness eBook.",
         "Co-produced the first early-access AI assistant survey findings report as one of two analysts, then sustained recurring reporting. Findings featured in public workplace research and conference presentations.",
-        "Led analytical work on a post-migration customer-experience study, using segment scoring, satisfaction-driver and correlation analysis to deliver prioritised recommendations for product teams.",
-        "Built reusable R workflows for recurring research and documented an AI-assisted framework for analytical planning."
+        "Led analysis of a post-migration NPS survey, comparing customer groups and satisfaction-driver patterns to prioritise recommendations for product teams.",
+        "Reused and extended R analysis code for recurring research; separately documented prompts and context templates for AI-assisted analytical planning."
       ],
       "additional": [
-        "Delivered the initial customer-facing analysis for an enterprise AI research programme and partnered with consultants on customer analytics requests.",
         "Helped modernise a recommended-action library, using performance analysis to inform licensing decisions, improve its architecture and coordinate content-quality fixes.",
         "Assessed build-versus-leverage options for licence and usage data, aligning product, engineering and privacy partners on requirements and trade-offs.",
         "Explored product telemetry using KQL and produced draft views; reviewed a 360-feedback Power BI dashboard for quality and accessibility."
@@ -81,8 +80,8 @@
       "scope": "Customer-facing people analytics, retention insight and survey measurement.",
       "bullets": [
         "Delivered key-driver analyses and recommendations to senior customer stakeholders, identifying engagement factors associated with retention.",
-        "Built predictive and linked-data analyses of disengagement and attrition risk, using relative-risk estimates to support customer-facing teams.",
-        "Validated survey-programme content and engagement-model updates through statistical and psychometric testing."
+        "Linked survey and behavioural data to examine disengagement and attrition risk, using relative-risk estimates to support customer-facing teams.",
+        "Tested survey-programme content and engagement-model updates using statistical and psychometric methods."
       ]
     },
     {
@@ -96,7 +95,7 @@
       "bullets": [
         "Led the EMEA HR Shared Services customer-satisfaction survey from requirements and design through implementation, analysis, reporting and service-improvement recommendations.",
         "Partnered with senior leaders across 25 EMEA countries, translating workforce and business questions into analysis, reporting and recommendations.",
-        "Delivered the EMEA component of the Global Exit Survey programme, supporting consistent regional insight into attrition drivers."
+        "Delivered the EMEA component of the Global Exit Survey programme, supporting standardised regional reporting on employees' reported reasons for leaving."
       ]
     },
     {
@@ -124,6 +123,10 @@
         "Identified allowance-eligibility errors in payroll and HR systems, preventing recurring overpayments; corrected a redundancy-calculation error to restore policy-aligned quotations.",
         "Analysed employee surveys and service performance across European markets; presented quarterly findings to advisors and team leaders.",
         "Co-built an Excel tool for TUPE data collection, coordinated organisational-change data and trained colleagues using practical guidance and question-and-answer sessions."
+      ],
+      "cvBullets": [
+        "Built repeat-caller profiles for first-call-resolution analysis; analysed employee surveys and service performance and presented findings to operational teams.",
+        "Identified payroll-eligibility and redundancy-calculation errors; co-built an Excel tool for TUPE data collection and supported colleagues through practical guidance."
       ]
     },
     {
@@ -134,6 +137,7 @@
       "dates": "May – Sep 2011",
       "location": "Dublin, Ireland",
       "scope": "Workforce reporting and shared-services support / temporary contract.",
+      "cvSummary": "Absence and salary-comparison analysis; shared-services transition support.",
       "bullets": [
         "Delivered absence and salary-comparison analysis, clarified HR reporting needs and supported the transition of services to an external HR shared-services centre."
       ]
@@ -146,6 +150,7 @@
       "dates": "Aug 2009 – Feb 2011",
       "location": "Dublin, Ireland",
       "scope": "Accounts administration and reporting / temporary contract.",
+      "cvSummary": "Invoice processing, supplier queries and accounting reports.",
       "bullets": [
         "Processed invoices, resolved supplier queries and produced accounting reports."
       ]
@@ -158,6 +163,7 @@
       "dates": "2008 – 2009",
       "location": "Dublin, Ireland",
       "scope": "HR reporting and operations / temporary contract.",
+      "cvSummary": "Recruitment-partner comparisons and year-on-year HR reporting.",
       "bullets": [
         "Produced HR metrics and maintained reporting dashboards; built a recruitment-partner comparison report and an Excel template for year-on-year performance measures."
       ],
@@ -173,6 +179,7 @@
       "dates": "May – Dec 2007",
       "location": "Madrid, Spain",
       "scope": "SAP implementation and end-user enablement.",
+      "cvSummary": "SAP training coordination and APO-PP super-user enablement.",
       "bullets": [
         "Coordinated SAP end-user training, developed training plans and delivered training after becoming an APO-PP super-user."
       ]
@@ -185,6 +192,7 @@
       "dates": "Jul 2006 – May 2007",
       "location": "Valladolid, Spain",
       "scope": "Customer account administration.",
+      "cvSummary": "Customer account queries and repayment arrangements.",
       "bullets": [
         "Handled customer account queries, debt collection and repayment arrangements."
       ]
@@ -201,11 +209,12 @@
       "title": "Agentic AI readiness, teaming & trust",
       "summary": "Lead analyst on an enterprise research programme and co-author of the full four-chapter public report.",
       "question": "What evidence helps organisations understand readiness for and adoption of agentic ways of working?",
-      "contribution": "Led the analytical work across an in-depth report series, using exploratory and confirmatory factor analysis, regression, comparative analysis and descriptive methods.",
-      "outcome": "Delivered the analytical report series and co-authored the full 2025 Agentic Teaming & Trust Research Report. The published study surveyed 1,800 full-time employees across nine markets.",
+      "contribution": "Led analysis across the wider research programme, producing an in-depth report series using factor analysis, regression, comparative and descriptive methods.",
+      "outcome": "An analytical report series and co-authorship of the full 2025 Agentic Teaming & Trust Research Report.",
+      "interpretation": "The public study surveyed 1,800 full-time employees across nine markets. Among agent users, leadership role-modelling was associated with higher reported value from agents (p. 15). This highlights leadership practices alongside tool access, but does not establish causality.",
       "tags": ["Analytical leadership", "Applied research", "Full-report co-author"],
-      "status": "Research and publication delivered",
-      "publication": true
+      "status": "Published research programme",
+      "researchIds": ["agentic"]
     },
     {
       "id": "linkedin-retention",
@@ -215,12 +224,14 @@
       "categoryLabel": "Customer analytics",
       "dates": "2019–2022",
       "title": "Engagement drivers and attrition risk",
-      "summary": "Customer-facing analytical work connecting employee feedback, disengagement and retention.",
+      "summary": "A customer-analytics workstream connecting employee feedback, disengagement and retention.",
       "question": "Which engagement signals are associated with disengagement and attrition risk?",
-      "contribution": "Linked survey and behavioural data, modelled disengagement and attrition risk, and used relative-risk and key-driver analyses to explain findings to customer-facing teams and senior stakeholders.",
-      "outcome": "Delivered customer recommendations on engagement priorities and retention risk, translating statistical findings into practical workforce discussions.",
+      "contribution": "Built linked-data analyses combining employee surveys and behavioural information; interpreted relative-risk and key-driver findings with customer-facing teams.",
+      "approach": "Used engagement-driver findings to frame customer engagement priorities and risk comparisons to support discussions about disengagement and attrition.",
+      "outcome": "Recommendations for senior customer stakeholders on engagement priorities and retention risk.",
+      "interpretation": "Risk associations identify patterns to investigate; they do not establish that changing an engagement factor will prevent attrition.",
       "tags": ["Customer analytics", "Relative-risk analysis", "Engagement drivers"],
-      "status": "Analytical work delivered"
+      "status": "Customer analytics workstream"
     },
     {
       "id": "ai-readiness-measurement",
@@ -232,10 +243,13 @@
       "title": "Organisational AI-readiness measurement",
       "summary": "Analytical leadership on AI readiness measurement and the factors associated with it.",
       "question": "Are we measuring organisational AI readiness reliably, and what factors are associated with it?",
-      "contribution": "Tested the instrument's structure and reliability using EFA, CFA and item analysis; examined factors associated with readiness using regression, correlation and relative weight analysis.",
-      "outcome": "Delivered measurement-structure, reliability and relationship analyses referenced in The State of AI Change Readiness eBook.",
+      "contribution": "Led the instrument's measurement analysis using exploratory and confirmatory factor analysis, reliability testing and item analysis.",
+      "approach": "Examined how survey items grouped and their internal consistency before analysing readiness associations through regression, correlation and relative weight analysis.",
+      "outcome": "Measurement and relationship analyses referenced in The state of AI change readiness eBook.",
+      "interpretation": "Structure and reliability tests address aspects of measurement quality, not all forms of validity. Associated-factor analyses do not establish causal effects.",
       "tags": ["Psychometrics", "Reliability", "Relative weight analysis"],
-      "status": "Analysis delivered"
+      "status": "Measurement study",
+      "researchIds": ["ai-readiness"]
     },
     {
       "id": "metlife-service-survey",
@@ -248,9 +262,9 @@
       "summary": "Full-lifecycle ownership of a regional customer-satisfaction survey.",
       "question": "How can a regional HR service understand the experience it provides?",
       "contribution": "Led requirements and survey design, implementation, analysis and reporting for the EMEA HR Shared Services customer-satisfaction programme.",
-      "outcome": "Delivered a consistent regional measurement approach and recommendations to support service-improvement priorities.",
+      "outcome": "A regional survey and reporting approach, with service-improvement recommendations for HR Shared Services stakeholders.",
       "tags": ["Survey design", "Programme implementation", "Service insights"],
-      "status": "Programme delivered"
+      "status": "End-to-end measurement programme"
     },
     {
       "id": "copilot-early-user-research",
@@ -262,10 +276,11 @@
       "title": "Early AI-assistant adoption research",
       "summary": "From the first findings report to a sustained enterprise AI survey-reporting cycle.",
       "question": "What do early users tell us about adopting an enterprise AI assistant?",
-      "contribution": "Co-produced the first findings report as one of two analysts, then sustained recurring survey analysis and reporting with digital-experience and future-of-work researchers.",
-      "outcome": "Findings featured in a public workplace-research report and were cited at the company's annual conference. Maintained recurring and quarterly reporting for the early-access programme.",
+      "contribution": "Co-produced the first findings report as one of two analysts, monitoring responses, comparing respondent populations and reviewing data quality; then maintained recurring analysis with research partners.",
+      "outcome": "Initial findings and recurring reports, including quarterly reporting. Survey insights featured in public workplace research and conference presentations.",
+      "interpretation": "Recurring reporting is not automatically a longitudinal panel, and early-user survey responses do not on their own establish causal productivity gains.",
       "tags": ["Survey analytics", "Recurring reporting", "Research partnership"],
-      "status": "Reporting delivered"
+      "status": "Recurring research workstream"
     },
     {
       "id": "post-migration-customer-experience",
@@ -274,13 +289,15 @@
       "category": "customer",
       "categoryLabel": "Customer insights",
       "dates": "2024–2025",
-      "title": "Post-migration customer-experience study",
-      "summary": "Lead analytical work on a customer-experience survey following a product migration.",
+      "title": "Post-migration NPS analysis",
+      "summary": "Led Net Promoter Score (NPS) survey analysis to understand customer experience following a product migration.",
       "question": "How did customers experience the migration, and which themes should product teams prioritise?",
-      "contribution": "Analysed customer-segment scores, satisfaction drivers and correlations, translating results into clear priorities for the teams responsible for the experience.",
-      "outcome": "Translated customer feedback into prioritised, actionable recommendations for the teams responsible for the experience.",
-      "tags": ["Customer experience", "Survey analysis", "Product recommendations"],
-      "status": "Study delivered"
+      "contribution": "Led post-migration NPS survey analysis, comparing responses across roles and service models and examining group scores, satisfaction-driver patterns and correlations.",
+      "approach": "Used group comparisons alongside driver and correlation analyses to identify satisfaction patterns and pain points for product-team prioritisation.",
+      "outcome": "Prioritised customer-experience recommendations for the product teams responsible for the migrated experience.",
+      "interpretation": "Survey associations describe customer experience after migration, rather than isolating a causal migration effect.",
+      "tags": ["Customer experience", "NPS analysis", "Product recommendations"],
+      "status": "Customer NPS study"
     },
     {
       "id": "metlife-exit-programme",
@@ -291,11 +308,12 @@
       "dates": "2015–2019",
       "title": "EMEA employee-exit measurement",
       "summary": "Regional delivery of a standardised exit-survey programme.",
-      "question": "How can regional teams build comparable evidence about why employees leave?",
+      "question": "How can regional teams collect and report employees' reasons for leaving consistently?",
       "contribution": "Delivered the EMEA component of the Global Exit Survey programme, supporting a standardised approach to collecting and analysing employee-exit feedback.",
-      "outcome": "Developed a consistent regional evidence base on attrition drivers for workforce reporting and stakeholder discussions.",
+      "outcome": "Standardised regional exit feedback for workforce reporting and discussions of employees' reported leaving reasons.",
       "tags": ["Employee listening", "Exit-survey analysis", "Regional delivery"],
-      "status": "Regional programme delivered"
+      "status": "Supporting measurement programme",
+      "supporting": true
     },
     {
       "id": "telefonica-repeat-callers",
@@ -308,9 +326,10 @@
       "summary": "Behavioural profiling to understand repeat calls to an HR shared-services team.",
       "question": "What distinguishes repeat callers, and which service actions should be considered?",
       "contribution": "Built a model to identify repeat-caller profiles as part of a first-call-resolution analysis and used the findings to recommend targeted actions.",
-      "outcome": "Delivered repeat-caller profiling and bespoke recommendations for the HR service.",
+      "outcome": "Repeat-caller profiles and tailored service recommendations for the HR shared-services team.",
       "tags": ["Behavioural profiling", "Service analytics", "Targeted recommendations"],
-      "status": "Analysis delivered"
+      "status": "Supporting earlier analysis",
+      "supporting": true
     }
   ],
   "contributions": [
@@ -318,38 +337,30 @@
       "title": "Measurement & customer analytics",
       "items": [
         "Delivered customer analytics requests with customer-facing consultants, from question scoping through analysis and explanation.",
-        "Contributed to customer retention and churn predictive analysis and delivered an unplanned, rapid-turnaround attrition analysis.",
-        "Completed a cross-product analysis feasibility assessment, clarifying data availability and analytical limitations.",
-        "Prototyped a combined employee satisfaction, burnout and favourability view; reviewed a 360-feedback Power BI dashboard for quality and accessibility.",
-        "Contributed analysis to research on the productivity effects of LLM-based tools for enterprise information workers."
+        "Assessed cross-product analysis feasibility and build-versus-leverage options for licence and usage data, clarifying requirements, availability and limitations.",
+        "Prototyped a combined employee satisfaction, burnout and favourability view; reviewed a 360-feedback Power BI dashboard for quality and accessibility."
       ]
     },
     {
       "title": "Content systems & analytical craft",
       "items": [
-        "Designed a structured people-success content taxonomy and audited the associated programme templates.",
-        "Refreshed action-plan taxonomies, consolidated overlapping metrics and documented the structure for engineering handover.",
-        "Investigated and remediated data-quality defects in content datasets used for reporting.",
-        "Used and adapted existing Python notebooks to produce taxonomy reports and audits.",
-        "Automated URL and video-link checks for action templates and obtained direct access to generate replacement embedded URLs.",
-        "Synthesised content usage and performance evidence into recommendations for people science and product stakeholders.",
-        "Partnered with engineering on content deployment and defect resolution, and coordinated upload, testing and release of onboarding content.",
-        "Provided subject-matter input to content-management planning and maintained content ownership through successive platform changes."
+        "Designed and refreshed people-success content taxonomies, consolidated overlapping metrics and documented the structure for engineering handover.",
+        "Adapted Python notebooks and automated link checks to audit content, investigate data-quality defects and coordinate fixes with engineering.",
+        "Synthesised content usage and performance evidence into recommendations for people science and product stakeholders; coordinated content upload, testing and release."
       ]
     },
     {
       "title": "Sharing knowledge & working with others",
       "items": [
         "Contributed to an organisation-wide AI skilling working group and provided data support to a cross-team hackathon project.",
-        "Won a prize in an internal AI skill-up challenge.",
         "Authored practical inclusion guidance and delivered internal talks on setting inclusion priorities.",
-        "Served as a team inclusion representative and co-organised a team belonging event.",
-        "Provided analytical support to other functions alongside recurring research work."
+        "Served as a team inclusion representative and co-organised a team belonging event."
       ]
     }
   ],
   "research": [
     {
+      "id": "agentic",
       "role": "Co-author / programme lead analyst",
       "title": "2025 Agentic Teaming & Trust Research Report",
       "detail": "Co-authored the full four-chapter report on agentic AI readiness, people-centric practices, trust and human–agent teaming. Led the wider programme's analytical work across an in-depth report series.",
@@ -361,16 +372,20 @@
       "study": "The published study surveyed 1,800 full-time employees across nine markets."
     },
     {
+      "id": "ai-readiness",
       "role": "Contributing analyst",
-      "title": "Enterprise AI readiness research",
-      "detail": "Led underlying analysis referenced in an eBook on AI readiness and employee experience.",
+      "title": "The state of AI change readiness",
+      "detail": "Led underlying survey-measurement and associated-factor analyses referenced in the eBook.",
+      "year": "2024",
       "url": "https://adoption.microsoft.com/files/viva/The-state-of-AI-change-readiness-eBook.pdf",
       "linkLabel": "Read the eBook"
     },
     {
-      "role": "Contributing analyst",
-      "title": "LLM productivity research",
-      "detail": "Contributed analysis documented in research on LLM-based tools and enterprise information-worker productivity.",
+      "id": "llm-productivity",
+      "role": "Co-author",
+      "title": "Early LLM-based Tools for Enterprise Information Workers Likely Provide Meaningful Boosts to Productivity",
+      "detail": "Co-authored a collaborative report combining several studies of enterprise information-worker productivity; contributed to early-user survey analysis.",
+      "year": "2023",
       "url": "https://www.microsoft.com/en-us/research/publication/early-llm-based-tools-for-enterprise-information-workers-likely-provide-meaningful-boosts-to-productivity/",
       "linkLabel": "Read the research report"
     }
@@ -382,6 +397,5 @@
     ["Bachelor of Business Administration (Tourism)", "Universidad de Salamanca", ""]
   ],
   "certifications": ["Microsoft Certified: Azure AI Fundamentals / 2025"],
-  "community": "Contributed to an organisation-wide AI skilling working group; authored practical inclusion guidance and delivered internal talks on inclusion priorities.",
-  "cvEarlier": "Earlier experience: Dunnes Stores, accounts administration (2009–2011); Wyeth Pharmaceuticals, SAP training coordination and APO-PP super-user enablement (2007); Mapfre, customer account administration (2006–2007)."
+  "community": "Contributed to an organisation-wide AI skilling working group; authored practical inclusion guidance and delivered internal talks on inclusion priorities."
 }

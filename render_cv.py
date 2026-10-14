@@ -22,6 +22,8 @@ async def main():
                     format="A4",
                     print_background=True,
                     prefer_css_page_size=True,
+                    tagged=True,
+                    outline=True,
                 )
                 with fitz.open(assets / f"{name}.pdf") as document:
                     if len(document) != expected_pages:

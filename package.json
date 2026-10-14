@@ -6,7 +6,8 @@
   "scripts": {
     "build": "node build.cjs",
     "render": "python render_cv.py",
-    "test:themes": "python test_themes.py"
+    "test:themes": "python test_themes.py",
+    "test:cv": "python test_cv.py"
   },
   "dependencies": {
     "docx": "^9.5.1"
