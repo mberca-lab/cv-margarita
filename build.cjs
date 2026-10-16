@@ -168,7 +168,7 @@ function siteMarkup() {
         <div class="hero-copy">
           <p class="eyebrow">People science / AI adoption / customer insight</p>
           <p class="hero-name">${escape(data.name)}</p><p class="hero-role">People Science Analyst at Microsoft · Dublin</p>
-          <h1>The human side<br>of <em>better decisions.</em></h1>
+          <h1>The human side<br>of <em>informed decisions.</em></h1>
           <p class="intro">${escape(data.heroIntro)}</p>
           <div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="./assets/margarita-bermejo-cano-cv.pdf" download>Download CV <span aria-hidden="true">↓</span></a></div>
           <p class="hero-caption">A career across HR, workforce and customer analytics · English &amp; Spanish</p>
