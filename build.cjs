@@ -17,6 +17,7 @@ const cvPageTwoJobs = data.experience.slice(2, 5);
 const cvEarlierJobs = data.experience.slice(5);
 const themeStyle = template.match(/:root \{[\s\S]*?\n    \* \{/)[0].replace(/\n    \* \{$/, "");
 const themeScript = template.match(/<script>[\s\S]*?<\/script>/)[0];
+const featuredProjectIds = ["agentic-research", "linkedin-retention", "metlife-service-survey"];
 
 const cvStyles = `
     .cv-document { font-family: Arial, sans-serif; font-size: 10.5pt; line-height: 1.38; color: var(--cp-text); }
@@ -122,27 +123,30 @@ function cvMarkup(extended = false) {
 }
 
 function projectMarkup(project) {
-  return `<article class="project" id="case-${escape(project.id)}" data-category="${escape(project.category)}">
+  return `<article class="project${project.id === featuredProjectIds[0] ? " project-lead" : ""}" id="case-${escape(project.id)}" data-category="${escape(project.category)}">
     <span class="project-number" aria-hidden="true">${escape(project.number)}</span>
     <div class="meta"><span>${escape(project.number)} / ${escape(project.categoryLabel.toUpperCase())}</span><span>${escape(project.dates)}</span></div>
     <p class="project-employer">${escape(project.employer)}</p>
     <h3>${escape(project.title)}</h3><p>${escape(project.summary)}</p>
-    <p class="project-result"><b>Output:</b> ${escape(project.outcome)}</p>
+    <dl class="case case-overview">
+      <div><dt>Question</dt><dd>${escape(project.question)}</dd></div>
+      <div><dt>My contribution</dt><dd>${escape(project.contribution)}</dd></div>
+      <div><dt>Delivered output</dt><dd>${escape(project.outcome)}</dd></div>
+    </dl>
     ${researchLinks(project).map(research => `<p class="project-link"><a href="${escape(research.url)}" target="_blank" rel="noopener noreferrer">${escape(research.linkLabel || "Read the full research report")} <span aria-hidden="true">↗</span></a></p>`).join("")}
     <div class="tags">${project.tags.map(tag => `<span class="tag">${escape(tag)}</span>`).join("")}</div>
     <p class="status">${escape(project.status)}</p>
-    <details><summary>${project.interpretation ? "Question, contribution &amp; interpretation" : "Question &amp; contribution"}</summary><dl class="case">
-      <div><dt>Question</dt><dd>${escape(project.question)}</dd></div>
-      <div><dt>My contribution</dt><dd>${escape(project.contribution)}</dd></div>
+    ${project.approach || project.interpretation ? `<details><summary>Methods &amp; interpretation</summary><dl class="case">
       ${project.approach ? `<div><dt>Analytical approach</dt><dd>${escape(project.approach)}</dd></div>` : ""}
       ${project.interpretation ? `<div><dt>Interpretation</dt><dd>${escape(project.interpretation)}</dd></div>` : ""}
-    </dl></details></article>`;
+    </dl></details>` : ""}</article>`;
 }
 
 function jobMarkup(job) {
   return `<article class="job" id="${escape(job.id)}"><p class="date">${escape(job.dates)}</p><div>
     <h3>${escape(job.title)}</h3><p class="org">${escape(job.employer)} / ${escape(job.team)}</p>
-    <p class="scope">${escape(job.scope)}</p>${list([...job.bullets, ...(job.additional || [])])}</div></article>`;
+    <p class="scope">${escape(job.scope)}</p>
+    <details class="job-detail"><summary>Role details</summary>${list([...job.bullets, ...(job.additional || [])])}</details></div></article>`;
 }
 
 function heading(id, number, eyebrow, title) {
@@ -151,58 +155,43 @@ function heading(id, number, eyebrow, title) {
 
 function siteMarkup() {
   const publication = data.research[0];
+  const featured = featuredProjectIds.map(id => data.projects.find(project => project.id === id));
+  const further = data.projects.filter(project => !featuredProjectIds.includes(project.id));
   return `<a class="skip" href="#main">Skip to content</a>
   <div class="shell">
     <header class="topbar"><div class="topbar-inner">
       <a class="brand" href="#main" aria-label="Margarita Bermejo Cano, back to top"><span class="monogram" aria-hidden="true">mb.</span><span class="brand-name">Margarita<br>Bermejo Cano</span></a>
-      <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#contact">CV &amp; contact</a></nav>
-      <label class="theme-picker" id="theme-picker" hidden><span>Theme</span>
-        <select class="theme" id="theme-select">
-          <option value="light">Light</option><option value="dark">Dark</option>
-          <option value="premium">Premium Editorial</option><option value="retro95">Retro '95</option>
-        </select>
-      </label>
+      <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#contact">CV</a></nav>
     </div><p class="theme-status" id="theme-status" role="status" hidden></p></header>
     <main class="main" id="main">
       <header class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">People science / AI adoption / customer insight</p>
+          <p class="eyebrow">Research / measurement / customer insight</p>
           <p class="hero-name">${escape(data.name)}</p><p class="hero-role">People Science Analyst at Microsoft · Dublin</p>
           <h1>The human side<br>of <em>informed decisions.</em></h1>
           <p class="intro">${escape(data.heroIntro)}</p>
-          <div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="./assets/margarita-bermejo-cano-cv.pdf" download>Download CV <span aria-hidden="true">↓</span></a></div>
-          <p class="hero-caption">A career across HR, workforce and customer analytics · English &amp; Spanish</p>
+          <div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="./assets/margarita-bermejo-cano-cv.pdf" download>CV · 2-page PDF <span aria-hidden="true">↓</span></a></div>
+          <p class="hero-caption">R-first analysis · Clear recommendations · English &amp; Spanish</p>
         </div>
-        <figure class="evidence-map" data-lens="people" aria-labelledby="map-title">
-          <div class="map-label"><span id="map-title">WHERE MY WORK CONNECTS</span><span>FIG. 01</span></div>
-          <svg class="map-art" viewBox="0 0 440 400" role="img" aria-labelledby="map-svg-title map-svg-desc">
-            <title id="map-svg-title">People, AI and products connected through evidence</title>
-            <desc id="map-svg-desc">Three overlapping lenses illustrate my areas of work. This is a conceptual illustration, not research data.</desc>
-            <circle class="map-track" cx="220" cy="204" r="176"/>
-            <ellipse class="orbit orbit-people" cx="184" cy="190" rx="116" ry="150" transform="rotate(-30 184 190)"/>
-            <ellipse class="orbit orbit-ai" cx="258" cy="190" rx="116" ry="150" transform="rotate(30 258 190)"/>
-            <ellipse class="orbit orbit-products" cx="220" cy="248" rx="156" ry="100"/>
-            <circle class="map-node" cx="71" cy="111" r="5"/><circle class="map-node" cx="366" cy="106" r="5"/><circle class="map-node" cx="220" cy="380" r="5"/>
-            <text class="map-type" x="94" y="120">PEOPLE</text><text class="map-type" x="300" y="120">AI</text><text class="map-type" x="184" y="328">PRODUCTS</text>
-            <text class="map-centre" x="220" y="216" text-anchor="middle">evidence</text><text class="map-small" x="220" y="238" text-anchor="middle">A BRIDGE TO DECISIONS</text>
-          </svg>
-          <div class="lens-controls" id="lens-controls" role="group" aria-label="Explore my analytical perspectives" hidden>
-            <button type="button" class="lens" data-lens="people" aria-pressed="true">01 / People</button><button type="button" class="lens" data-lens="ai" aria-pressed="false">02 / AI</button><button type="button" class="lens" data-lens="products" aria-pressed="false">03 / Products</button>
-          </div>
-          <figcaption><p class="lens-caption" id="lens-caption" aria-live="polite" aria-atomic="true">People / Understand experience through survey science, psychometrics and workforce insight.</p><span class="map-note">A conceptual map, not a data chart.</span></figcaption>
-        </figure>
+        <aside class="hero-evidence" aria-label="Selected career evidence">
+          <p class="eyebrow">Selected evidence</p>
+          ${data.highlights.map((highlight, index) => `<a class="proof" href="${escape(index === 0 ? publication.url : highlight.href)}">
+            <span class="proof-index" aria-hidden="true">0${index + 1}</span><div>
+            <strong>${escape(highlight.title)}</strong><p>${escape(highlight.text)}</p><span>${escape(index === 0 ? "Microsoft / read the 2025 report" : highlight.context)} <span aria-hidden="true">↗</span></span></div>
+          </a>`).join("")}
+        </aside>
       </header>
-      <div class="proof-strip" aria-label="Selected career evidence">
-        ${data.highlights.map(highlight => `<a class="proof" href="${escape(highlight.href)}"><strong>${escape(highlight.title)}</strong><p>${escape(highlight.text)}</p><span>${escape(highlight.context)}</span></a>`).join("")}
-      </div>
       <section id="work" aria-labelledby="work-title">
         ${heading("work-title", "01", "Selected work", "Research, analytics &amp; measurement.")}
-        <p class="section-intro">${data.projects.length} selected studies, analytical workstreams and measurement programmes across Microsoft, LinkedIn Glint, MetLife and Telefónica. Leading examples are followed by supporting measurement and earlier analysis. Each distinguishes my contribution, delivered output and interpretation; confidential findings and customer details are omitted.</p>
+        <p class="section-intro">Three starting points: AI research, customer-facing retention insight and regional measurement ownership. Further examples are available below. Each separates my contribution from delivered outputs and wider research findings; confidential findings and customer details are omitted.</p>
         <div class="filters" id="project-filters" role="group" aria-label="Filter selected work" hidden>
           ${[["all", "All work"], ["research", "AI research"], ["customer", "Customer analytics"], ["workforce", "Workforce & measurement"]].map(([value, label]) => `<button class="filter" type="button" data-filter="${value}" aria-pressed="${value === "all"}">${escape(label)}</button>`).join("")}
         </div>
-        <p class="project-count" id="project-count" aria-live="polite" aria-atomic="true">Showing ${data.projects.length} selected examples</p>
-        <div class="projects">${data.projects.map(projectMarkup).join("")}</div>
+        <p class="project-count" id="project-count" aria-live="polite" aria-atomic="true">Showing ${featured.length} of ${data.projects.length} examples</p>
+        <div class="projects">${featured.map(projectMarkup).join("")}</div>
+        <details class="more-work" id="more-work"><summary>Further work / ${further.length} examples</summary>
+          <div class="projects">${further.map(projectMarkup).join("")}</div>
+        </details>
         <div class="contributions"><h3>Beyond the case studies</h3>
           ${data.contributions.map(group => `<details><summary>${escape(group.title)}</summary>${list(group.items)}</details>`).join("")}
         </div>
@@ -252,7 +241,14 @@ function siteMarkup() {
           <p class="download-note">Choose the concise CV, detailed portfolio CV or single-column Word version.</p>
         </div>
       </section>
-      <footer><span>${escape(data.name)} / Dublin / ${escape(data.edition)}</span><span class="folio">PORTFOLIO / EDITION 03</span></footer>
+      <footer><span>${escape(data.name)} / Dublin / ${escape(data.edition)}</span>
+        <label class="theme-picker" id="theme-picker" hidden><span>Theme</span>
+          <select class="theme" id="theme-select">
+            <option value="light">Light</option><option value="dark">Dark</option>
+            <option value="premium">Premium Editorial</option><option value="retro95">Retro '95</option>
+          </select>
+        </label>
+      </footer>
     </main>
   </div>
   <div class="print-resume">${cvMarkup()}</div>
@@ -281,34 +277,38 @@ function siteMarkup() {
     });
     const printButton = document.querySelector("#print-button");
     printButton.hidden = false; printButton.addEventListener("click", () => window.print());
-    const lensGroup = document.querySelector("#lens-controls");
-    const lensButtons = [...lensGroup.querySelectorAll("button")];
-    const lensCaptions = {
-      people: "People / Understand experience through survey science, psychometrics and workforce insight.",
-      ai: "AI / Research readiness, adoption and how people experience new ways of working.",
-      products: "Products / Translate customer feedback and product evidence into practical priorities."
-    };
-    lensGroup.hidden = false;
-    lensButtons.forEach(button => button.addEventListener("click", () => {
-      lensButtons.forEach(lens => lens.setAttribute("aria-pressed", String(lens === button)));
-      document.querySelector(".evidence-map").dataset.lens = button.dataset.lens;
-      document.querySelector("#lens-caption").textContent = lensCaptions[button.dataset.lens];
-    }));
     const filterGroup = document.querySelector("#project-filters");
     const filters = [...filterGroup.querySelectorAll("button")];
     const projects = [...document.querySelectorAll(".project")];
-    filterGroup.hidden = false;
-    filters.forEach(button => button.addEventListener("click", () => {
-      filters.forEach(filter => filter.setAttribute("aria-pressed", String(filter === button)));
-      let count = 0;
+    const moreWork = document.querySelector("#more-work");
+    function updateProjectCount() {
+      const count = projects.filter(project => !project.hidden &&
+        (!moreWork.contains(project) || moreWork.open)).length;
+      document.querySelector("#project-count").textContent = \`Showing \${count} of \${projects.length} examples\`;
+    }
+    function selectFilter(value) {
+      filters.forEach(filter => filter.setAttribute("aria-pressed", String(filter.dataset.filter === value)));
       projects.forEach(project => {
-        project.hidden = button.dataset.filter !== "all" && project.dataset.category !== button.dataset.filter;
-        if (!project.hidden) count++;
+        project.hidden = value !== "all" && project.dataset.category !== value;
       });
-      document.querySelector("#project-count").textContent = \`Showing \${count} selected \${count === 1 ? "example" : "examples"}\`;
-    }));
-    document.querySelectorAll('.proof[href^="#case-"]').forEach(link =>
-      link.addEventListener("click", () => filterGroup.querySelector('[data-filter="all"]').click()));
+      moreWork.hidden = ![...moreWork.querySelectorAll(".project")].some(project => !project.hidden);
+      moreWork.open = value !== "all";
+      updateProjectCount();
+    }
+    filterGroup.hidden = false;
+    filters.forEach(button => button.addEventListener("click", () => selectFilter(button.dataset.filter)));
+    moreWork.addEventListener("toggle", updateProjectCount);
+    function revealCase(hash) {
+      const project = projects.find(item => "#" + item.id === hash);
+      if (!project) return;
+      selectFilter("all");
+      if (moreWork.contains(project)) moreWork.open = true;
+      updateProjectCount();
+    }
+    document.querySelectorAll('a[href^="#case-"]').forEach(link =>
+      link.addEventListener("click", () => revealCase(link.hash)));
+    window.addEventListener("hashchange", () => revealCase(window.location.hash));
+    revealCase(window.location.hash);
   </script>`;
 }
 
@@ -434,6 +434,10 @@ async function main() {
   const site = template.replace("{{CV_STYLES}}", cvStyles).replace("{{BODY}}", siteMarkup()).replace(/[ \t]+$/gm, "");
   if (site.includes("{{")) throw new Error("Unresolved template token");
   fs.writeFileSync(path.join(root, "index.html"), site);
+  if (process.argv.includes("--site-only")) {
+    console.log(`Built website: ${featuredProjectIds.length} featured cases. CV downloads left unchanged.`);
+    return;
+  }
   fs.writeFileSync(path.join(assets, "margarita-bermejo-cano-cv.html"), cvHtml(false));
   fs.writeFileSync(path.join(assets, "margarita-bermejo-cano-portfolio-cv.html"), cvHtml(true));
   for (const [designed, suffix] of [[false, "ats"], [true, "designed"]]) {

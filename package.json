@@ -5,6 +5,7 @@
   "description": "Static career portfolio and accessible CV downloads.",
   "scripts": {
     "build": "node build.cjs",
+    "build:site": "node build.cjs --site-only",
     "render": "python render_cv.py",
     "test:themes": "python test_themes.py",
     "test:cv": "python test_cv.py"

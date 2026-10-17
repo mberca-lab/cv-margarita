@@ -131,6 +131,7 @@ class CasePresentationTests(unittest.TestCase):
                         self.assertEqual(link.count(), 1)
                         self.assertTrue(link.is_visible())
                         self.assertIn(research["title"], research_section.inner_text())
+                page.locator("#more-work > summary").click()
                 nps_case = page.locator("#case-post-migration-customer-experience")
                 self.assertEqual(nps_case.locator("h3").inner_text(),
                                  "Post-migration NPS analysis")
@@ -138,26 +139,32 @@ class CasePresentationTests(unittest.TestCase):
             finally:
                 browser.close()
 
-    def test_case_details_add_context_without_repeating_output(self):
+    def test_cases_show_contribution_and_output_before_optional_methods(self):
         with sync_playwright() as playwright:
             browser = playwright.chromium.launch()
             try:
                 page = browser.new_page()
                 page.goto((ROOT / "index.html").as_uri())
+                page.locator("#more-work > summary").click()
                 for project in DATA["projects"]:
                     with self.subTest(project=project["id"]):
                         card = page.locator(f"#case-{project['id']}")
+                        overview = card.locator(".case-overview")
                         self.assertEqual(
-                            card.locator(".project-result").inner_text(),
-                            f"Output: {project['outcome']}"
+                            overview.locator("dt").all_text_contents(),
+                            ["Question", "My contribution", "Delivered output"]
                         )
-                        card.locator("summary").click()
-                        details = card.locator("dl")
-                        self.assertIn(project["question"], details.inner_text())
-                        self.assertNotIn(project["outcome"], details.inner_text())
-                        for key in ["approach", "interpretation"]:
-                            if key in project:
-                                self.assertIn(project[key], details.inner_text())
+                        self.assertEqual(overview.locator("dd").all_text_contents(),
+                                         [project["question"], project["contribution"], project["outcome"]])
+                        if project.get("approach") or project.get("interpretation"):
+                            card.locator("summary").click()
+                            details = card.locator("details dl")
+                            self.assertNotIn(project["outcome"], details.inner_text())
+                            for key in ["approach", "interpretation"]:
+                                if key in project:
+                                    self.assertIn(project[key], details.inner_text())
+                        else:
+                            self.assertEqual(card.locator("details").count(), 0)
                         for research_id in project.get("researchIds", []):
                             research = next(
                                 r for r in DATA["research"] if r["id"] == research_id

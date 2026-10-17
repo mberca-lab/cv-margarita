@@ -1,6 +1,8 @@
 # Career portfolio
 
-Static, accessible career portfolio published from `main` by GitHub Pages.
+Static career portfolio source. The repository is private and GitHub Pages is
+currently disabled; the former Pages URL is not a public visitor destination.
+Keep this boundary in place until a separate public-safe publication is approved.
 
 ## Update the content
 
@@ -16,6 +18,10 @@ npm run build
 npm run render
 ```
 
+For website-only layout edits while the final CV is being prepared, use
+`npm run build:site`. This updates `index.html` without rewriting the existing
+HTML, Word or PDF downloads.
+
 The render step checks that the concise PDF has two pages and the detailed PDF
 has four. Inspect both layouts after changing content. The single-column Word
 CV uses standard headings, selectable text and no layout tables.
@@ -27,7 +33,15 @@ evidence links are sourced from `highlights` in `assets/portfolio.json`.
 The detailed CV expands six leading cases with their question, contribution,
 output and, where supported, analytical approach and interpretation. The two
 remaining cases form a compact supporting-work section. Public evidence links
-appear beside the relevant cases. Keep delivered recommendations distinct from
+appear beside the relevant cases. The website opens with three contrasting
+cases (agentic research, LinkedIn retention and MetLife measurement); five more
+remain in a native, keyboard-accessible "Further work" disclosure. Category
+filters search all eight and reveal matching additional cases. Direct case
+links restore the all-work view and open the containing disclosure when needed.
+Career summaries retain role detail behind individual disclosures rather than
+repeating every achievement in the initial page view.
+
+Keep delivered recommendations distinct from
 adopted changes or measured effects; do not add methods or decisions without
 source support.
 
@@ -47,7 +61,8 @@ npm run test:cv
 
 ## Theme options
 
-The header theme selector offers Light, Dark, Premium Editorial and Retro '95.
+The footer theme selector offers Light, Dark, Premium Editorial and Retro '95,
+keeping appearance controls out of the primary career navigation.
 Selections are saved in browser storage when available. A `scoutTheme` query
 parameter (`light`, `dark`, `premium` or `retro95`) overrides the saved preference
 for shareable previews; changing the selector updates that preview parameter.
