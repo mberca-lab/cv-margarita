@@ -118,6 +118,50 @@ class CvTests(unittest.TestCase):
 
 
 class CasePresentationTests(unittest.TestCase):
+    def test_current_cv_links_use_supplied_editions(self):
+        pdf = "./assets/Margarita_Bermejo_Cano_Editorial_CV_3_Publications.pdf"
+        word = "./assets/Margarita_Bermejo_Cano_ATS_CV.docx"
+        for target in (pdf, word):
+            self.assertTrue((ROOT / target).is_file())
+        with fitz.open(ROOT / pdf) as document:
+            self.assertEqual(len(document), 2)
+            pdf_text = normalise(" ".join(page.get_text() for page in document))
+        with ZipFile(ROOT / word) as package:
+            document = ET.fromstring(package.read("word/document.xml"))
+            word_text = normalise(" ".join(
+                "".join(t.text or "" for t in p.findall(".//w:t", NS))
+                for p in document.findall(".//w:p", NS)
+            ))
+        for title in (
+            "2025 Agentic Teaming & Trust Research Report",
+            "The State of AI Change Readiness",
+            "Early LLM-based Tools for Enterprise Information Workers Likely "
+            "Provide Meaningful Boosts to Productivity",
+        ):
+            self.assertIn(title, pdf_text)
+            self.assertIn(title, word_text)
+        with sync_playwright() as playwright:
+            browser = playwright.chromium.launch()
+            try:
+                page = browser.new_page()
+                page.goto((ROOT / "index.html").as_uri())
+                downloads = page.locator(".download-list a[download]")
+                self.assertEqual(downloads.count(), 2)
+                self.assertEqual(
+                    downloads.evaluate_all("(links) => links.map(a => a.getAttribute('href'))"),
+                    [pdf, word],
+                )
+                self.assertEqual(
+                    page.locator(".hero a[download]").get_attribute("href"), pdf
+                )
+                self.assertEqual(
+                    page.get_by_role("link", name="View / print editorial PDF")
+                    .get_attribute("href"), pdf
+                )
+                self.assertEqual(page.locator("#print-button").count(), 0)
+            finally:
+                browser.close()
+
     def test_all_publications_have_visible_individual_links(self):
         with sync_playwright() as playwright:
             browser = playwright.chromium.launch()

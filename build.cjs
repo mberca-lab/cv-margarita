@@ -9,6 +9,8 @@ const root = __dirname;
 const data = JSON.parse(fs.readFileSync(path.join(root, "assets", "portfolio.json"), "utf8"));
 const template = fs.readFileSync(path.join(root, "site-template.html"), "utf8").replace(/\r\n/g, "\n");
 const assets = path.join(root, "assets");
+const editorialCv = "./assets/Margarita_Bermejo_Cano_Editorial_CV_3_Publications.pdf";
+const applicationCv = "./assets/Margarita_Bermejo_Cano_ATS_CV.docx";
 const escape = value => String(value).replace(/[&<>"']/g, char => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
 }[char]));
@@ -170,7 +172,7 @@ function siteMarkup() {
           <p class="hero-name">${escape(data.name)}</p><p class="hero-role">People Science Analyst at Microsoft · Dublin</p>
           <h1>The human side<br>of <em>informed decisions.</em></h1>
           <p class="intro">${escape(data.heroIntro)}</p>
-          <div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="./assets/margarita-bermejo-cano-cv.pdf" download>CV · 2-page PDF <span aria-hidden="true">↓</span></a></div>
+          <div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="${editorialCv}" download>CV · 2-page PDF <span aria-hidden="true">↓</span></a></div>
           <p class="hero-caption">R-first analysis · Clear recommendations · English &amp; Spanish</p>
         </div>
         <aside class="hero-evidence" aria-label="Selected career evidence">
@@ -234,11 +236,10 @@ function siteMarkup() {
         <div><h2 id="contact-title">Let's compare notes.</h2><p>I enjoy conversations about people science, measuring AI adoption, customer insight and making analytical work more useful.</p>
           <div class="actions"><a class="button" href="${escape(data.linkedin)}" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span></a></div>
         </div><div class="download-list">
-          <a class="button" href="./assets/margarita-bermejo-cano-cv.pdf" download><span>Concise CV / 2-page PDF</span><span aria-hidden="true">↓</span></a>
-          <a class="button" href="./assets/margarita-bermejo-cano-portfolio-cv.pdf" download><span>Detailed CV / 4-page PDF</span><span aria-hidden="true">↓</span></a>
-          <a class="button" href="./assets/margarita-bermejo-cano-cv-ats.docx" download><span>Application CV / Word</span><span aria-hidden="true">↓</span></a>
-          <button class="button" id="print-button" type="button" hidden>Print the concise CV</button>
-          <p class="download-note">Choose the concise CV, detailed portfolio CV or single-column Word version.</p>
+          <a class="button" href="${editorialCv}" download><span>Editorial CV / 2-page PDF</span><span aria-hidden="true">↓</span></a>
+          <a class="button" href="${applicationCv}" download><span>Application CV / Word</span><span aria-hidden="true">↓</span></a>
+          <a class="button" href="${editorialCv}" target="_blank" rel="noopener noreferrer">View / print editorial PDF <span aria-hidden="true">↗</span></a>
+          <p class="download-note">Updated 17 October 2026. Both versions include all three publications. Choose the editorial PDF or application-ready Word CV.</p>
         </div>
       </section>
       <footer><span>${escape(data.name)} / Dublin / ${escape(data.edition)}</span>
@@ -275,8 +276,6 @@ function siteMarkup() {
         window.history.replaceState(null, "", url);
       }
     });
-    const printButton = document.querySelector("#print-button");
-    printButton.hidden = false; printButton.addEventListener("click", () => window.print());
     const filterGroup = document.querySelector("#project-filters");
     const filters = [...filterGroup.querySelectorAll("button")];
     const projects = [...document.querySelectorAll(".project")];

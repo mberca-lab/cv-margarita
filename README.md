@@ -10,6 +10,14 @@ Edit `assets/portfolio.json` for career content, `site-template.html` for the
 website design, and `build.cjs` for the CV layouts. Generated HTML, Word and PDF
 downloads are committed so visitors do not need a build service.
 
+The current CV section uses the user-approved files
+`assets/Margarita_Bermejo_Cano_Editorial_CV_3_Publications.pdf` and
+`assets/Margarita_Bermejo_Cano_ATS_CV.docx`, updated 17 October 2026.
+Both include three publications. Preserve these supplied files unchanged;
+replace them only with a newly approved edition. The hero download and
+view/print link use the same editorial PDF. The older generated CVs remain
+legacy assets, not the current downloads.
+
 ```powershell
 npm ci
 python -m pip install -r requirements.txt
@@ -18,7 +26,7 @@ npm run build
 npm run render
 ```
 
-For website-only layout edits while the final CV is being prepared, use
+For website-only layout edits, use
 `npm run build:site`. This updates `index.html` without rewriting the existing
 HTML, Word or PDF downloads.
 
@@ -79,9 +87,12 @@ npm run test:themes
 
 ## Publication boundaries
 
-This repository contains only public-safe career content. Keep original CVs,
-private career workbooks, review conversations, customer data and internal
-source documents outside this repository. Project descriptions distinguish
+The career narrative is public-safe, but the approved CV downloads contain
+personal contact details and are authorised for this private repository only.
+Do not enable GitHub Pages, make this repository public, or copy the CVs into
+the public profile without explicit approval. Keep other original CVs, private
+career workbooks, review conversations, customer data and internal source
+documents outside this repository. Project descriptions distinguish
 personal contribution from research scope and wider outcomes.
 
 Only LinkedIn is used for public contact. Research links point to public
