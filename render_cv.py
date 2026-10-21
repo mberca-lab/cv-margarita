@@ -1,6 +1,7 @@
-"""Render the generated CV HTML into selectable-text PDF downloads."""
+"""Render private CV HTML outside the public repository."""
 
 import asyncio
+import os
 from pathlib import Path
 
 import fitz
@@ -8,7 +9,15 @@ from playwright.async_api import async_playwright
 
 
 async def main():
-    assets = Path(__file__).resolve().parent / "assets"
+    directory = os.environ.get("PORTFOLIO_PRIVATE_CV_DIR")
+    if not directory or not Path(directory).is_absolute():
+        raise ValueError(
+            "Set PORTFOLIO_PRIVATE_CV_DIR to an absolute directory outside this repository."
+        )
+    assets = Path(directory).resolve()
+    root = Path(__file__).resolve().parent
+    if assets == root or root in assets.parents:
+        raise ValueError("Private CV output must be outside this repository.")
     async with async_playwright() as playwright:
         browser = await playwright.chromium.launch()
         try:

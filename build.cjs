@@ -8,9 +8,6 @@ const {
 const root = __dirname;
 const data = JSON.parse(fs.readFileSync(path.join(root, "assets", "portfolio.json"), "utf8"));
 const template = fs.readFileSync(path.join(root, "site-template.html"), "utf8").replace(/\r\n/g, "\n");
-const assets = path.join(root, "assets");
-const editorialCv = "./assets/Margarita_Bermejo_Cano_Editorial_CV_3_Publications.pdf";
-const applicationCv = "./assets/Margarita_Bermejo_Cano_ATS_CV.docx";
 const escape = value => String(value).replace(/[&<>"']/g, char => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
 }[char]));
@@ -163,7 +160,7 @@ function siteMarkup() {
   <div class="shell">
     <header class="topbar"><div class="topbar-inner">
       <a class="brand" href="#main" aria-label="Margarita Bermejo Cano, back to top"><span class="monogram" aria-hidden="true">mb.</span><span class="brand-name">Margarita<br>Bermejo Cano</span></a>
-      <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#contact">CV</a></nav>
+      <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
     </div><p class="theme-status" id="theme-status" role="status" hidden></p></header>
     <main class="main" id="main">
       <header class="hero">
@@ -172,7 +169,7 @@ function siteMarkup() {
           <p class="hero-name">${escape(data.name)}</p><p class="hero-role">People Science Analyst at Microsoft · Dublin</p>
           <h1>The human side<br>of <em>informed decisions.</em></h1>
           <p class="intro">${escape(data.heroIntro)}</p>
-          <div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="${editorialCv}" download>CV · 2-page PDF <span aria-hidden="true">↓</span></a></div>
+          <div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="#research">Read public research <span aria-hidden="true">↗</span></a></div>
           <p class="hero-caption">R-first analysis · Clear recommendations · English &amp; Spanish</p>
         </div>
         <aside class="hero-evidence" aria-label="Selected career evidence">
@@ -235,11 +232,10 @@ function siteMarkup() {
       <section id="contact" aria-labelledby="contact-title" class="closing">
         <div><h2 id="contact-title">Let's compare notes.</h2><p>I enjoy conversations about people science, measuring AI adoption, customer insight and making analytical work more useful.</p>
           <div class="actions"><a class="button" href="${escape(data.linkedin)}" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span></a></div>
-        </div><div class="download-list">
-          <a class="button" href="${editorialCv}" download><span>Editorial CV / 2-page PDF</span><span aria-hidden="true">↓</span></a>
-          <a class="button" href="${applicationCv}" download><span>Application CV / Word</span><span aria-hidden="true">↓</span></a>
-          <a class="button" href="${editorialCv}" target="_blank" rel="noopener noreferrer">View / print editorial PDF <span aria-hidden="true">↗</span></a>
-          <p class="download-note">Updated 17 October 2026. Both versions include all three publications. Choose the editorial PDF or application-ready Word CV.</p>
+        </div><div class="resource-list">
+          <a class="button" href="https://github.com/mberca" target="_blank" rel="noopener noreferrer"><span>Explore my GitHub projects</span><span aria-hidden="true">↗</span></a>
+          <a class="button" href="#research"><span>Browse public research</span><span aria-hidden="true">↗</span></a>
+          <p class="contact-note">For a current CV, contact me on LinkedIn. Personal application documents are not hosted on this site.</p>
         </div>
       </section>
       <footer><span>${escape(data.name)} / Dublin / ${escape(data.edition)}</span>
@@ -422,6 +418,26 @@ function docxCv(designed) {
   });
 }
 
+function privateCvDirectory() {
+  const directory = process.env.PORTFOLIO_PRIVATE_CV_DIR;
+  if (!directory || !path.isAbsolute(directory)) {
+    throw new Error("Set PORTFOLIO_PRIVATE_CV_DIR to an absolute directory outside this repository.");
+  }
+  const normalise = value => process.platform === "win32" ? value.toLowerCase() : value;
+  const repository = normalise(fs.realpathSync(root));
+  const resolved = normalise(path.resolve(directory));
+  if (resolved === repository || resolved.startsWith(repository + path.sep)) {
+    throw new Error("Private CV output must be outside this repository.");
+  }
+  fs.mkdirSync(directory, { recursive: true });
+  const destination = fs.realpathSync(directory);
+  const realDestination = normalise(destination);
+  if (realDestination === repository || realDestination.startsWith(repository + path.sep)) {
+    throw new Error("Private CV output must not resolve inside this repository.");
+  }
+  return destination;
+}
+
 async function main() {
   if (!data.projects.length || data.experience.length !== 10 ||
       data.projects.some(project => !project.id || !project.employer || !project.category ||
@@ -430,20 +446,21 @@ async function main() {
       new Set(data.projects.map(project => project.id)).size !== data.projects.length) {
     throw new Error("Unexpected portfolio structure or missing project identity");
   }
-  const site = template.replace("{{CV_STYLES}}", cvStyles).replace("{{BODY}}", siteMarkup()).replace(/[ \t]+$/gm, "");
-  if (site.includes("{{")) throw new Error("Unresolved template token");
-  fs.writeFileSync(path.join(root, "index.html"), site);
-  if (process.argv.includes("--site-only")) {
-    console.log(`Built website: ${featuredProjectIds.length} featured cases. CV downloads left unchanged.`);
+  if (!process.argv.includes("--private-cv")) {
+    const site = template.replace("{{CV_STYLES}}", cvStyles).replace("{{BODY}}", siteMarkup()).replace(/[ \t]+$/gm, "");
+    if (site.includes("{{")) throw new Error("Unresolved template token");
+    fs.writeFileSync(path.join(root, "index.html"), site);
+    console.log(`Built public website: ${featuredProjectIds.length} featured cases. No CV files generated.`);
     return;
   }
-  fs.writeFileSync(path.join(assets, "margarita-bermejo-cano-cv.html"), cvHtml(false));
-  fs.writeFileSync(path.join(assets, "margarita-bermejo-cano-portfolio-cv.html"), cvHtml(true));
+  const directory = privateCvDirectory();
+  fs.writeFileSync(path.join(directory, "margarita-bermejo-cano-cv.html"), cvHtml(false));
+  fs.writeFileSync(path.join(directory, "margarita-bermejo-cano-portfolio-cv.html"), cvHtml(true));
   for (const [designed, suffix] of [[false, "ats"], [true, "designed"]]) {
     const buffer = await Packer.toBuffer(docxCv(designed));
-    fs.writeFileSync(path.join(assets, `margarita-bermejo-cano-cv-${suffix}.docx`), buffer);
+    fs.writeFileSync(path.join(directory, `margarita-bermejo-cano-cv-${suffix}.docx`), buffer);
   }
-  console.log(`Built edition 3: ${data.projects.length} case studies, ${data.experience.length} career roles, two Word CVs and print-ready HTML.`);
+  console.log(`Built private CVs outside the repository: ${directory}`);
 }
 
 main().catch(error => { console.error(error); process.exitCode = 1; });

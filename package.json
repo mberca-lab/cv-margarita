@@ -2,10 +2,11 @@
   "name": "margarita-career-portfolio",
   "version": "3.0.0",
   "private": true,
-  "description": "Static career portfolio and accessible CV downloads.",
+  "description": "Public career portfolio with research, selected work and private-only CV generation.",
   "scripts": {
     "build": "node build.cjs",
     "build:site": "node build.cjs --site-only",
+    "build:private-cv": "node build.cjs --private-cv",
     "render": "python render_cv.py",
     "test:themes": "python test_themes.py",
     "test:cv": "python test_cv.py"

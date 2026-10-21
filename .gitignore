@@ -1,1 +1,5 @@
 node_modules/
+__pycache__/
+assets/*.pdf
+assets/*.docx
+assets/*.html

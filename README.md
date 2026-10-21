@@ -1,44 +1,52 @@
 # Career portfolio
 
-Static career portfolio source. The repository is private and GitHub Pages is
-currently disabled; the former Pages URL is not a public visitor destination.
-Keep this boundary in place until a separate public-safe publication is approved.
+Public career portfolio: research, selected analytical work and career experience.
+GitHub Pages serves the site at
+https://mberca.github.io/cv-margarita/.
+
+The public edition uses LinkedIn for contact. Personal application CVs are not
+hosted in this repository or offered as downloads.
 
 ## Update the content
 
 Edit `assets/portfolio.json` for career content, `site-template.html` for the
-website design, and `build.cjs` for the CV layouts. Generated HTML, Word and PDF
-downloads are committed so visitors do not need a build service.
-
-The current CV section uses the user-approved files
-`assets/Margarita_Bermejo_Cano_Editorial_CV_3_Publications.pdf` and
-`assets/Margarita_Bermejo_Cano_ATS_CV.docx`, updated 17 October 2026.
-Both include three publications. Preserve these supplied files unchanged;
-replace them only with a newly approved edition. The hero download and
-view/print link use the same editorial PDF. The older generated CVs remain
-legacy assets, not the current downloads.
+website design, and `build.cjs` for generated markup. Commit the generated
+`index.html` so visitors do not need a build service.
 
 ```powershell
 npm ci
 python -m pip install -r requirements.txt
 python -m playwright install chromium
 npm run build
+npm run test:cv
+npm run test:themes
+```
+
+Both `npm run build` and `npm run build:site` update only `index.html`.
+They never generate CV files in the public repository.
+
+## Private CV generation
+
+The existing CV generator remains available for local use. Set an absolute output
+directory **outside this repository** before generating or rendering documents:
+
+```powershell
+$env:PORTFOLIO_PRIVATE_CV_DIR = 'C:\Private\career-exports'
+npm run build:private-cv
 npm run render
 ```
 
-For website-only layout edits, use
-`npm run build:site`. This updates `index.html` without rewriting the existing
-HTML, Word or PDF downloads.
-
+Both commands reject missing, relative or in-repository output directories.
 The render step checks that the concise PDF has two pages and the detailed PDF
-has four. Inspect both layouts after changing content. The single-column Word
-CV uses standard headings, selectable text and no layout tables.
+has four. The single-column Word CV uses standard headings, selectable text and
+no layout tables. These generated files do not replace separately approved
+application CVs. Keep all exports private unless separately reviewed for sharing.
 
 The selected-work collection spans Microsoft, LinkedIn Glint, MetLife and
 Telefónica. Keep it curated around delivered research, analytical workstreams
 and measurement programmes, not routine activity counts. The three opening
 evidence links are sourced from `highlights` in `assets/portfolio.json`.
-The detailed CV expands six leading cases with their question, contribution,
+The private detailed CV expands six leading cases with their question, contribution,
 output and, where supported, analytical approach and interpretation. The two
 remaining cases form a compact supporting-work section. Public evidence links
 appear beside the relevant cases. The website opens with three contrasting
@@ -87,13 +95,23 @@ npm run test:themes
 
 ## Publication boundaries
 
-The career narrative is public-safe, but the approved CV downloads contain
-personal contact details and are authorised for this private repository only.
-Do not enable GitHub Pages, make this repository public, or copy the CVs into
-the public profile without explicit approval. Keep other original CVs, private
-career workbooks, review conversations, customer data and internal source
-documents outside this repository. Project descriptions distinguish
-personal contribution from research scope and wider outcomes.
+The owner approved keeping the website public while removing private-only CV
+downloads on 21 October 2026. Keep personal contact details, original application
+CVs, career workbooks, review conversations, customer data and internal source
+documents outside this repository. Project descriptions distinguish personal
+contribution from research scope and wider outcomes.
+
+The previously committed CV files were backed up locally and removed from the
+published branch and its rewritten history. Existing clones must not merge the
+old history back into this repository; use a fresh clone of the cleaned branch.
+History rewriting does not guarantee removal from GitHub caches, old commit
+links, forks or copies already downloaded. Contact GitHub Support if removal of
+cached historic copies is required.
+
+The public build and publication tests prevent CV downloads from being
+reintroduced. PDF, Word and HTML files under `assets/` are also ignored by Git.
+The browser's printable career summary uses only the same public portfolio
+content and LinkedIn contact link, not the removed application documents.
 
 Only LinkedIn is used for public contact. Research links point to public
 publications. Full-report co-author credit is verified against the report's
@@ -102,5 +120,5 @@ The 2023 LLM productivity report also verifies named co-authorship. Keep the
 AI-readiness eBook at contributing-analyst credit unless personal authorship is
 independently established. Research IDs connect cases to their public evidence.
 All three publications have individual links in the research section and in
-the PDF and Word CV downloads. The post-migration customer case is explicitly
+the locally generated private CVs. The post-migration customer case is explicitly
 labelled as NPS analysis.

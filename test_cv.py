@@ -1,6 +1,11 @@
-"""Check review-driven content, case depth and downloadable CV semantics."""
+"""Check public publication boundaries, case depth and private CV exports."""
 
 import json
+import os
+import re
+import subprocess
+import sys
+import tempfile
 import unittest
 from pathlib import Path
 from xml.etree import ElementTree as ET
@@ -22,10 +27,21 @@ def normalise(text):
 
 
 class CvTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.directory = tempfile.TemporaryDirectory()
+        cls.addClassCleanup(cls.directory.cleanup)
+        cls.assets = Path(cls.directory.name)
+        environment = {**os.environ, "PORTFOLIO_PRIVATE_CV_DIR": str(cls.assets)}
+        subprocess.run(["node", "build.cjs", "--private-cv"], cwd=ROOT,
+                       env=environment, check=True, capture_output=True, text=True)
+        subprocess.run([sys.executable, "render_cv.py"], cwd=ROOT,
+                       env=environment, check=True, capture_output=True, text=True)
+
     def test_research_credits_and_career_order_survive_pdf_export(self):
         for suffix, pages in [("cv", 2), ("portfolio-cv", 4)]:
             with self.subTest(suffix=suffix), fitz.open(
-                ASSETS / f"margarita-bermejo-cano-{suffix}.pdf"
+                self.assets / f"margarita-bermejo-cano-{suffix}.pdf"
             ) as document:
                 self.assertEqual(len(document), pages)
                 text = normalise(document[1].get_text())
@@ -43,7 +59,7 @@ class CvTests(unittest.TestCase):
                     self.assertIn(research["url"], links)
 
     def test_detailed_pdf_adds_questions_reasoning_and_supporting_work(self):
-        with fitz.open(ASSETS / "margarita-bermejo-cano-portfolio-cv.pdf") as document:
+        with fitz.open(self.assets / "margarita-bermejo-cano-portfolio-cv.pdf") as document:
             appendix = normalise(" ".join(page.get_text() for page in list(document)[2:]))
             for project in DATA["projects"]:
                 with self.subTest(project=project["id"]):
@@ -68,7 +84,7 @@ class CvTests(unittest.TestCase):
     def test_pdf_export_includes_tags_language_and_outline(self):
         for suffix in ["cv", "portfolio-cv"]:
             with self.subTest(suffix=suffix), fitz.open(
-                ASSETS / f"margarita-bermejo-cano-{suffix}.pdf"
+                self.assets / f"margarita-bermejo-cano-{suffix}.pdf"
             ) as document:
                 catalog = document.pdf_catalog()
                 self.assertEqual(document.xref_get_key(catalog, "StructTreeRoot")[0], "xref")
@@ -78,7 +94,7 @@ class CvTests(unittest.TestCase):
     def test_word_has_logical_headings_language_and_individual_publications(self):
         for edition in ["ats", "designed"]:
             with self.subTest(edition=edition), ZipFile(
-                ASSETS / f"margarita-bermejo-cano-cv-{edition}.docx"
+                self.assets / f"margarita-bermejo-cano-cv-{edition}.docx"
             ) as package:
                 document = ET.fromstring(package.read("word/document.xml"))
                 styles = ET.fromstring(package.read("word/styles.xml"))
@@ -118,49 +134,44 @@ class CvTests(unittest.TestCase):
 
 
 class CasePresentationTests(unittest.TestCase):
-    def test_current_cv_links_use_supplied_editions(self):
-        pdf = "./assets/Margarita_Bermejo_Cano_Editorial_CV_3_Publications.pdf"
-        word = "./assets/Margarita_Bermejo_Cano_ATS_CV.docx"
-        for target in (pdf, word):
-            self.assertTrue((ROOT / target).is_file())
-        with fitz.open(ROOT / pdf) as document:
-            self.assertEqual(len(document), 2)
-            pdf_text = normalise(" ".join(page.get_text() for page in document))
-        with ZipFile(ROOT / word) as package:
-            document = ET.fromstring(package.read("word/document.xml"))
-            word_text = normalise(" ".join(
-                "".join(t.text or "" for t in p.findall(".//w:t", NS))
-                for p in document.findall(".//w:p", NS)
-            ))
-        for title in (
-            "2025 Agentic Teaming & Trust Research Report",
-            "The State of AI Change Readiness",
-            "Early LLM-based Tools for Enterprise Information Workers Likely "
-            "Provide Meaningful Boosts to Productivity",
-        ):
-            self.assertIn(title, pdf_text)
-            self.assertIn(title, word_text)
+    def test_public_site_has_contact_and_research_not_private_downloads(self):
+        for pattern in ("*.pdf", "*.docx", "*.html"):
+            self.assertEqual(list(ASSETS.glob(pattern)), [])
+        html = (ROOT / "index.html").read_text(encoding="utf-8")
+        self.assertIsNone(re.search(r"[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}", html))
         with sync_playwright() as playwright:
             browser = playwright.chromium.launch()
             try:
                 page = browser.new_page()
                 page.goto((ROOT / "index.html").as_uri())
-                downloads = page.locator(".download-list a[download]")
-                self.assertEqual(downloads.count(), 2)
-                self.assertEqual(
-                    downloads.evaluate_all("(links) => links.map(a => a.getAttribute('href'))"),
-                    [pdf, word],
-                )
-                self.assertEqual(
-                    page.locator(".hero a[download]").get_attribute("href"), pdf
-                )
-                self.assertEqual(
-                    page.get_by_role("link", name="View / print editorial PDF")
-                    .get_attribute("href"), pdf
-                )
+                self.assertEqual(page.locator("a[download]").count(), 0)
+                self.assertEqual(page.locator('a[href^="./assets/"]').count(), 0)
+                self.assertEqual(page.locator('a[href^="mailto:"], a[href^="tel:"]').count(), 0)
+                self.assertEqual(page.get_by_role("link", name="Contact", exact=True)
+                                 .get_attribute("href"), "#contact")
+                self.assertIn("contact me on LinkedIn", page.locator(".contact-note").inner_text())
+                self.assertEqual(page.get_by_role("link", name="Connect on LinkedIn")
+                                 .get_attribute("href"), DATA["linkedin"])
                 self.assertEqual(page.locator("#print-button").count(), 0)
             finally:
                 browser.close()
+
+    def test_default_build_does_not_create_cv_files(self):
+        subprocess.run(["node", "build.cjs"], cwd=ROOT, check=True,
+                       capture_output=True, text=True)
+        for pattern in ("*.pdf", "*.docx", "*.html"):
+            self.assertEqual(list(ASSETS.glob(pattern)), [])
+
+    def test_private_export_requires_a_directory_outside_the_repository(self):
+        for directory in ("", str(ASSETS), "relative-output"):
+            environment = {**os.environ, "PORTFOLIO_PRIVATE_CV_DIR": directory}
+            for command in (["node", "build.cjs", "--private-cv"],
+                            [sys.executable, "render_cv.py"]):
+                with self.subTest(directory=directory, command=command):
+                    result = subprocess.run(command, cwd=ROOT, env=environment,
+                                            capture_output=True, text=True)
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertIn("outside this repository", result.stderr)
 
     def test_all_publications_have_visible_individual_links(self):
         with sync_playwright() as playwright:
