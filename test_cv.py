@@ -134,6 +134,27 @@ class CvTests(unittest.TestCase):
 
 
 class CasePresentationTests(unittest.TestCase):
+    def test_recruiters_can_reach_experience_and_request_cv_from_the_intro(self):
+        with sync_playwright() as playwright:
+            browser = playwright.chromium.launch()
+            try:
+                with browser.new_context(java_script_enabled=False) as context:
+                    page = context.new_page()
+                    page.goto((ROOT / "index.html").as_uri())
+                    hero = page.locator(".hero")
+                    self.assertIn("People Science", hero.locator("h1").inner_text())
+                    self.assertIn("AI Adoption Research", hero.locator(".eyebrow").first.text_content())
+                    request = hero.get_by_role("link", name="Request CV on LinkedIn")
+                    self.assertTrue(request.is_visible())
+                    self.assertEqual(request.get_attribute("href"), DATA["linkedin"])
+                    experience = hero.get_by_role("link", name="View experience")
+                    experience.click()
+                    self.assertTrue(page.url.endswith("#experience"))
+                    self.assertIn(DATA["experience"][0]["title"],
+                                  page.locator("#experience").inner_text())
+            finally:
+                browser.close()
+
     def test_public_site_has_contact_and_research_not_private_downloads(self):
         for pattern in ("*.pdf", "*.docx", "*.html"):
             self.assertEqual(list(ASSETS.glob(pattern)), [])

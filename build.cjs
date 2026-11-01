@@ -165,11 +165,11 @@ function siteMarkup() {
     <main class="main" id="main">
       <header class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">Research / measurement / customer insight</p>
+          <p class="eyebrow">${escape(data.specialisms)}</p>
           <p class="hero-name">${escape(data.name)}</p><p class="hero-role">People Science Analyst at Microsoft · Dublin</p>
-          <h1>The human side<br>of <em>informed decisions.</em></h1>
+          <h1>People Science<br><em>&amp; Analytics.</em></h1>
           <p class="intro">${escape(data.heroIntro)}</p>
-          <div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="#research">Read public research <span aria-hidden="true">↗</span></a></div>
+          <div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="#experience">View experience <span aria-hidden="true">↗</span></a><a class="button" href="${escape(data.linkedin)}" target="_blank" rel="noopener noreferrer">Request CV on LinkedIn <span aria-hidden="true">↗</span></a></div>
           <p class="hero-caption">R-first analysis · Clear recommendations · English &amp; Spanish</p>
         </div>
         <aside class="hero-evidence" aria-label="Selected career evidence">
@@ -182,7 +182,7 @@ function siteMarkup() {
       </header>
       <section id="work" aria-labelledby="work-title">
         ${heading("work-title", "01", "Selected work", "Research, analytics &amp; measurement.")}
-        <p class="section-intro">Three starting points: AI research, customer-facing retention insight and regional measurement ownership. Further examples are available below. Each separates my contribution from delivered outputs and wider research findings; confidential findings and customer details are omitted.</p>
+        <p class="section-intro">Analytical leadership at Microsoft, customer-facing retention insight at LinkedIn Glint and end-to-end measurement at MetLife. Each case shows the question, my contribution and the delivered output, with methods available to explore. Confidential findings and customer details are omitted.</p>
         <div class="filters" id="project-filters" role="group" aria-label="Filter selected work" hidden>
           ${[["all", "All work"], ["research", "AI research"], ["customer", "Customer analytics"], ["workforce", "Workforce & measurement"]].map(([value, label]) => `<button class="filter" type="button" data-filter="${value}" aria-pressed="${value === "all"}">${escape(label)}</button>`).join("")}
         </div>
@@ -230,7 +230,7 @@ function siteMarkup() {
         <p class="certification">${escape(data.certifications[0])}</p>
       </section>
       <section id="contact" aria-labelledby="contact-title" class="closing">
-        <div><h2 id="contact-title">Let's compare notes.</h2><p>I enjoy conversations about people science, measuring AI adoption, customer insight and making analytical work more useful.</p>
+        <div><h2 id="contact-title">Let's compare notes.</h2><p>For people science and analytics opportunities, research conversations or a current CV, connect with me on LinkedIn. My focus is AI adoption, survey measurement and customer insight.</p>
           <div class="actions"><a class="button" href="${escape(data.linkedin)}" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span></a></div>
         </div><div class="resource-list">
           <a class="button" href="https://github.com/mberca" target="_blank" rel="noopener noreferrer"><span>Explore my GitHub projects</span><span aria-hidden="true">↗</span></a>

@@ -1,17 +1,17 @@
 {
   "name": "Margarita Bermejo Cano",
   "headline": "People Science & Analytics",
-  "specialisms": "AI Adoption Research · Customer Insights · Workforce Measurement",
+  "specialisms": "AI Adoption Research · Survey Measurement · Customer Insights",
   "location": "Dublin, Ireland",
   "languages": "English & Spanish",
   "linkedin": "https://www.linkedin.com/in/margaritabermejocano/",
   "website": "https://mberca.github.io/cv-margarita/",
-  "edition": "October 2026",
-  "summary": "People science and analytics practitioner combining survey measurement, customer-facing insight and applied AI-adoption research. At Microsoft, I lead analytical work on AI readiness and human–agent teaming. Earlier work spans engagement and attrition analysis at LinkedIn Glint and end-to-end regional survey programmes at MetLife. I translate workforce and customer evidence into clear recommendations.",
-  "heroIntro": "I turn employee feedback, customer evidence and workforce data into clear recommendations. My work spans AI adoption research at Microsoft, customer-facing people analytics at LinkedIn Glint and international measurement programmes at MetLife.",
+  "edition": "November 2026",
+  "summary": "People science and analytics specialist combining AI-adoption research, survey measurement and customer insight. At Microsoft, I lead analytical work on AI readiness and human–agent teaming and co-author public research. Earlier work spans engagement and attrition-risk analysis at LinkedIn Glint and end-to-end regional survey programmes at MetLife. I translate employee, customer and workforce evidence into clear stakeholder recommendations.",
+  "heroIntro": "I lead analytical work on AI readiness and human–agent teaming at Microsoft. My experience combines survey measurement, customer-facing engagement and attrition insight at LinkedIn Glint, and regional workforce analytics at MetLife.",
   "highlights": [
     {
-      "title": "Published AI research",
+      "title": "Published AI adoption research",
       "text": "Co-author of public reports on agentic teaming and LLM productivity; lead analyst on the wider agentic research programme.",
       "context": "Microsoft / verified publication credits",
       "href": "#research"
@@ -56,13 +56,13 @@
       "title": "People Science Analyst",
       "dates": "Apr 2022 – present",
       "location": "Dublin, Ireland",
-      "scope": "Applied AI research, survey measurement and customer-facing analytical delivery.",
+      "scope": "Analytical leadership in AI-adoption research, survey measurement and customer insight.",
       "bullets": [
         "Led analytical work across an enterprise agentic AI readiness and adoption research programme; co-authored the full 2025 Agentic Teaming & Trust Research Report.",
-        "Led organisational AI-readiness measurement testing, examining survey structure, reliability and items before analysing associated factors. Analysis contributed to The state of AI change readiness eBook.",
-        "Co-produced the first early-access AI assistant survey findings report as one of two analysts, then sustained recurring reporting. Findings featured in public workplace research and conference presentations.",
-        "Led analysis of a post-migration NPS survey, comparing customer groups and satisfaction-driver patterns to prioritise recommendations for product teams.",
-        "Reused and extended R analysis code for recurring research; separately documented prompts and context templates for AI-assisted analytical planning."
+        "Led AI-readiness measurement analysis using exploratory and confirmatory factor analysis, reliability testing and item analysis; contributed underlying analyses to The state of AI change readiness eBook.",
+        "Co-produced the first early-access AI-assistant survey report as one of two analysts and maintained recurring reporting; survey insights featured in public workplace research and conference presentations.",
+        "Translated post-migration Net Promoter Score (NPS) survey findings into prioritised customer-experience recommendations for product teams, comparing customer groups and satisfaction-driver patterns.",
+        "Extended reusable R analysis code for recurring research and documented prompts and context templates for AI-assisted analytical planning."
       ],
       "additional": [
         "Helped modernise a recommended-action library, using performance analysis to inform licensing decisions, improve its architecture and coordinate content-quality fixes.",
@@ -224,11 +224,11 @@
       "categoryLabel": "Customer analytics",
       "dates": "2019–2022",
       "title": "Engagement drivers and attrition risk",
-      "summary": "A customer-analytics workstream connecting employee feedback, disengagement and retention.",
+      "summary": "Linked employee feedback and behavioural data to inform customer recommendations on engagement and attrition risk.",
       "question": "Which engagement signals are associated with disengagement and attrition risk?",
       "contribution": "Built linked-data analyses combining employee surveys and behavioural information; interpreted relative-risk and key-driver findings with customer-facing teams.",
       "approach": "Used engagement-driver findings to frame customer engagement priorities and risk comparisons to support discussions about disengagement and attrition.",
-      "outcome": "Recommendations for senior customer stakeholders on engagement priorities and retention risk.",
+      "outcome": "Engagement-priority and retention-risk recommendations for senior customer stakeholders, informed by linked survey and behavioural data.",
       "interpretation": "Risk associations identify patterns to investigate; they do not establish that changing an engagement factor will prevent attrition.",
       "tags": ["Customer analytics", "Relative-risk analysis", "Engagement drivers"],
       "status": "Customer analytics workstream"
