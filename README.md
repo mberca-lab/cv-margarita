@@ -59,8 +59,9 @@ cases (agentic research, LinkedIn retention and MetLife measurement); five more
 remain in a native, keyboard-accessible "Further work" disclosure. Category
 filters search all eight and reveal matching additional cases. Direct case
 links restore the all-work view and open the containing disclosure when needed.
-Career summaries retain role detail behind individual disclosures rather than
-repeating every achievement in the initial page view.
+Microsoft, LinkedIn and MetLife each show two leading achievements in the
+initial career view. Their remaining bullets, and other employers' role details,
+stay behind individual disclosures without duplicating the visible achievements.
 
 Keep delivered recommendations distinct from
 adopted changes or measured effects; do not add methods or decisions without

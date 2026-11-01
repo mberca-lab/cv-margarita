@@ -142,10 +142,14 @@ function projectMarkup(project) {
 }
 
 function jobMarkup(job) {
+  const bullets = [...job.bullets, ...(job.additional || [])];
+  const highlights = ["microsoft", "linkedin", "metlife"].includes(job.id) ? bullets.slice(0, 2) : [];
+  const remaining = bullets.slice(highlights.length);
   return `<article class="job" id="${escape(job.id)}"><p class="date">${escape(job.dates)}</p><div>
     <h3>${escape(job.title)}</h3><p class="org">${escape(job.employer)} / ${escape(job.team)}</p>
     <p class="scope">${escape(job.scope)}</p>
-    <details class="job-detail"><summary>Role details</summary>${list([...job.bullets, ...(job.additional || [])])}</details></div></article>`;
+    ${highlights.length ? list(highlights) : ""}
+    ${remaining.length ? `<details class="job-detail"><summary>${highlights.length ? "More role details" : "Role details"}</summary>${list(remaining)}</details>` : ""}</div></article>`;
 }
 
 function heading(id, number, eyebrow, title) {
@@ -166,7 +170,7 @@ function siteMarkup() {
       <header class="hero">
         <div class="hero-copy">
           <p class="eyebrow">${escape(data.specialisms)}</p>
-          <p class="hero-name">${escape(data.name)}</p><p class="hero-role">${escape(data.headline)} · ${escape(data.location)}</p>
+          <p class="hero-name">${escape(data.name)}</p><p class="hero-role">${escape(data.location)} · ${escape(data.languages)}</p>
           <h1>People Science<br><em>&amp; Analytics.</em></h1>
           <p class="intro">${escape(data.heroIntro)}</p>
           <div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="#experience">View experience <span aria-hidden="true">↗</span></a><a class="button" href="${escape(data.linkedin)}" target="_blank" rel="noopener noreferrer">Request CV on LinkedIn <span aria-hidden="true">↗</span></a></div>

@@ -145,6 +145,8 @@ class CasePresentationTests(unittest.TestCase):
                     self.assertIn("People Science", hero.locator("h1").inner_text())
                     self.assertIn("AI Adoption Research", hero.locator(".eyebrow").first.text_content())
                     self.assertNotIn("Microsoft", hero.locator(".hero-copy").inner_text())
+                    self.assertIn("psychometrics", hero.locator(".intro").inner_text())
+                    self.assertNotIn(DATA["headline"], hero.locator(".hero-role").inner_text())
                     request = hero.get_by_role("link", name="Request CV on LinkedIn")
                     self.assertTrue(request.is_visible())
                     self.assertEqual(request.get_attribute("href"), DATA["linkedin"])
@@ -154,6 +156,34 @@ class CasePresentationTests(unittest.TestCase):
                     self.assertIn(DATA["experience"][0]["title"],
                                   page.locator("#experience").inner_text())
                     self.assertIn("Microsoft", page.locator("#experience").inner_text())
+            finally:
+                browser.close()
+
+    def test_principal_roles_show_two_achievements_and_expand_without_duplicates(self):
+        with sync_playwright() as playwright:
+            browser = playwright.chromium.launch()
+            try:
+                with browser.new_context(java_script_enabled=False) as context:
+                    page = context.new_page()
+                    page.goto((ROOT / "index.html").as_uri())
+                    page.locator(".early-career > summary").click()
+                    for job in DATA["experience"]:
+                        with self.subTest(job=job["id"]):
+                            role = page.locator(f"#{job['id']}")
+                            bullets = job["bullets"] + job.get("additional", [])
+                            visible = bullets[:2] if job["id"] in [
+                                "microsoft", "linkedin", "metlife"
+                            ] else []
+                            self.assertEqual(role.locator("li:visible").all_text_contents(),
+                                             visible)
+                            self.assertEqual(role.locator("li").all_text_contents(), bullets)
+                            role.locator(".job-detail > summary").focus()
+                            page.keyboard.press("Enter")
+                            self.assertEqual(role.locator("li:visible").all_text_contents(),
+                                             bullets)
+                            page.keyboard.press("Enter")
+                            self.assertEqual(role.locator("li:visible").all_text_contents(),
+                                             visible)
             finally:
                 browser.close()
 
