@@ -166,7 +166,7 @@ function siteMarkup() {
       <header class="hero">
         <div class="hero-copy">
           <p class="eyebrow">${escape(data.specialisms)}</p>
-          <p class="hero-name">${escape(data.name)}</p><p class="hero-role">People Science Analyst at Microsoft · Dublin</p>
+          <p class="hero-name">${escape(data.name)}</p><p class="hero-role">${escape(data.headline)} · ${escape(data.location)}</p>
           <h1>People Science<br><em>&amp; Analytics.</em></h1>
           <p class="intro">${escape(data.heroIntro)}</p>
           <div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="#experience">View experience <span aria-hidden="true">↗</span></a><a class="button" href="${escape(data.linkedin)}" target="_blank" rel="noopener noreferrer">Request CV on LinkedIn <span aria-hidden="true">↗</span></a></div>

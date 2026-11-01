@@ -144,6 +144,7 @@ class CasePresentationTests(unittest.TestCase):
                     hero = page.locator(".hero")
                     self.assertIn("People Science", hero.locator("h1").inner_text())
                     self.assertIn("AI Adoption Research", hero.locator(".eyebrow").first.text_content())
+                    self.assertNotIn("Microsoft", hero.locator(".hero-copy").inner_text())
                     request = hero.get_by_role("link", name="Request CV on LinkedIn")
                     self.assertTrue(request.is_visible())
                     self.assertEqual(request.get_attribute("href"), DATA["linkedin"])
@@ -152,6 +153,7 @@ class CasePresentationTests(unittest.TestCase):
                     self.assertTrue(page.url.endswith("#experience"))
                     self.assertIn(DATA["experience"][0]["title"],
                                   page.locator("#experience").inner_text())
+                    self.assertIn("Microsoft", page.locator("#experience").inner_text())
             finally:
                 browser.close()
 
