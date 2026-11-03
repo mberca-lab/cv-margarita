@@ -186,7 +186,7 @@ function siteMarkup() {
       </header>
       <section id="work" aria-labelledby="work-title">
         ${heading("work-title", "01", "Selected work", "Research, analytics &amp; measurement.")}
-        <p class="section-intro">Analytical leadership at Microsoft, customer-facing retention insight at LinkedIn Glint and end-to-end measurement at MetLife. Each case shows the question, my contribution and the delivered output, with methods available to explore. Confidential findings and customer details are omitted.</p>
+        <p class="section-intro">Analysis of selected AI-adoption and people-science studies at Microsoft, customer-facing retention insight at LinkedIn Glint and end-to-end measurement at MetLife. Each case shows the question, my contribution and the delivered output, with methods available to explore. Confidential findings and customer details are omitted.</p>
         <div class="filters" id="project-filters" role="group" aria-label="Filter selected work" hidden>
           ${[["all", "All work"], ["research", "AI research"], ["customer", "Customer analytics"], ["workforce", "Workforce & measurement"]].map(([value, label]) => `<button class="filter" type="button" data-filter="${value}" aria-pressed="${value === "all"}">${escape(label)}</button>`).join("")}
         </div>

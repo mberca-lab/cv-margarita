@@ -8,9 +8,9 @@ The public edition uses LinkedIn for contact. Personal application CVs are not
 hosted in this repository or offered as downloads.
 The opening section positions the portfolio around people science and analytics,
 AI adoption research, survey measurement and customer insight, with direct routes
-to career experience and a LinkedIn CV request. Analytical leadership is described
-separately from official job titles, without implying people management or ML
-model-development experience.
+to career experience and a LinkedIn CV request. Analytical ownership is scoped
+to selected research studies, not a team-wide or programme-wide analytical lead
+role, people management or ML model-development experience.
 
 ## Update the content
 
