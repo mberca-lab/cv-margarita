@@ -123,7 +123,7 @@ function cvMarkup(extended = false) {
 
 const liveBase = "https://mberca.github.io/";
 const liveProjects = [
-  { id: "engagement-atlas", title: "Engagement Atlas", text: "Real public HR survey data, thoughtful machine learning and an interactive engagement atlas." },
+  { id: "engagement-atlas", title: "Engagement Atlas", text: "Real public HR survey data, thoughtful machine learning and an interactive engagement atlas.", stats: [[630, "agency-year observations"], [85, "agencies"], [8, "survey years"]] },
   { id: "titanic-patterns", title: "Titanic Patterns", text: "Association rules, random forest and Bayesian logistic regression, in reproducible R and Python." },
   { id: "alice-in-wonderland-analysis", title: "Wonderland, Measured", text: "A reading room for words and chapters: text analytics turned into a story." }
 ];
@@ -170,13 +170,7 @@ function skillsMarkup() {
           </div>
         </div>
         <script type="application/json" id="skills-data">${JSON.stringify(skillsData).replace(/</g, "\\u003c")}</script>
-        <div class="stats reveal" aria-label="Project highlights">
-          <p class="stat"><strong class="count" data-count="630">630</strong><span>observations in Engagement Atlas</span></p>
-          <p class="stat"><strong class="count" data-count="85">85</strong><span>agencies compared</span></p>
-          <p class="stat"><strong class="count" data-count="8">8</strong><span>survey years analysed</span></p>
-          <p class="stat"><strong class="count" data-count="1800">1,800</strong><span>employees, nine markets, in the ${escape(publication.year)} Microsoft report I co-authored</span></p>
-        </div>
-        <div class="live-projects">${liveProjects.map(project => `<a class="live-card reveal" data-live="${project.id}" href="${liveBase}${project.id}/" target="_blank" rel="noopener noreferrer"><h3>${escape(project.title)}</h3><p>${escape(project.text)}</p><span class="go">Open live project <span aria-hidden="true">↗</span></span></a>`).join("")}</div>
+        <div class="live-projects">${liveProjects.map(project => `<a class="live-card reveal" data-live="${project.id}" href="${liveBase}${project.id}/" target="_blank" rel="noopener noreferrer"><h3>${escape(project.title)}</h3><p>${escape(project.text)}</p>${project.stats ? `<p class="live-stats">${project.stats.map(([n, label]) => `<span><strong class="count" data-count="${n}">${n}</strong>${escape(label)}</span>`).join("")}</p>` : ""}<span class="go">Open live project <span aria-hidden="true">↗</span></span></a>`).join("")}</div>
       </section>
       `;
 }
