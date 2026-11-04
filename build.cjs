@@ -124,7 +124,7 @@ function cvMarkup(extended = false) {
 const liveBase = "https://mberca.github.io/";
 const liveProjects = [
   { id: "engagement-atlas", title: "Engagement Atlas", text: "Real public HR survey data, thoughtful machine learning and an interactive engagement atlas.", stats: [[630, "agency-year observations"], [85, "agencies"], [8, "survey years"]] },
-  { id: "ai-adoption-atlas", title: "AI Adoption Atlas", text: "Do developers trust what they use? Four public survey waves, model comparisons and a scroll-driven story about AI adoption.", stats: [[4, "public survey waves"]] },
+  { id: "ai-adoption-atlas", title: "AI, in Practice", text: "Do developers trust what they use? Four public survey waves, model comparisons and a scroll-driven story about AI adoption.", stats: [[4, "public survey waves"]] },
   { id: "titanic-patterns", title: "Titanic Patterns", text: "Association rules, random forest and Bayesian logistic regression, in reproducible R and Python." },
   { id: "alice-in-wonderland-analysis", title: "Wonderland, Measured", text: "A reading room for words and chapters: text analytics turned into a story." }
 ];
