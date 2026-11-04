@@ -125,15 +125,13 @@ const liveBase = "https://mberca.github.io/";
 const liveProjects = [
   { id: "engagement-atlas", title: "Engagement Atlas", text: "Real public HR survey data, thoughtful machine learning and an interactive engagement atlas." },
   { id: "titanic-patterns", title: "Titanic Patterns", text: "Association rules, random forest and Bayesian logistic regression, in reproducible R and Python." },
-  { id: "learning-constellations", title: "Learning Constellations", text: "Synthetic learning journeys: cohort-aware association rules, interactive skill maps and Shiny exploration." },
-  { id: "basket-atlas", title: "Basket Atlas", text: "A synthetic bookstore market-basket showcase: Apriori rules, interactive networks and Shiny." },
   { id: "alice-in-wonderland-analysis", title: "Wonderland, Measured", text: "A reading room for words and chapters: text analytics turned into a story." }
 ];
 const skillNodes = [
-  { id: "r", label: ["R"], x: 260, y: 55, glyph: "R", blurb: "R-first analysis: reproducible, documented code behind every recommendation.", cases: ["linkedin-retention", "ai-readiness-measurement"], live: ["engagement-atlas", "titanic-patterns", "basket-atlas", "learning-constellations"] },
-  { id: "ml", label: ["Machine", "learning"], x: 430, y: 130, glyph: "ML", blurb: "Random forests, association rules and clustering used where they clarify a decision.", cases: [], live: ["engagement-atlas", "titanic-patterns", "basket-atlas", "learning-constellations"] },
+  { id: "r", label: ["R"], x: 260, y: 55, glyph: "R", blurb: "R-first analysis: reproducible, documented code behind every recommendation.", cases: ["linkedin-retention", "ai-readiness-measurement"], live: ["engagement-atlas", "titanic-patterns"] },
+  { id: "ml", label: ["Machine", "learning"], x: 430, y: 130, glyph: "ML", blurb: "Random forests, association rules and clustering used where they clarify a decision.", cases: [], live: ["engagement-atlas", "titanic-patterns"] },
   { id: "ai", label: ["AI readiness"], x: 430, y: 300, glyph: "AI", blurb: "Measuring and explaining AI adoption, trust and readiness in the workforce.", cases: ["agentic-research", "ai-readiness-measurement", "copilot-early-user-research"], live: [] },
-  { id: "story", label: ["Storytelling"], x: 260, y: 350, glyph: "\u201C", blurb: "Turning analysis into a narrative that people act on.", cases: ["post-migration-customer-experience", "linkedin-retention"], live: ["alice-in-wonderland-analysis", "learning-constellations"] },
+  { id: "story", label: ["Storytelling"], x: 260, y: 350, glyph: "\u201C", blurb: "Turning analysis into a narrative that people act on.", cases: ["post-migration-customer-experience", "linkedin-retention"], live: ["alice-in-wonderland-analysis"] },
   { id: "survey", label: ["Surveys &", "mixed methods"], x: 90, y: 300, glyph: "S", blurb: "Survey design, psychometrics and listening programmes, combined with behavioural data.", cases: ["metlife-service-survey", "metlife-exit-programme", "copilot-early-user-research", "ai-readiness-measurement"], live: ["engagement-atlas"] },
   { id: "causal", label: ["Causal", "methods"], x: 90, y: 130, glyph: "C", blurb: "Relative risk, relative weight and Bayesian models to separate drivers from noise.", cases: ["linkedin-retention", "ai-readiness-measurement"], live: ["titanic-patterns"] }
 ];
