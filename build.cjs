@@ -156,7 +156,7 @@ function skillsMarkup() {
       <circle class="ring" r="36"/><circle class="dot" r="30"/><text class="glyph" y="1">${escape(node.glyph)}</text>
       <text y="${52}">${node.label.map((line, i) => `<tspan x="0" dy="${i ? 18 : 0}">${escape(line)}</tspan>`).join("")}</text></g>`).join("");
   return `<section id="skills" aria-labelledby="skills-title">
-        ${heading("skills-title", "00", "Skills &amp; live projects", "How I turn employee data into decisions.")}
+        ${heading("skills-title", "00", "Skills &amp; live projects", "How I turn people data into decisions leaders can trust.")}
         <p class="section-intro reveal">Six capabilities I use together. Select one to highlight the case studies and live projects where it shows up.</p>
         <div class="skills-layout">
           <div class="constellation reveal">
@@ -236,7 +236,7 @@ function siteMarkup() {
           <p class="eyebrow">${escape(data.specialisms)}</p>
           <p class="hero-name">${escape(data.name)}</p><p class="hero-role">${escape(data.location)} · ${escape(data.languages)}</p>
           <h1>People Science<br><em>&amp; Analytics.</em></h1>
-          <p class="hero-value">I turn employee data into decisions.</p>
+          <p class="hero-value">I turn people data into decisions leaders can trust.</p>
           <p class="intro">${escape(data.heroIntro)}</p>
           <div class="actions"><a class="button primary" href="#skills">Explore projects <span aria-hidden="true">↓</span></a><a class="button" href="${escape(data.linkedin)}" target="_blank" rel="noopener noreferrer">LinkedIn profile <span aria-hidden="true">↗</span></a><a class="button" href="${escape(data.linkedin)}" target="_blank" rel="noopener noreferrer">Request CV on LinkedIn <span aria-hidden="true">↗</span></a><a class="button link-quiet" href="#experience">View experience</a></div>
           <p class="hero-caption">R-first analysis · Clear recommendations · English &amp; Spanish</p>
