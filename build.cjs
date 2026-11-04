@@ -124,15 +124,16 @@ function cvMarkup(extended = false) {
 const liveBase = "https://mberca.github.io/";
 const liveProjects = [
   { id: "engagement-atlas", title: "Engagement Atlas", text: "Real public HR survey data, thoughtful machine learning and an interactive engagement atlas.", stats: [[630, "agency-year observations"], [85, "agencies"], [8, "survey years"]] },
+  { id: "ai-adoption-atlas", title: "AI Adoption Atlas", text: "Do developers trust what they use? Four public survey waves, model comparisons and a scroll-driven story about AI adoption.", stats: [[4, "public survey waves"]] },
   { id: "titanic-patterns", title: "Titanic Patterns", text: "Association rules, random forest and Bayesian logistic regression, in reproducible R and Python." },
   { id: "alice-in-wonderland-analysis", title: "Wonderland, Measured", text: "A reading room for words and chapters: text analytics turned into a story." }
 ];
 const skillNodes = [
-  { id: "r", label: ["R"], x: 260, y: 55, glyph: "R", blurb: "R-first analysis: reproducible, documented code behind every recommendation.", cases: ["linkedin-retention", "ai-readiness-measurement"], live: ["engagement-atlas", "titanic-patterns"] },
-  { id: "ml", label: ["Machine", "learning"], x: 430, y: 130, glyph: "ML", blurb: "Random forests, association rules and clustering used where they clarify a decision.", cases: [], live: ["engagement-atlas", "titanic-patterns"] },
-  { id: "ai", label: ["AI readiness"], x: 430, y: 300, glyph: "AI", blurb: "Measuring and explaining AI adoption, trust and readiness in the workforce.", cases: ["agentic-research", "ai-readiness-measurement", "copilot-early-user-research"], live: [] },
-  { id: "story", label: ["Storytelling"], x: 260, y: 350, glyph: "\u201C", blurb: "Turning analysis into a narrative that people act on.", cases: ["post-migration-customer-experience", "linkedin-retention"], live: ["alice-in-wonderland-analysis"] },
-  { id: "survey", label: ["Surveys &", "mixed methods"], x: 90, y: 300, glyph: "S", blurb: "Survey design, psychometrics and listening programmes, combined with behavioural data.", cases: ["metlife-service-survey", "metlife-exit-programme", "copilot-early-user-research", "ai-readiness-measurement"], live: ["engagement-atlas"] },
+  { id: "r", label: ["R"], x: 260, y: 55, glyph: "R", blurb: "R-first analysis: reproducible, documented code behind every recommendation.", cases: ["linkedin-retention", "ai-readiness-measurement"], live: ["engagement-atlas", "ai-adoption-atlas", "titanic-patterns"] },
+  { id: "ml", label: ["Machine", "learning"], x: 430, y: 130, glyph: "ML", blurb: "Random forests, association rules and clustering used where they clarify a decision.", cases: [], live: ["engagement-atlas", "ai-adoption-atlas", "titanic-patterns"] },
+  { id: "ai", label: ["AI readiness"], x: 430, y: 300, glyph: "AI", blurb: "Measuring and explaining AI adoption, trust and readiness in the workforce.", cases: ["agentic-research", "ai-readiness-measurement", "copilot-early-user-research"], live: ["ai-adoption-atlas"] },
+  { id: "story", label: ["Storytelling"], x: 260, y: 350, glyph: "\u201C", blurb: "Turning analysis into a narrative that people act on.", cases: ["post-migration-customer-experience", "linkedin-retention"], live: ["ai-adoption-atlas", "alice-in-wonderland-analysis"] },
+  { id: "survey", label: ["Surveys &", "mixed methods"], x: 90, y: 300, glyph: "S", blurb: "Survey design, psychometrics and listening programmes, combined with behavioural data.", cases: ["metlife-service-survey", "metlife-exit-programme", "copilot-early-user-research", "ai-readiness-measurement"], live: ["engagement-atlas", "ai-adoption-atlas"] },
   { id: "causal", label: ["Causal", "methods"], x: 90, y: 130, glyph: "C", blurb: "Relative risk, relative weight and Bayesian models to separate drivers from noise.", cases: ["linkedin-retention", "ai-readiness-measurement"], live: ["titanic-patterns"] }
 ];
 const skillEdges = [["hub", "r"], ["hub", "ml"], ["hub", "ai"], ["hub", "story"], ["hub", "survey"], ["hub", "causal"],
