@@ -99,6 +99,32 @@ downloads retain their professional formatting.
 npm run test:themes
 ```
 
+## Skills constellation, stats and motion
+
+The "Skills & live projects" section (`skillsMarkup()` in `build.cjs`) holds the
+skills constellation, count-up stats and live-project cards. Edit `skillNodes` and
+`liveProjects` there to change links. The constellation is plain SVG: keyboard
+operable (Tab, Enter/Space) and static when `prefers-reduced-motion: reduce` is set,
+in which case count-ups and reveal animations are also skipped. The header
+sun/moon button toggles light/dark and shares the `portfolio-theme` storage key
+with the footer theme selector. Every project card ends with a "Get in touch"
+LinkedIn link.
+
+## Analytics (GoatCounter, optional)
+
+Nothing is loaded or tracked until you opt in:
+
+1. Create a free site at https://www.goatcounter.com and note its code (`xyz` in `xyz.goatcounter.com`).
+2. In `site-template.html`, set `const GOATCOUNTER_CODE = "xyz";` (clearly marked in the head).
+3. Run `npm run build:site`, commit `index.html` and push.
+
+Counting is skipped on localhost and `file:` pages. To exclude yourself, open the
+site once with `#toggle-goatcounter` appended to the URL (for example
+`https://mberca.github.io/cv-margarita/#toggle-goatcounter`); this sets
+`localStorage.skipgc` in that browser (repeat to switch counting back on).
+Do this on every browser/device you use. The site never strips URL parameters, so
+`?utm_source=...&utm_campaign=...` links keep their campaign data for GoatCounter.
+
 ## Publication boundaries
 
 The owner approved keeping the website public while removing private-only CV

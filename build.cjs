@@ -121,6 +121,68 @@ function cvMarkup(extended = false) {
   return markup + "</div>";
 }
 
+const liveBase = "https://mberca.github.io/";
+const liveProjects = [
+  { id: "engagement-atlas", title: "Engagement Atlas", text: "Real public HR survey data, thoughtful machine learning and an interactive engagement atlas." },
+  { id: "titanic-patterns", title: "Titanic Patterns", text: "Association rules, random forest and Bayesian logistic regression, in reproducible R and Python." },
+  { id: "learning-constellations", title: "Learning Constellations", text: "Synthetic learning journeys: cohort-aware association rules, interactive skill maps and Shiny exploration." },
+  { id: "basket-atlas", title: "Basket Atlas", text: "A synthetic bookstore market-basket showcase: Apriori rules, interactive networks and Shiny." },
+  { id: "alice-in-wonderland-analysis", title: "Wonderland, Measured", text: "A reading room for words and chapters: text analytics turned into a story." }
+];
+const skillNodes = [
+  { id: "r", label: ["R"], x: 260, y: 55, glyph: "R", blurb: "R-first analysis: reproducible, documented code behind every recommendation.", cases: ["linkedin-retention", "ai-readiness-measurement"], live: ["engagement-atlas", "titanic-patterns", "basket-atlas", "learning-constellations"] },
+  { id: "ml", label: ["Machine", "learning"], x: 430, y: 130, glyph: "ML", blurb: "Random forests, association rules and clustering used where they clarify a decision.", cases: [], live: ["engagement-atlas", "titanic-patterns", "basket-atlas", "learning-constellations"] },
+  { id: "ai", label: ["AI readiness"], x: 430, y: 300, glyph: "AI", blurb: "Measuring and explaining AI adoption, trust and readiness in the workforce.", cases: ["agentic-research", "ai-readiness-measurement", "copilot-early-user-research"], live: [] },
+  { id: "story", label: ["Storytelling"], x: 260, y: 350, glyph: "\u201C", blurb: "Turning analysis into a narrative that people act on.", cases: ["post-migration-customer-experience", "linkedin-retention"], live: ["alice-in-wonderland-analysis", "learning-constellations"] },
+  { id: "survey", label: ["Surveys &", "mixed methods"], x: 90, y: 300, glyph: "S", blurb: "Survey design, psychometrics and listening programmes, combined with behavioural data.", cases: ["metlife-service-survey", "metlife-exit-programme", "copilot-early-user-research", "ai-readiness-measurement"], live: ["engagement-atlas"] },
+  { id: "causal", label: ["Causal", "methods"], x: 90, y: 130, glyph: "C", blurb: "Relative risk, relative weight and Bayesian models to separate drivers from noise.", cases: ["linkedin-retention", "ai-readiness-measurement"], live: ["titanic-patterns"] }
+];
+const skillEdges = [["hub", "r"], ["hub", "ml"], ["hub", "ai"], ["hub", "story"], ["hub", "survey"], ["hub", "causal"],
+  ["r", "ml"], ["ml", "ai"], ["ai", "story"], ["story", "survey"], ["survey", "causal"], ["causal", "r"], ["r", "survey"], ["causal", "ml"]];
+const hubPoint = { id: "hub", x: 260, y: 215 };
+const skillPoint = id => id === "hub" ? hubPoint : skillNodes.find(node => node.id === id);
+const nextStep = (project) => `<div class="project-next"><span>Want to discuss this kind of work?</span><a class="button" href="${escape(data.linkedin)}" target="_blank" rel="noopener noreferrer" aria-label="Get in touch about ${escape(project.title)} on LinkedIn">Get in touch <span aria-hidden="true">↗</span></a></div>`;
+
+function skillsMarkup() {
+  const publication = data.research[0];
+  const skillsData = Object.fromEntries(skillNodes.map(node => [node.id, {
+    name: node.label.join(" "), blurb: node.blurb,
+    cases: node.cases.map(id => ({ id, title: data.projects.find(project => project.id === id).title })),
+    live: node.live.map(id => ({ id, title: liveProjects.find(project => project.id === id).title, url: liveBase + id + "/" }))
+  }]));
+  const edges = skillEdges.map(([a, b]) => { const p = skillPoint(a), q = skillPoint(b);
+    return `<line class="edge" data-a="${a}" data-b="${b}" x1="${p.x}" y1="${p.y}" x2="${q.x}" y2="${q.y}"/>`; }).join("");
+  const nodes = skillNodes.map((node, index) => `<g class="node" data-id="${node.id}" data-x="${node.x}" data-y="${node.y}" data-phase="${index * 1.1}" transform="translate(${node.x} ${node.y})" tabindex="0" role="button" aria-pressed="false" aria-label="${escape(node.label.join(" "))}: show related work">
+      <circle class="ring" r="36"/><circle class="dot" r="30"/><text class="glyph" y="1">${escape(node.glyph)}</text>
+      <text y="${52}">${node.label.map((line, i) => `<tspan x="0" dy="${i ? 18 : 0}">${escape(line)}</tspan>`).join("")}</text></g>`).join("");
+  return `<section id="skills" aria-labelledby="skills-title">
+        ${heading("skills-title", "00", "Skills &amp; live projects", "How I turn employee data into decisions.")}
+        <p class="section-intro reveal">Six capabilities I use together. Select one to highlight the case studies and live projects where it shows up.</p>
+        <div class="skills-layout">
+          <div class="constellation reveal">
+            <svg id="constellation" viewBox="0 0 520 440" role="group" aria-label="Skills constellation: six skills connected around people data">
+              ${edges}<g class="hub" transform="translate(${hubPoint.x} ${hubPoint.y})" aria-hidden="true"><circle class="dot" r="38"/><text text-anchor="middle"><tspan x="0" dy="-7">People</tspan><tspan x="0" dy="16">data</tspan></text></g>
+              ${nodes}
+            </svg>
+          </div>
+          <div class="skills-panel reveal" id="skills-panel" aria-live="polite">
+            <h3 id="skills-panel-title">Pick a skill</h3>
+            <p id="skills-panel-text">Use the nodes (or Tab and Enter) to explore. Live projects open in a new tab.</p>
+            <ul id="skills-panel-links"></ul>
+          </div>
+        </div>
+        <script type="application/json" id="skills-data">${JSON.stringify(skillsData).replace(/</g, "\\u003c")}</script>
+        <div class="stats reveal" aria-label="Project highlights">
+          <p class="stat"><strong class="count" data-count="630">630</strong><span>observations in Engagement Atlas</span></p>
+          <p class="stat"><strong class="count" data-count="85">85</strong><span>agencies compared</span></p>
+          <p class="stat"><strong class="count" data-count="8">8</strong><span>survey years analysed</span></p>
+          <p class="stat"><strong class="count" data-count="1800">1,800</strong><span>employees, nine markets, in the ${escape(publication.year)} Microsoft report I co-authored</span></p>
+        </div>
+        <div class="live-projects">${liveProjects.map(project => `<a class="live-card reveal" data-live="${project.id}" href="${liveBase}${project.id}/" target="_blank" rel="noopener noreferrer"><h3>${escape(project.title)}</h3><p>${escape(project.text)}</p><span class="go">Open live project <span aria-hidden="true">↗</span></span></a>`).join("")}</div>
+      </section>
+      `;
+}
+
 function projectMarkup(project) {
   return `<article class="project${project.id === featuredProjectIds[0] ? " project-lead" : ""}" id="case-${escape(project.id)}" data-category="${escape(project.category)}">
     <span class="project-number" aria-hidden="true">${escape(project.number)}</span>
@@ -138,7 +200,8 @@ function projectMarkup(project) {
     ${project.approach || project.interpretation ? `<details><summary>Methods &amp; interpretation</summary><dl class="case">
       ${project.approach ? `<div><dt>Analytical approach</dt><dd>${escape(project.approach)}</dd></div>` : ""}
       ${project.interpretation ? `<div><dt>Interpretation</dt><dd>${escape(project.interpretation)}</dd></div>` : ""}
-    </dl></details>` : ""}</article>`;
+    </dl></details>` : ""}
+    ${nextStep(project)}</article>`;
 }
 
 function jobMarkup(job) {
@@ -164,7 +227,8 @@ function siteMarkup() {
   <div class="shell">
     <header class="topbar"><div class="topbar-inner">
       <a class="brand" href="#main" aria-label="Margarita Bermejo Cano, back to top"><span class="monogram" aria-hidden="true">mb.</span><span class="brand-name">Margarita<br>Bermejo Cano</span></a>
-      <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
+      <div class="topbar-tools"><nav aria-label="Main navigation"><a href="#work">Work</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Dark mode" title="Toggle light and dark theme" hidden><span id="theme-toggle-icon" aria-hidden="true">☾</span></button></div>
     </div><p class="theme-status" id="theme-status" role="status" hidden></p></header>
     <main class="main" id="main">
       <header class="hero">
@@ -172,8 +236,9 @@ function siteMarkup() {
           <p class="eyebrow">${escape(data.specialisms)}</p>
           <p class="hero-name">${escape(data.name)}</p><p class="hero-role">${escape(data.location)} · ${escape(data.languages)}</p>
           <h1>People Science<br><em>&amp; Analytics.</em></h1>
+          <p class="hero-value">I turn employee data into decisions.</p>
           <p class="intro">${escape(data.heroIntro)}</p>
-          <div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="#experience">View experience <span aria-hidden="true">↗</span></a><a class="button" href="${escape(data.linkedin)}" target="_blank" rel="noopener noreferrer">Request CV on LinkedIn <span aria-hidden="true">↗</span></a></div>
+          <div class="actions"><a class="button primary" href="#skills">Explore projects <span aria-hidden="true">↓</span></a><a class="button" href="${escape(data.linkedin)}" target="_blank" rel="noopener noreferrer">LinkedIn profile <span aria-hidden="true">↗</span></a><a class="button" href="${escape(data.linkedin)}" target="_blank" rel="noopener noreferrer">Request CV on LinkedIn <span aria-hidden="true">↗</span></a><a class="button link-quiet" href="#experience">View experience</a></div>
           <p class="hero-caption">R-first analysis · Clear recommendations · English &amp; Spanish</p>
         </div>
         <aside class="hero-evidence" aria-label="Selected career evidence">
@@ -184,7 +249,7 @@ function siteMarkup() {
           </a>`).join("")}
         </aside>
       </header>
-      <section id="work" aria-labelledby="work-title">
+      ${skillsMarkup()}<section id="work" aria-labelledby="work-title">
         ${heading("work-title", "01", "Selected work", "Research, analytics &amp; measurement.")}
         <p class="section-intro">Analysis of selected AI-adoption and people-science studies at Microsoft, customer-facing retention insight at LinkedIn Glint and end-to-end measurement at MetLife. Each case shows the question, my contribution and the delivered output, with methods available to explore. Confidential findings and customer details are omitted.</p>
         <div class="filters" id="project-filters" role="group" aria-label="Filter selected work" hidden>
@@ -256,11 +321,25 @@ function siteMarkup() {
   <script>
     const themeSelect = document.querySelector("#theme-select");
     const themeStatus = document.querySelector("#theme-status");
+    const themeToggle = document.querySelector("#theme-toggle");
+    function syncThemeToggle() {
+      const dark = document.documentElement.getAttribute("data-theme") === "dark";
+      themeToggle.setAttribute("aria-pressed", String(dark));
+      themeToggle.setAttribute("aria-label", "Dark mode");
+      document.querySelector("#theme-toggle-icon").textContent = dark ? "☀" : "☾";
+    }
     themeSelect.value = document.documentElement.getAttribute("data-theme");
     document.querySelector("#theme-picker").hidden = false;
+    themeToggle.hidden = false;
+    syncThemeToggle();
+    themeToggle.addEventListener("click", () => {
+      themeSelect.value = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      themeSelect.dispatchEvent(new Event("change"));
+    });
     themeSelect.addEventListener("change", () => {
       const theme = themeSelect.value;
       document.documentElement.setAttribute("data-theme", theme);
+      syncThemeToggle();
       themeStatus.hidden = true;
       try {
         window.localStorage.setItem("portfolio-theme", theme);
@@ -308,6 +387,135 @@ function siteMarkup() {
       link.addEventListener("click", () => revealCase(link.hash)));
     window.addEventListener("hashchange", () => revealCase(window.location.hash));
     revealCase(window.location.hash);
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const hasObserver = "IntersectionObserver" in window;
+    const formatCount = value => value.toLocaleString("en-GB");
+
+    if (!reduceMotion.matches && hasObserver) {
+      document.documentElement.classList.add("motion");
+      const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("in");
+        revealObserver.unobserve(entry.target);
+      }), { threshold: 0.12 });
+      document.querySelectorAll(".reveal, .section-head, .project, .publication, .research-notes article, .methods article, .principles article, .job, .education article")
+        .forEach(element => { element.classList.add("reveal"); revealObserver.observe(element); });
+
+      const countObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        countObserver.unobserve(entry.target);
+        const target = Number(entry.target.dataset.count);
+        const start = performance.now();
+        const step = now => {
+          const progress = Math.min((now - start) / 1400, 1);
+          entry.target.textContent = formatCount(Math.round(target * (1 - Math.pow(1 - progress, 3))));
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        entry.target.textContent = "0";
+        requestAnimationFrame(step);
+      }), { threshold: 0.6 });
+      document.querySelectorAll(".count[data-count]").forEach(element => countObserver.observe(element));
+    }
+
+    const svg = document.querySelector("#constellation");
+    const skillsData = JSON.parse(document.querySelector("#skills-data").textContent);
+    const nodes = [...svg.querySelectorAll(".node")];
+    const edges = [...svg.querySelectorAll(".edge")];
+    const panelTitle = document.querySelector("#skills-panel-title");
+    const panelText = document.querySelector("#skills-panel-text");
+    const panelLinks = document.querySelector("#skills-panel-links");
+    const positions = { hub: { x: 260, y: 215 } };
+    nodes.forEach(node => { positions[node.dataset.id] = { x: Number(node.dataset.x), y: Number(node.dataset.y) }; });
+
+    function clearHighlights() {
+      document.querySelectorAll(".is-match").forEach(element => element.classList.remove("is-match"));
+      edges.forEach(edge => edge.classList.remove("on"));
+      nodes.forEach(node => node.setAttribute("aria-pressed", "false"));
+    }
+    function selectSkill(id) {
+      const skill = skillsData[id];
+      const node = nodes.find(item => item.dataset.id === id);
+      const wasSelected = node.getAttribute("aria-pressed") === "true";
+      clearHighlights();
+      panelLinks.replaceChildren();
+      if (wasSelected) {
+        panelTitle.textContent = "Pick a skill";
+        panelText.textContent = "Use the nodes (or Tab and Enter) to explore. Live projects open in a new tab.";
+        return;
+      }
+      node.setAttribute("aria-pressed", "true");
+      edges.filter(edge => edge.dataset.a === id || edge.dataset.b === id).forEach(edge => edge.classList.add("on"));
+      panelTitle.textContent = skill.name;
+      panelText.textContent = skill.blurb;
+      const addLink = (href, title, kind, external) => {
+        const item = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = href;
+        if (external) { link.target = "_blank"; link.rel = "noopener noreferrer"; }
+        const label = document.createElement("span");
+        label.textContent = title;
+        const tag = document.createElement("span");
+        tag.className = "kind";
+        tag.textContent = kind;
+        link.append(label, tag);
+        item.append(link);
+        panelLinks.append(item);
+      };
+      skill.live.forEach(project => {
+        addLink(project.url, project.title, "Live project ↗", true);
+        document.querySelector('[data-live="' + project.id + '"]')?.classList.add("is-match");
+      });
+      skill.cases.forEach(project => {
+        addLink("#case-" + project.id, project.title, "Case study", false);
+        document.querySelector("#case-" + project.id)?.classList.add("is-match");
+      });
+      if (!skill.live.length && !skill.cases.length) panelText.textContent += " No linked projects yet.";
+    }
+    nodes.forEach(node => {
+      node.addEventListener("click", () => selectSkill(node.dataset.id));
+      node.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") { event.preventDefault(); selectSkill(node.dataset.id); }
+      });
+    });
+
+    // Gentle drift; skipped entirely (static layout) when reduced motion is requested.
+    let drifting = false;
+    let visible = false;
+    let hovered = false;
+    function frame(now) {
+      if (!drifting) return;
+      nodes.forEach(node => {
+        const base = positions[node.dataset.id];
+        const phase = Number(node.dataset.phase);
+        const x = base.x + Math.sin(now / 1700 + phase) * 6;
+        const y = base.y + Math.cos(now / 2100 + phase) * 6;
+        node.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ")");
+        node.current = { x, y };
+      });
+      const point = id => id === "hub" ? positions.hub : nodes.find(node => node.dataset.id === id).current;
+      edges.forEach(edge => {
+        const a = point(edge.dataset.a);
+        const b = point(edge.dataset.b);
+        edge.setAttribute("x1", a.x.toFixed(1)); edge.setAttribute("y1", a.y.toFixed(1));
+        edge.setAttribute("x2", b.x.toFixed(1)); edge.setAttribute("y2", b.y.toFixed(1));
+      });
+      requestAnimationFrame(frame);
+    }
+    function updateDrift() {
+      const shouldDrift = visible && !hovered && !document.hidden && !reduceMotion.matches;
+      if (shouldDrift && !drifting) { drifting = true; requestAnimationFrame(frame); }
+      if (!shouldDrift) drifting = false;
+    }
+    svg.addEventListener("pointerenter", () => { hovered = true; updateDrift(); });
+    svg.addEventListener("pointerleave", () => { hovered = false; updateDrift(); });
+    svg.addEventListener("focusin", () => { hovered = true; updateDrift(); });
+    svg.addEventListener("focusout", () => { hovered = false; updateDrift(); });
+    document.addEventListener("visibilitychange", updateDrift);
+    reduceMotion.addEventListener("change", updateDrift);
+    if (hasObserver) {
+      new IntersectionObserver(entries => { visible = entries[0].isIntersecting; updateDrift(); }).observe(svg);
+    }
   </script>`;
 }
 
