@@ -13,7 +13,7 @@ from playwright.sync_api import expect, sync_playwright
 ROOT = Path(__file__).resolve().parent
 URL = (ROOT / "index.html").as_uri()
 THEMES = ["light", "dark", "premium", "retro95"]
-FEATURED_IDS = ["agentic-research", "linkedin-retention", "metlife-service-survey"]
+FEATURED_IDS = ["linkedin-retention", "agentic-research", "metlife-service-survey"]
 DATA = json.loads((ROOT / "assets" / "portfolio.json").read_text(encoding="utf-8"))
 
 
@@ -101,7 +101,7 @@ class ThemeTests(unittest.TestCase):
         self.page.keyboard.press("Enter")
         self.assertEqual(visible.count(), len(DATA["projects"]))
         expect(self.page.locator("#project-count")).to_have_text("Showing 8 of 8 examples")
-        for category, label in [("research", "AI research"), ("workforce", "Workforce & measurement"),
+        for category, label in [("research", "Workplace AI"), ("workforce", "Workforce & measurement"),
                                 ("customer", "Customer analytics")]:
             self.page.get_by_role("button", name=label, exact=True).click()
             self.assertEqual(visible.count(), sum(p["category"] == category for p in DATA["projects"]))

@@ -1,13 +1,13 @@
 # Career portfolio
 
-Public career portfolio: research, selected analytical work and career experience.
+Public career portfolio: people analytics, people science, workplace AI and career experience, grounded in research.
 GitHub Pages serves the site at
 https://mberca.github.io/cv-margarita/.
 
 The public edition uses LinkedIn for contact. Personal application CVs are not
 hosted in this repository or offered as downloads.
-The opening section positions the portfolio around people science and analytics,
-AI adoption research, survey measurement and customer insight, with direct routes
+The opening section positions the portfolio around people analytics, people science
+and workplace AI, with employee listening, retention and measurement examples, and direct routes
 to career experience and a LinkedIn CV request. Analytical ownership is scoped
 to selected research studies, not a team-wide or programme-wide analytical lead
 role, people management or ML model-development experience.
@@ -55,7 +55,7 @@ The private detailed CV expands six leading cases with their question, contribut
 output and, where supported, analytical approach and interpretation. The two
 remaining cases form a compact supporting-work section. Public evidence links
 appear beside the relevant cases. The website opens with three contrasting
-cases (agentic research, LinkedIn retention and MetLife measurement); five more
+cases (LinkedIn retention, agentic AI and MetLife measurement); five more
 remain in a native, keyboard-accessible "Further work" disclosure. Category
 filters search all eight and reveal matching additional cases. Direct case
 links restore the all-work view and open the containing disclosure when needed.

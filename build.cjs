@@ -16,7 +16,7 @@ const cvPageTwoJobs = data.experience.slice(2, 5);
 const cvEarlierJobs = data.experience.slice(5);
 const themeStyle = template.match(/:root \{[\s\S]*?\n    \* \{/)[0].replace(/\n    \* \{$/, "");
 const themeScript = template.match(/<script>[\s\S]*?<\/script>/)[0];
-const featuredProjectIds = ["agentic-research", "linkedin-retention", "metlife-service-survey"];
+const featuredProjectIds = ["linkedin-retention", "agentic-research", "metlife-service-survey"];
 
 const cvStyles = `
     .cv-document { font-family: Arial, sans-serif; font-size: 10.5pt; line-height: 1.38; color: var(--cp-text); }
@@ -236,17 +236,17 @@ function siteMarkup() {
         </div>
         <aside class="hero-evidence" aria-label="Selected career evidence">
           <p class="eyebrow">Selected evidence</p>
-          ${data.highlights.map((highlight, index) => `<a class="proof" href="${escape(index === 0 ? publication.url : highlight.href)}">
+          ${data.highlights.map((highlight, index) => `<a class="proof" href="${escape(highlight.href)}">
             <span class="proof-index" aria-hidden="true">0${index + 1}</span><div>
-            <strong>${escape(highlight.title)}</strong><p>${escape(highlight.text)}</p><span>${escape(index === 0 ? "Microsoft / read the 2025 report" : highlight.context)} <span aria-hidden="true">↗</span></span></div>
+            <strong>${escape(highlight.title)}</strong><p>${escape(highlight.text)}</p><span>${escape(highlight.context)} <span aria-hidden="true">↗</span></span></div>
           </a>`).join("")}
         </aside>
       </header>
       ${skillsMarkup()}<section id="work" aria-labelledby="work-title">
-        ${heading("work-title", "01", "Selected work", "Research, analytics &amp; measurement.")}
-        <p class="section-intro">Analysis of selected AI-adoption and people-science studies at Microsoft, customer-facing retention insight at LinkedIn Glint and end-to-end measurement at MetLife. Each case shows the question, my contribution and the delivered output, with methods available to explore. Confidential findings and customer details are omitted.</p>
+        ${heading("work-title", "01", "Selected work", "People insights, measurement &amp; AI adoption.")}
+        <p class="section-intro">Engagement and retention insights at LinkedIn Glint, employee listening and measurement at MetLife, and customer-experience analytics and selected workplace AI studies at Microsoft. Each case starts with an organisational question and shows my contribution and delivered output, with research methods available to explore. Confidential findings and customer details are omitted.</p>
         <div class="filters" id="project-filters" role="group" aria-label="Filter selected work" hidden>
-          ${[["all", "All work"], ["research", "AI research"], ["customer", "Customer analytics"], ["workforce", "Workforce & measurement"]].map(([value, label]) => `<button class="filter" type="button" data-filter="${value}" aria-pressed="${value === "all"}">${escape(label)}</button>`).join("")}
+          ${[["all", "All work"], ["research", "Workplace AI"], ["customer", "Customer analytics"], ["workforce", "Workforce & measurement"]].map(([value, label]) => `<button class="filter" type="button" data-filter="${value}" aria-pressed="${value === "all"}">${escape(label)}</button>`).join("")}
         </div>
         <p class="project-count" id="project-count" aria-live="polite" aria-atomic="true">Showing ${featured.length} of ${data.projects.length} examples</p>
         <div class="projects">${featured.map(projectMarkup).join("")}</div>
@@ -259,6 +259,7 @@ function siteMarkup() {
       </section>
       <section id="research" aria-labelledby="research-title">
         ${heading("research-title", "02", "Public research", "Three publications. Shared contributions.")}
+        <p class="section-intro">Research is a foundation of my people-science work: careful measurement and evidence help make practical recommendations trustworthy. These publications reflect shared contributions to understanding AI at work.</p>
         <article class="publication"><div>
           <p class="eyebrow">${escape(publication.role)} / ${escape(publication.publisher)} / ${escape(publication.year)}</p>
           <h3>${escape(publication.title)}</h3><p>${escape(publication.detail)}</p>
@@ -269,7 +270,7 @@ function siteMarkup() {
       </section>
       <section id="experience" aria-labelledby="experience-title">
         ${heading("experience-title", "03", "Career", "A career built around people and evidence.")}
-        <p class="section-intro">From workforce reporting and HR systems to customer analytics and AI research, the context has changed. The work still begins with understanding the problem and making the evidence useful.</p>
+        <p class="section-intro">From workforce reporting and employee listening to people analytics and workplace AI, the context has changed. The work still begins with understanding the problem and making the evidence useful.</p>
         <nav class="timeline" aria-label="Career timeline">${[5, 4, 3, 2, 1, 0].map(index => `<a href="#${data.experience[index].id}">${["2022", "2019", "2015", "2014", "2012", "2011"][index]} / ${escape(data.experience[index].employer.split(" / ")[0])}</a>`).join("")}</nav>
         ${data.experience.slice(0, 6).map(jobMarkup).join("")}
         <details class="early-career"><summary>Earlier foundations / 2006–2011</summary>${data.experience.slice(6).map(jobMarkup).join("")}</details>
@@ -292,7 +293,7 @@ function siteMarkup() {
         <p class="certification">${escape(data.certifications[0])}</p>
       </section>
       <section id="contact" aria-labelledby="contact-title" class="closing">
-        <div><h2 id="contact-title">Let's compare notes.</h2><p>For people science and analytics opportunities, research conversations or a current CV, connect with me on LinkedIn. My focus is AI adoption, survey measurement and customer insight.</p>
+        <div><h2 id="contact-title">Let's compare notes.</h2><p>For people analytics, people science and workplace AI opportunities, research conversations or a current CV, connect with me on LinkedIn. My focus is employee listening, engagement and retention, measurement and AI adoption.</p>
           <div class="actions"><a class="button" href="${escape(data.linkedin)}" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span></a></div>
         </div><div class="resource-list">
           <a class="button" href="https://github.com/mberca" target="_blank" rel="noopener noreferrer"><span>Explore my GitHub projects</span><span aria-hidden="true">↗</span></a>

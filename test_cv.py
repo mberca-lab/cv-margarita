@@ -143,9 +143,10 @@ class CasePresentationTests(unittest.TestCase):
                     page.goto((ROOT / "index.html").as_uri())
                     hero = page.locator(".hero")
                     self.assertIn("People Science", hero.locator("h1").inner_text())
-                    self.assertIn("AI Adoption Research", hero.locator(".eyebrow").first.text_content())
+                    self.assertIn("People Analytics · People Science · Workplace AI",
+                                  hero.locator(".eyebrow").first.text_content())
                     self.assertNotIn("Microsoft", hero.locator(".hero-copy").inner_text())
-                    self.assertIn("psychometrics", hero.locator(".intro").inner_text())
+                    self.assertIn("behavioural science", hero.locator(".intro").inner_text())
                     self.assertNotIn(DATA["headline"], hero.locator(".hero-role").inner_text())
                     request = hero.get_by_role("link", name="Request CV on LinkedIn")
                     self.assertTrue(request.is_visible())
@@ -156,6 +157,33 @@ class CasePresentationTests(unittest.TestCase):
                     self.assertIn(DATA["experience"][0]["title"],
                                   page.locator("#experience").inner_text())
                     self.assertIn("Microsoft", page.locator("#experience").inner_text())
+            finally:
+                browser.close()
+
+    def test_people_analytics_leads_without_losing_research_evidence(self):
+        with sync_playwright() as playwright:
+            browser = playwright.chromium.launch()
+            try:
+                page = browser.new_page()
+                page.goto((ROOT / "index.html").as_uri())
+                proofs = page.locator(".hero-evidence .proof")
+                self.assertEqual(proofs.locator("strong").all_text_contents(),
+                                 [highlight["title"] for highlight in DATA["highlights"]])
+                self.assertEqual(proofs.first.get_attribute("href"),
+                                 "#case-linkedin-retention")
+                for index, highlight in enumerate(DATA["highlights"]):
+                    proof = proofs.nth(index)
+                    self.assertEqual(proof.get_attribute("href"), highlight["href"])
+                    proof.click()
+                    self.assertTrue(page.locator(highlight["href"]).is_visible())
+                self.assertEqual(page.locator(".project-lead").get_attribute("id"),
+                                 "case-linkedin-retention")
+                self.assertIn("People insights, measurement & AI adoption",
+                              page.locator("#work-title").inner_text())
+                self.assertIn("Research is a foundation",
+                              page.locator("#research .section-intro").inner_text())
+                self.assertEqual(page.locator("#research a").count(),
+                                 len(DATA["research"]))
             finally:
                 browser.close()
 

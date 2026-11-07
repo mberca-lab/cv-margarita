@@ -1,29 +1,29 @@
 {
   "name": "Margarita Bermejo Cano",
   "headline": "People Science & Analytics",
-  "specialisms": "AI Adoption Research · Survey Measurement · Customer Insights",
+  "specialisms": "People Analytics · People Science · Workplace AI",
   "location": "Dublin, Ireland",
   "languages": "English & Spanish",
   "linkedin": "https://www.linkedin.com/in/margaritabermejocano/",
   "website": "https://mberca.github.io/cv-margarita/",
   "edition": "November 2026",
-  "summary": "People science and analytics specialist combining AI-adoption research, psychometrics and customer insight. My experience includes leading analysis for selected AI-readiness and human–agent teaming studies, public research co-authorship, engagement and attrition-risk analysis, and end-to-end regional survey programmes. I translate employee, customer and workforce evidence into clear stakeholder recommendations.",
-  "heroIntro": "I combine psychometrics, people analytics and AI-adoption research to turn employee and customer evidence into practical recommendations.",
+  "summary": "People analytics and people science specialist combining employee listening, psychometrics and workplace AI insights. My experience spans engagement and attrition-risk analysis, regional survey programmes, customer-experience recommendations and selected AI-readiness and human–agent teaming studies. Research co-authorship underpins my evidence-led approach. I translate employee, customer and workforce evidence into clear stakeholder recommendations.",
+  "heroIntro": "I combine people analytics, behavioural science and AI-adoption insights to help organisations understand their people and make evidence-informed decisions.",
   "highlights": [
     {
-      "title": "Published AI adoption research",
-      "text": "Co-author of public reports on agentic teaming and LLM productivity; led analysis for selected studies in the agentic research programme.",
-      "context": "Microsoft / verified publication credits",
-      "href": "#research"
-    },
-    {
-      "title": "Customer-facing retention insight",
+      "title": "Engagement & retention insights",
       "text": "Engagement-driver, linked-data and attrition-risk analysis, explained to customer-facing teams and senior customer stakeholders.",
       "context": "LinkedIn Glint / 2019–2022",
       "href": "#case-linkedin-retention"
     },
     {
-      "title": "Regional measurement ownership",
+      "title": "Workplace AI insights & research",
+      "text": "Led analysis for selected AI-readiness and human–agent teaming studies; co-author of public reports on agentic teaming and LLM productivity.",
+      "context": "Microsoft / published research",
+      "href": "#research"
+    },
+    {
+      "title": "Employee listening & measurement",
       "text": "Led the EMEA HR Shared Services customer-satisfaction survey from design through implementation, analysis and reporting.",
       "context": "MetLife / broader remit across 25 EMEA countries",
       "href": "#case-metlife-service-survey"
@@ -31,7 +31,7 @@
   ],
   "skills": [
     {
-      "title": "Research & measurement",
+      "title": "People science & measurement",
       "items": ["Survey design and measurement testing", "Exploratory and confirmatory factor analysis", "Reliability testing and item analysis", "Regression, correlation and relative weight analysis", "Quantitative and qualitative survey analysis", "Key-driver and relative-risk analysis"]
     },
     {
@@ -40,13 +40,13 @@
     },
     {
       "title": "Business & delivery",
-      "items": ["AI readiness and adoption research", "Customer and employee experience", "Content taxonomy and data quality", "Cross-functional options assessment", "Stakeholder presentations and guidance", "Research-to-decision translation"]
+      "items": ["AI readiness and adoption insights", "Customer and employee experience", "Content taxonomy and data quality", "Cross-functional options assessment", "Stakeholder presentations and guidance", "Evidence-to-decision translation"]
     }
   ],
   "cvSkills": [
     ["Analysis", "R (primary), SQL, Python, Excel; KQL / Azure Data Explorer; Power BI (working knowledge)."],
     ["Methods", "Survey design; measurement structure, reliability and item testing (EFA/CFA); regression; relative weight, key-driver and relative-risk analysis; quantitative and qualitative survey analysis."],
-    ["Delivery", "Customer and workforce insights; AI adoption research; data quality and taxonomy design; analytical automation; stakeholder presentations and cross-functional partnership."]
+    ["Delivery", "Customer and workforce insights; AI readiness and adoption; data quality and taxonomy design; analytical automation; stakeholder presentations and cross-functional partnership."]
   ],
   "experience": [
     {
@@ -56,12 +56,12 @@
       "title": "People Science Analyst",
       "dates": "Apr 2022 – Dec 2026",
       "location": "Dublin, Ireland",
-      "scope": "Led analysis for selected AI-adoption and people-science studies at Microsoft.",
+      "scope": "People science, customer-experience analytics and selected workplace AI-adoption studies.",
       "bullets": [
+        "Translated post-migration Net Promoter Score (NPS) survey findings into prioritised customer-experience recommendations for product teams, comparing customer groups and satisfaction-driver patterns.",
         "Led analysis for selected studies within an enterprise agentic AI readiness and adoption research programme; co-authored the full 2025 Agentic Teaming & Trust Research Report.",
         "Led AI-readiness measurement analysis using exploratory and confirmatory factor analysis, reliability testing and item analysis; contributed underlying analyses to The state of AI change readiness eBook.",
         "Co-produced the first early-access AI-assistant survey report as one of two analysts and maintained recurring reporting; survey insights featured in public workplace research and conference presentations.",
-        "Translated post-migration Net Promoter Score (NPS) survey findings into prioritised customer-experience recommendations for product teams, comparing customer groups and satisfaction-driver patterns.",
         "Extended reusable R analysis code for recurring research and documented prompts and context templates for AI-assisted analytical planning."
       ],
       "additional": [
@@ -202,12 +202,12 @@
     {
       "id": "agentic-research",
       "employer": "Microsoft",
-      "number": "01",
+      "number": "02",
       "category": "research",
-      "categoryLabel": "AI research",
+      "categoryLabel": "Workplace AI",
       "dates": "2025",
       "title": "Agentic AI readiness, teaming & trust",
-      "summary": "Led analysis for selected studies within an enterprise research programme; co-author of the full four-chapter public report.",
+      "summary": "Analysed organisational readiness, trust and human–agent teaming in selected studies; co-author of the full four-chapter public research report.",
       "question": "What evidence helps organisations understand readiness for and adoption of agentic ways of working?",
       "contribution": "Led selected study analyses within the research programme, producing in-depth reports using factor analysis, regression, comparative and descriptive methods.",
       "outcome": "An analytical report series and co-authorship of the full 2025 Agentic Teaming & Trust Research Report.",
@@ -219,9 +219,9 @@
     {
       "id": "linkedin-retention",
       "employer": "LinkedIn Glint",
-      "number": "02",
+      "number": "01",
       "category": "customer",
-      "categoryLabel": "Customer analytics",
+      "categoryLabel": "People analytics",
       "dates": "2019–2022",
       "title": "Engagement drivers and attrition risk",
       "summary": "Linked employee feedback and behavioural data to inform customer recommendations on engagement and attrition risk.",
@@ -238,7 +238,7 @@
       "employer": "Microsoft",
       "number": "03",
       "category": "research",
-      "categoryLabel": "AI research",
+      "categoryLabel": "Workplace AI",
       "dates": "2023–2024",
       "title": "Organisational AI-readiness measurement",
       "summary": "Led the study's analysis of AI-readiness measurement and associated factors.",
@@ -271,9 +271,9 @@
       "employer": "Microsoft",
       "number": "05",
       "category": "research",
-      "categoryLabel": "AI research",
+      "categoryLabel": "Workplace AI",
       "dates": "2023–2024",
-      "title": "Early AI-assistant adoption research",
+      "title": "Early AI-assistant adoption insights",
       "summary": "From the first findings report to a sustained enterprise AI survey-reporting cycle.",
       "question": "What do early users tell us about adopting an enterprise AI assistant?",
       "contribution": "Co-produced the first findings report as one of two analysts, monitoring responses, comparing respondent populations and reviewing data quality; then maintained recurring analysis with research partners.",
