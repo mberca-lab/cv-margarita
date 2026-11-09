@@ -134,6 +134,20 @@ class CvTests(unittest.TestCase):
 
 
 class CasePresentationTests(unittest.TestCase):
+    def test_location_stays_country_only_on_screen_and_print(self):
+        with sync_playwright() as playwright:
+            browser = playwright.chromium.launch()
+            try:
+                page = browser.new_page()
+                page.goto((ROOT / "index.html").as_uri())
+                for selector in [".hero-role", "footer > span", ".cv-contact"]:
+                    with self.subTest(selector=selector):
+                        text = page.locator(selector).text_content()
+                        self.assertIn("Ireland", text)
+                        self.assertNotIn("Dublin", text)
+            finally:
+                browser.close()
+
     def test_recruiters_can_reach_experience_and_request_cv_from_the_intro(self):
         with sync_playwright() as playwright:
             browser = playwright.chromium.launch()

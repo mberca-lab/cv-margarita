@@ -301,7 +301,7 @@ function siteMarkup() {
           <p class="contact-note">For a current CV, contact me on LinkedIn. Personal application documents are not hosted on this site.</p>
         </div>
       </section>
-      <footer><span>${escape(data.name)} / Dublin / ${escape(data.edition)}</span>
+      <footer><span>${escape(data.name)} / ${escape(data.location)} / ${escape(data.edition)}</span>
         <label class="theme-picker" id="theme-picker" hidden><span>Theme</span>
           <select class="theme" id="theme-select">
             <option value="light">Light</option><option value="dark">Dark</option>
