@@ -2,7 +2,7 @@
 
 Public career portfolio: people analytics, people science, workplace AI and career experience, grounded in research.
 GitHub Pages serves the site at
-https://mberca.github.io/cv-margarita/.
+https://mbc81.github.io/cv-margarita/.
 
 The public edition uses LinkedIn for contact. Personal application CVs are not
 hosted in this repository or offered as downloads.
@@ -120,7 +120,7 @@ Nothing is loaded or tracked until you opt in:
 
 Counting is skipped on localhost and `file:` pages. To exclude yourself, open the
 site once with `#toggle-goatcounter` appended to the URL (for example
-`https://mberca.github.io/cv-margarita/#toggle-goatcounter`); this sets
+`https://mbc81.github.io/cv-margarita/#toggle-goatcounter`); this sets
 `localStorage.skipgc` in that browser (repeat to switch counting back on).
 Do this on every browser/device you use. The site never strips URL parameters, so
 `?utm_source=...&utm_campaign=...` links keep their campaign data for GoatCounter.

@@ -83,7 +83,7 @@ function cvMarkup(extended = false) {
       <p>${escape(data.specialisms)}</p>
       <p class="cv-contact">${escape(data.location)} · ${escape(data.languages)} ·
         <a href="${escape(data.linkedin)}">linkedin.com/in/margaritabermejocano</a><br>
-        <a href="${escape(data.website)}">mberca.github.io/cv-margarita</a></p>
+        <a href="${escape(data.website)}">mbc81.github.io/cv-margarita</a></p>
       <h2>Profile</h2><p>${escape(data.summary)}</p>
       <h2>Experience</h2>${cvJob(data.experience[0])}${cvJob(data.experience[1])}
       <h2>Methods & tools</h2><div class="cv-skills">${data.cvSkills.map(([name, text]) => `<p><b>${escape(name)}:</b> ${escape(text)}</p>`).join("")}</div>
@@ -121,7 +121,7 @@ function cvMarkup(extended = false) {
   return markup + "</div>";
 }
 
-const liveBase = "https://mberca.github.io/";
+const liveBase = "https://mbc81.github.io/";
 const liveProjects = [
   { id: "engagement-atlas", title: "Engagement Atlas", text: "Real public HR survey data, thoughtful machine learning and an interactive engagement atlas.", stats: [[630, "agency-year observations"], [85, "agencies"], [8, "survey years"]] },
   { id: "ai-adoption-atlas", title: "AI, in Practice", text: "Do developers trust what they use? Four public survey waves, model comparisons and a scroll-driven story about AI adoption.", stats: [[4, "public survey waves"]] },
@@ -296,7 +296,7 @@ function siteMarkup() {
         <div><h2 id="contact-title">Let's compare notes.</h2><p>For people analytics, people science and workplace AI opportunities, research conversations or a current CV, connect with me on LinkedIn. My focus is employee listening, engagement and retention, measurement and AI adoption.</p>
           <div class="actions"><a class="button" href="${escape(data.linkedin)}" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span></a></div>
         </div><div class="resource-list">
-          <a class="button" href="https://github.com/mberca" target="_blank" rel="noopener noreferrer"><span>Explore my GitHub projects</span><span aria-hidden="true">↗</span></a>
+          <a class="button" href="https://github.com/Mbc81" target="_blank" rel="noopener noreferrer"><span>Explore my GitHub projects</span><span aria-hidden="true">↗</span></a>
           <a class="button" href="#research"><span>Browse public research</span><span aria-hidden="true">↗</span></a>
           <p class="contact-note">For a current CV, contact me on LinkedIn. Personal application documents are not hosted on this site.</p>
         </div>
